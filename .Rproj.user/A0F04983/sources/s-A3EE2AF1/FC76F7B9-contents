@@ -8,3 +8,4 @@ c <- data.frame(title=c("Sepal Length", "Sepal Width", "Petal Length", "Petal Wi
 
 rh <- data.frame(rownum=c(1,2,3), height=c(10,20,300))
 
+mc <- list(A1=c(2,1), A2=c(2,1))

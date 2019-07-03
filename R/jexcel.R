@@ -25,214 +25,291 @@
 #' @param minDimensions a vector that defines the minimum dimension size of the table irrespective of the size of data,
 #' the first parameter should be of column followed by row. If data is null then it will create an empty table with the given
 #' dimensions
-#' @param search a boolean value indicating if search should be enabled
+#' @param search a boolean value indicating if search should be enabled. By default it is set to false
 #' @param pagination numeric value indicating number of rows in a single page
-#' @param allowComments a boolean value indicating if commenting on cell should be enabled
-excel <- function(data = NULL, columns = NULL, colHeaders = NULL, rowHeight = NULL, nestedHeaders = NULL,
-                  minDimensions = NULL, search = FALSE, pagination = NULL, allowComments = FALSE,
-                  mergeCells = NULL, columnSorting = FALSE, lazyLoading = TRUE, loadingSpin = TRUE,
-                  style = NULL, width = NULL, height = NULL, elementId = NULL) {
+#' @param allowComments a boolean value indicating if commenting on cell should be enabled. By default it is set to false.
+#' @param mergeCells a list containing vectors of colspan and rowspan respectively such that the names of the
+#' arguments specify the cell number
+#' @param columnSorting a boolean value indicating if column sorting should be enabled. When enabled double click
+#' on the table headers sorts the column. By default it is set to false
+excel <-
+  function(data = NULL,
+           columns = NULL,
+           colHeaders = NULL,
+           rowHeight = NULL,
+           nestedHeaders = NULL,
+           minDimensions = NULL,
+           search = FALSE,
+           pagination = NULL,
+           allowComments = FALSE,
+           mergeCells = NULL,
+           columnSorting = FALSE,
+           lazyLoading = TRUE,
+           loadingSpin = TRUE,
+           style = NULL,
+           width = NULL,
+           height = NULL,
+           elementId = NULL) {
+    # List of parameters to send to js
+    paramList <- list()
 
-  # List of parameters to send to js
-  paramList <- list();
 
-  # Check data
-  if(!is.null(data))
-  {
-    # It either has to be dataframe or matrix
-    if(is.data.frame(data) || is.matrix(data)){
-      paramList$data <- jsonlite::toJSON(data, dataframe = "values")
-    }else {
-      stop(
-        "'data' must be either a matrix or a data frame, cannot be ",
-        class(data)
-      )
-    }
-
-  }
-
-
-  # Check column
-  # If both columns and colHeaders are not specified, use the column names of the dataframe/matrix
-  if(is.null(columns) && is.null(colHeaders) ){
-    if(!is.null(data)){
-      warning("Since both column title and colHeaders are not specified 'data' column name will be used as column headers")
-      paramList$colHeaders = colnames(data)
-    }
-
-  }else if (is.null(columns) && !is.null(colHeaders)){
-    # If columnheader is specified
-
-    #Check if column header is a vector
-    if(!is.vector(colHeaders)){
-      stop("'colHeader' must be a vector, cannot be", class(colHeaders))
-    }
-
-    #Check is the column header length is equal to no. of columns
-    if(!is.null(data)){
-
-      if(ncol(data) != length(colHeaders)){
-
-        stop("length of 'colHeader' should be equal the number of columns in the 'data', 'data' has ",
-             ncol(data), "but the length of 'colHeader' is ", length(colHeaders) )
+    # Check data
+    if (!is.null(data))
+    {
+      # It either has to be dataframe or matrix
+      if (is.data.frame(data) || is.matrix(data)) {
+        paramList$data <- jsonlite::toJSON(data, dataframe = "values")
+      } else {
+        stop("'data' must be either a matrix or a data frame, cannot be ",
+             class(data))
       }
+
     }
 
-    paramList$colHeaders <- jsonlite::toJSON(colHeaders);
 
-  }else if(!is.null(columns))
-  {
-    #Check if 'columns' is a dataframe
-    if(!is.data.frame(columns)){
-      stop("'columns' must be a dataframe, cannot be", class(columns))
-    }
-
-    #Check if number of rows in 'columns' is equal to the number of columns in 'data'
-    if(!is.null(data)){
-
-      if(nrow(columns) != ncol(data))
-      {
-        stop("number of rows in 'columns' should be equal to number of columns in 'data', expected number of rows in 'columns' to be ",
-             ncol(data), "but got ", nrow(columns))
+    # Check column
+    # If both columns and colHeaders are not specified, use the column names of the dataframe/matrix
+    if (is.null(columns) && is.null(colHeaders)) {
+      if (!is.null(data)) {
+        warning(
+          "Since both column title and colHeaders are not specified 'data' column name will be used as column headers"
+        )
+        paramList$colHeaders = colnames(data)
       }
-    }
 
-    #Check if title attribute is present in column
-    if(!"title" %in% colnames(columns)){
+    } else if (is.null(columns) && !is.null(colHeaders)) {
+      # If columnheader is specified
 
-      if(is.null(colHeaders)){
-        if(!is.null(data))
+      #Check if column header is a vector
+      if (!is.vector(colHeaders)) {
+        stop("'colHeader' must be a vector, cannot be",
+             class(colHeaders))
+      }
+
+      #Check is the column header length is equal to no. of columns
+      if (!is.null(data)) {
+        if (ncol(data) != length(colHeaders)) {
+          stop(
+            "length of 'colHeader' should be equal the number of columns in the 'data', 'data' has ",
+            ncol(data),
+            "but the length of 'colHeader' is ",
+            length(colHeaders)
+          )
+        }
+      }
+
+      paramList$colHeaders <- jsonlite::toJSON(colHeaders)
+
+
+    } else if (!is.null(columns))
+    {
+      #Check if 'columns' is a dataframe
+      if (!is.data.frame(columns)) {
+        stop("'columns' must be a dataframe, cannot be", class(columns))
+      }
+
+      #Check if number of rows in 'columns' is equal to the number of columns in 'data'
+      if (!is.null(data)) {
+        if (nrow(columns) != ncol(data))
         {
-          warning("Since both column title and colHeaders are not specified 'data' column name will be used as column headers")
-          paramList$colHeaders = jsonlite::toJSON(colnames(data))
+          stop(
+            "number of rows in 'columns' should be equal to number of columns in 'data', expected number of rows in 'columns' to be ",
+            ncol(data),
+            "but got ",
+            nrow(columns)
+          )
+        }
+      }
+
+      #Check if title attribute is present in column
+      if (!"title" %in% colnames(columns)) {
+        if (is.null(colHeaders)) {
+          if (!is.null(data)) {
+            warning(
+              "Since both column title and colHeaders are not specified 'data' column name will be used as column headers"
+            )
+            paramList$colHeaders = jsonlite::toJSON(colnames(data))
+          }
+
+        } else{
+          paramList$colHeaders = jsonlite::toJSON(colHeaders)
         }
 
-      }else{
-        paramList$colHeaders = jsonlite::toJSON(colHeaders)
       }
 
-    }
-
-    # Check if all the attributes in the columns is a valid attribute i.e. colname(columns) should be subset of attributes
-    colAttributes <- c("title", "width", "type", "source", "multiple")
-    if(!all(colnames(columns) %in% colAttributes)){
-      warning("unknown attribute(s) ",colnames(columns)[!colnames(columns)%in%colAttributes], " for 'columns' found, ignoring those attributes")
-    }
-
-    paramList$columns <- jsonlite::toJSON(columns[colnames(columns)%in%colAttributes])
-
-  }
-
-  #Check row height
-  if(!is.null(rowHeight)){
-    if (!is.data.frame(rowHeight) && !is.matrix(rowHeight)){
-      stop(
-        "'rowHeight' must be either a matrix or a dataframe, cannot be ",
-        class(rowHeight)
-      )
-    }
-    if(ncol(rowHeight) != 2){
-      stop("'rowHeight' must be either a matrix or dataframe with two columns, but got ",
-           ncol(rowHeight), " column(s)")
-    }
-
-    paramList$rowHeight <- jsonlite::toJSON(rowHeight, dataframe = "values")
-  }
-
-  if(!is.null(nestedHeaders)) {
-
-    # nestedHeaders should be list
-    if(!is.list(nestedHeaders)){
-      stop("'nestedHeaders' must be a list of dataframe(s), cannot be ",
-           class(nestedHeaders))
-    }
-
-    headerAttributes <- c("title", "colspan")
-
-    for( nestedHeader in nestedHeaders){
-
-      # nestedHeaders should be list of data.frames
-      if(!is.data.frame(nestedHeader))
-      {
-        stop("'nestedHeaders' must be a list of dataframe(s), but got list of  ",
-             class(nestedHeader), "(s)")
+      # Check if all the attributes in the columns is a valid attribute i.e. colname(columns) should be subset of attributes
+      colAttributes <-
+        c("title", "width", "type", "source", "multiple")
+      if (!all(colnames(columns) %in% colAttributes)) {
+        warning(
+          "unknown attribute(s) ",
+          colnames(columns)[!colnames(columns) %in% colAttributes],
+          " for 'columns' found, ignoring those attributes"
+        )
       }
 
-      # data.frame nestedHeaders should have atleast two column and one row
-      if(ncol(nestedHeader) < 2 || nrow(nestedHeader) < 1){
-        stop("the dataframe(s) in 'nestedHeaders must contain at least two columns and one row,
-             'title' and 'colspan', but got only ", ncol(nestedHeader),
-             " column and ", nrow(nestedHeader), " row" )
-      }
-
-      # the dataframe in nestedHeaders should have one column named as title
-      if(!"title" %in% colnames(nestedHeader)){
-        stop("one of the column in the dataframe in list of 'nestedHeaders' should have 'title' as header
-             which will be used as title of the nested header")
-      }
-
-
-      # the dataframe in nestedHeaders should have one column named as colspan
-      if(!"colspan" %in% colnames(nestedHeader)){
-        stop("one of the column in the dataframe in list of 'nestedHeaders' should have 'colspan' as header
-             which will be used to determine the number of column it needs to span")
-      }
-
-      # extra columns in dtaframes in nestedHeaders will be ignored
-      if(!all(colnames(nestedHeader) %in% headerAttributes)){
-        warning("unknown headers(s) ",colnames(nestedHeader)[!colnames(nestedHeader)%in%headerAttributes],
-                " for 'nestedHeader' found, ignoring column with those header(s)")
-      }
+      paramList$columns <-
+        jsonlite::toJSON(columns[colnames(columns) %in% colAttributes])
 
     }
 
-    paramList$nestedHeaders <- jsonlite::toJSON(nestedHeaders, dataframe = "rows")
-  }
+    #Check row height
+    if (!is.null(rowHeight)) {
+      if (!is.data.frame(rowHeight) && !is.matrix(rowHeight)) {
+        stop("'rowHeight' must be either a matrix or a dataframe, cannot be ",
+             class(rowHeight))
+      }
+      if (ncol(rowHeight) != 2) {
+        stop(
+          "'rowHeight' must be either a matrix or dataframe with two columns, but got ",
+          ncol(rowHeight),
+          " column(s)"
+        )
+      }
 
-
-  # Check minDimensions
-  if(!is.null(minDimensions)){
-
-    # minDimensions must be a vector
-    if(!is.vector(minDimensions)){
-      stop("'minDimensions' must be vector but got ", class(minDimensions))
+      paramList$rowHeight <-
+        jsonlite::toJSON(rowHeight, dataframe = "values")
     }
 
-    # minDimensions must be length of 2
-    if(length(minDimensions) != 2){
-      stop("'minDimensions' must be a vector of length but got length of ", length(minDimensions))
+    if (!is.null(nestedHeaders)) {
+      # nestedHeaders should be list
+      if (!is.list(nestedHeaders)) {
+        stop("'nestedHeaders' must be a list of dataframe(s), cannot be ",
+             class(nestedHeaders))
+      }
+
+      headerAttributes <- c("title", "colspan")
+
+      for (nestedHeader in nestedHeaders) {
+        # nestedHeaders should be list of data.frames
+        if (!is.data.frame(nestedHeader))
+        {
+          stop(
+            "'nestedHeaders' must be a list of dataframe(s), but got list of  ",
+            class(nestedHeader),
+            "(s)"
+          )
+        }
+
+        # data.frame nestedHeaders should have atleast two column and one row
+        if (ncol(nestedHeader) < 2 || nrow(nestedHeader) < 1) {
+          stop(
+            "the dataframe(s) in 'nestedHeaders must contain at least two columns and one row,
+             'title' and 'colspan', but got only ",
+            ncol(nestedHeader),
+            " column and ",
+            nrow(nestedHeader),
+            " row"
+          )
+        }
+
+        # the dataframe in nestedHeaders should have one column named as title
+        if (!"title" %in% colnames(nestedHeader)) {
+          stop(
+            "one of the column in the dataframe in list of 'nestedHeaders' should have 'title' as header
+             which will be used as title of the nested header"
+          )
+        }
+
+
+        # the dataframe in nestedHeaders should have one column named as colspan
+        if (!"colspan" %in% colnames(nestedHeader)) {
+          stop(
+            "one of the column in the dataframe in list of 'nestedHeaders' should have 'colspan' as header
+             which will be used to determine the number of column it needs to span"
+          )
+        }
+
+        # extra columns in dtaframes in nestedHeaders will be ignored
+        if (!all(colnames(nestedHeader) %in% headerAttributes)) {
+          warning(
+            "unknown headers(s) ",
+            colnames(nestedHeader)[!colnames(nestedHeader) %in% headerAttributes],
+            " for 'nestedHeader' found, ignoring column with those header(s)"
+          )
+        }
+
+      }
+
+      paramList$nestedHeaders <-
+        jsonlite::toJSON(nestedHeaders, dataframe = "rows")
     }
 
-    paramList$minDimensions <- minDimensions
-  }
 
-  # Search
-  if(search) {
-    paramList$search <- TRUE
-  }
+    # Check minDimensions
+    if (!is.null(minDimensions)) {
+      # minDimensions must be a vector
+      if (!is.vector(minDimensions)) {
+        stop("'minDimensions' must be vector but got ",
+             class(minDimensions))
+      }
 
-  # Check pagination
-  if(!is.null(pagination)){
+      # minDimensions must be length of 2
+      if (length(minDimensions) != 2) {
+        stop(
+          "'minDimensions' must be a vector of length but got length of ",
+          length(minDimensions)
+        )
+      }
 
-    if(!is.numeric(pagination)){
-      stop("'pagination' must be an integer but got ", class(pagination))
+      paramList$minDimensions <- minDimensions
     }
 
-    paramList$pagination <- pagination
+    # Search
+    if (search) {
+      paramList$search <- TRUE
+    }
+
+    # Check pagination
+    if (!is.null(pagination)) {
+      if (!is.numeric(pagination)) {
+        stop("'pagination' must be an integer but got ",
+             class(pagination))
+      }
+
+      paramList$pagination <- pagination
+    }
+
+    if (allowComments) {
+      paramList$allowComments <- TRUE
+    }
+
+    # Check mergeCells
+    if (!is.null(mergeCells)) {
+      # mergeCells should be a list
+      if (!is.list(mergeCells)) {
+        stop("expected 'mergeCells' to be a list but got ",
+             class(mergeCells))
+      }
+
+      for (mergeCell in mergeCells) {
+        if (!is.vector(mergeCell)) {
+          stop(
+            "expected each parameter in 'mergeCells' list to be a vector but got ",
+            class(mergeCell)
+          )
+        }
+
+        if(length(mergeCell) != 2) {
+          stop("expected each parameter in 'mergeCells' list to be a vector of length  2 but got vector of lrngth",
+               length(mergeCells))
+        }
+      }
+
+      paramList$mergeCells <- mergeCells
+
+    }
+
+
+
+    # create the widget
+    htmlwidgets::createWidget(
+      name = "jexcel",
+      x = paramList,
+      width = width,
+      height = height,
+      package = 'excelR',
+      elementId = elementId
+    )
   }
-
-  if(allowComments) {
-    paramList$allowComments <- TRUE
-  }
-
-
-
-  # create the widget
-  htmlwidgets::createWidget(
-    name= "jexcel",
-    x = paramList,
-    width = width,
-    height = height,
-    package = 'excelR',
-    elementId = elementId )
-}

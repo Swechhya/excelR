@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "3186164413",
     "id" : "7A479C77",
-    "lastKnownWriteTime" : 1562129443,
-    "last_content_update" : 1562129443177,
+    "lastKnownWriteTime" : 1562137216,
+    "last_content_update" : 1562137216760,
     "path" : "~/Projects/R/excelR/R/jexcel.R",
     "project_path" : "R/jexcel.R",
     "properties" : {
-        "cursorPosition" : "32,28",
-        "scrollLine" : "9"
+        "cursorPosition" : "29,122",
+        "scrollLine" : "18"
     },
     "read_only" : false,
     "read_only_alternatives" : [

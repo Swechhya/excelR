@@ -1,0 +1,10 @@
+
+
+
+nh <- list(data.frame(title = "a", colspan = 5), data.frame(title=c("b", "c"), colspan=c(2,3)))
+
+c <- data.frame(title=c("Sepal Length", "Sepal Width", "Petal Length", "Petal Width", "Species"),
+                width=c(300, 300, 300, 300, 300))
+
+rh <- data.frame(rownum=c(1,2,3), height=c(10,20,300))
+

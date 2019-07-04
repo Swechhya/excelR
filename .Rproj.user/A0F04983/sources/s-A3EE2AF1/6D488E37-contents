@@ -7,7 +7,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  output$test <- renderExcel(excel(iris))
+  output$test <- renderExcel(excel(data = head(iris), columnDrag = TRUE))
 }
 
 shinyApp(ui, server)

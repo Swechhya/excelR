@@ -5,6 +5,8 @@ dependencies:
     script: 
       - js/jexcel.min.js
       - js/japp.js
+      - js/jsuites.js
     stylesheet:
       - css/jexcel.min.css
       - css/japp.css
+      - css/jsuites.css

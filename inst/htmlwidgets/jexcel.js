@@ -9,7 +9,7 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(params) {
-        const { rowHeight,...otherParams } = params;
+        const { rowHeight,style, ...otherParams } = params;
 
         const rows = (() => {
           if (rowHeight) {
@@ -19,16 +19,28 @@ HTMLWidgets.widget({
           }
           return {};
         })();
+        
+        const formattedStyle = (()=>{
+          if(style){
+            const formattedStyle = Object.keys(style).reduce((acc, cur)=>({...acc, [cur]:style[cur].join(';')}),{})
+            return formattedStyle
+          }
+
+          return {};
+        })()
 
         jexcel(container, {
           ...otherParams,
           rows,
           tableOverflow: true,
+          style: formattedStyle,
+          // tableHeight: height,
+          // tableWidth: width,
         });
       },
 
       resize: function(width, height) {
-        //Need to implement
+    
       }
     };
   }

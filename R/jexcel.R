@@ -3,53 +3,89 @@
 #' This function is used to create excel like table
 #' @export
 #' @param data a data object, can either be dataframe or a matrix
-#' @param columns a datframe containing the attributes of columns in the table.
-#' The row number  of the dataframe specifies the column for with the attribute is to be specified
-#' Each header of the dataframe specifies the attribute.The following attributes are supported:
+#' @param columns a dataframe containing different column attributes.
+#' The row number  of the dataframe specifies the column for which the attribute is to be specified and
+#' the header of the dataframe specifies the attribute.The following attributes are supported:
 #'  \itemize{
-#'   \item \strong{title:} the title of the column or the column header
-#'   \item \strong{width:} the width of the column
+#'   \item \strong{title:} a string specifying title of the column or the column header.
+#'   \item \strong{width:} a numerical value specifying the width of the column.
 #'   \item \strong{type:} the type of the column. It can be one of text, numeric, hidden, dropdown,
-#'   autocomplete, checkbox, radio, calendar, image or color
-#'   \item \strong{source:} the options for column whose type is 'dropdwown'.
-#'    We need to specify the source if type of column is 'dropdown'
-#'    \item \strong{multiple:} used to specify if the multiple options can be selected if the type is 'dropdown'.
+#'   autocomplete, checkbox, radio, calendar, image or color.
+#'   \item \strong{source:} a vector of options for column when the type is'dropdwown'.
+#'    \item \strong{multiple:} a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
 #'    The default value is false.
 #' }
-#' @param colHeaders the column header, vector of column headers. If both colHeader and title attribute
-#' in columns is specified, the latter will take precedence
+#' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
+#' in columns is specified, the latter will take precedence.
 #' @param rowHeight a dataframe or matrix specifying heights of different rows. The first column specifies
-#' the row number while the second column speicifies the height in pixels
+#' the row number while the second column specifies the height in pixels.
 #' @param nestedHeaders a list of dataframe having title and colspan as the attributes. The nested header
-#' in the same level should be in the same dataframe
-#' @param minDimensions a vector that defines the minimum dimension size of the table irrespective of the size of data,
-#' the first parameter should be of column followed by row. If data is null then it will create an empty table with the given
-#' dimensions
-#' @param search a boolean value indicating if search should be enabled. By default it is set to false
-#' @param pagination numeric value indicating number of rows in a single page
-#' @param allowComments a boolean value indicating if commenting on cell should be enabled. By default it is set to false.
-#' @param mergeCells a list containing vectors of colspan and rowspan respectively such that the names of the
-#' arguments specify the cell number
+#' in the same level should be in the same dataframe.
+#' @param defaultColWidth a numeric value specifying the default width of column when the width attribute of column is not specified.
+#' The default value is 50.
+#' @param minDimensions a vector that defines the minimum number of rows and columns in the tables irrespective of the size of data.
+#' The first parameter should be of number of columns followed by number of rows. If data is null then it will create an empty table
+#' with the given dimensions
 #' @param columnSorting a boolean value indicating if column sorting should be enabled. When enabled double click
-#' on the table headers sorts the column. By default it is set to false
+#' on the table headers sorts the column. By default it is set to true.
+#' @param columnDrag a boolean value indicating if column dragging is enabled. By default it is set to false.
+#' @param columnResize a boolean value indicating if column resizing is enabled. By default it is set to true.
+#' @param rowResize a boolean value indicating if row resizing is enabled. By default it is set to false.
+#' @param rowDrag a boolean value indicating if rowDragging is enabled or not. By default it is set to true.
+#' @param editable a boolean value indicating if the table can be edited. By default it is set to true
+#' @param allowInsertRow a boolean value indicating if user is allowed to insert new rows to the table.
+#' By default it is set to true.
+#' @param allowInsertColumn a boolean value indicating if user is allowed to insert a new column to the table.
+#' By default it is set to true.
+#' @param allowDeleteRow  a boolean value indicating if user is allowed to delete a row in the table.
+#' By default it is set to true.
+#' @param allowDeleteColumn a boolean value indicating if user is allowed to delete a column in the table.
+#' By default it is set to true.
+#' @param allowRenameColumn a boolean value indicating if user is allowed to rename the column in the table
+#' By default it is set to true
+#' @param allowComments a boolean value indicating if commenting on cell should be enabled. By default it is set to false.
+#' @param wordWrap a boolean value indicating if words in the cells should wrap. By default it is set to false.
+#' @param selectionCopy a booleean value indicating if user is allowed to copy selected cells. By default it is
+#' is set to true.
+#' @param mergeCells a list containing vector of colspan and rowspan respectively such that the tag  of the list
+#' specify the cell number
+#' @param search a boolean value indicating if search should be enabled. By default it is set to false
+#' @param pagination numeric value indicating number of rows in a single page. If the data does not fit in a
+#' single page pagination is enabled.
+#' @param fullscreen a boolean value indicating if the table should be fullscreen. By default it is set to false.
+#' @param lazyLoading a boolean value indicating if lazy loading should be enabled. By default it is set to false.
+#' @param loadingSpin a boolean value indicating if loadingSpin should be enabled. By default it is set to false.
+#' @param style a list to specify style for each cell. The tag should be the cell value and the value should be
+#' a vector of css styles to be specified.
 excel <-
   function(data = NULL,
            columns = NULL,
            colHeaders = NULL,
            rowHeight = NULL,
            nestedHeaders = NULL,
+           defaultColWidth = NULL,
            minDimensions = NULL,
+           columnSorting = TRUE,
+           columnDrag = FALSE,
+           columnResize = TRUE,
+           rowResize = FALSE,
+           rowDrag = TRUE,
+           editable = TRUE,
+           allowInsertRow = TRUE,
+           allowInsertColumn = TRUE,
+           allowDeleteRow = TRUE,
+           allowDeleteColumn = TRUE,
+           allowRenameColumn = TRUE,
+           allowComments = FALSE,
+           wordWrap = FALSE,
+           selectionCopy = TRUE,
+           mergeCells = NULL,
            search = FALSE,
            pagination = NULL,
-           allowComments = FALSE,
-           mergeCells = NULL,
-           columnSorting = FALSE,
-           lazyLoading = TRUE,
-           loadingSpin = TRUE,
-           style = NULL,
-           width = NULL,
-           height = NULL,
-           elementId = NULL) {
+           fullscreen = FALSE,
+           lazyLoading = FALSE,
+           loadingSpin = FALSE,
+           style = NULL) {
     # List of parameters to send to js
     paramList <- list()
 
@@ -236,6 +272,15 @@ excel <-
         jsonlite::toJSON(nestedHeaders, dataframe = "rows")
     }
 
+    if (!is.null(defaultColWidth)) {
+      if (!is.numeric(defaultColWidth)) {
+        stop("'defaultColWidth' must be a numeric value but got ",
+             class(defaultColWidth))
+      }
+
+      paramList$defaultColWidth <- defaultColWidth
+    }
+
 
     # Check minDimensions
     if (!is.null(minDimensions)) {
@@ -256,23 +301,75 @@ excel <-
       paramList$minDimensions <- minDimensions
     }
 
-    # Search
-    if (search) {
-      paramList$search <- TRUE
+    # Check columnSorting
+    if (!columnSorting) {
+      paramList$columnSorting = columnSorting
+
     }
 
-    # Check pagination
-    if (!is.null(pagination)) {
-      if (!is.numeric(pagination)) {
-        stop("'pagination' must be an integer but got ",
-             class(pagination))
-      }
-
-      paramList$pagination <- pagination
+    #Check columnDrag
+    if (columnDrag) {
+      paramList$columnDrag <- TRUE
     }
 
+    # Check columnResize
+    if (!columnResize) {
+      paramList$columnResize <- FALSE
+    }
+
+    # Check rowResize
+    if (rowResize) {
+      paramList$rowResize <- TRUE
+    }
+
+    # Check rowDrag
+    if (!rowDrag) {
+      paramList$rowDrag <- FALSE
+    }
+
+    # Check editable
+    if (!editable) {
+      paramList$editable <- FALSE
+    }
+
+    # Check allowInsertRow
+    if (!allowInsertRow) {
+      paramList$allowInsertRow <- FALSE
+    }
+
+    # Check allowInsertColumn
+    if (!allowInsertColumn) {
+      paramList$allowInsertColumn <- FALSE
+    }
+
+    # Check allowDeleteRow
+    if (!allowDeleteRow) {
+      paramList$allowDeleteRow <- FALSE
+    }
+
+    # Check allowDeleteColumn
+    if (!allowDeleteColumn) {
+      paramList$allowDeleteColumn <- FALSE
+    }
+
+    # Check allowRenameColumn
+    if (!allowRenameColumn) {
+      paramList$allowRenameColumn <- FALSE
+    }
+
+    # Check allowComments
     if (allowComments) {
       paramList$allowComments <- TRUE
+    }
+
+    # Check wordWrap
+    if (wordWrap) {
+      paramList$wordWrap <- TRUE
+    }
+
+    # Check selectionCopy
+    if (!selectionCopy) {
+      paramList$selectionCopy <- FALSE
     }
 
     # Check mergeCells
@@ -291,9 +388,11 @@ excel <-
           )
         }
 
-        if(length(mergeCell) != 2) {
-          stop("expected each parameter in 'mergeCells' list to be a vector of length  2 but got vector of lrngth",
-               length(mergeCells))
+        if (length(mergeCell) != 2) {
+          stop(
+            "expected each parameter in 'mergeCells' list to be a vector of length  2 but got vector of lrngth",
+            length(mergeCells)
+          )
         }
       }
 
@@ -301,15 +400,51 @@ excel <-
 
     }
 
+    # Search
+    if (search) {
+      paramList$search <- TRUE
+    }
 
+    # Check pagination
+    if (!is.null(pagination)) {
+      if (!is.numeric(pagination)) {
+        stop("'pagination' must be an integer but got ",
+             class(pagination))
+      }
+
+      paramList$pagination <- pagination
+    }
+
+    # Check fullscreen
+    if (fullscreen) {
+      paramList$fullscreen <- TRUE
+    }
+
+    # Check lazyLoading
+    if (lazyLoading) {
+      paramList$lazyLoading <- TRUE
+    }
+
+    # Check loadingSpin
+    if (loadingSpin) {
+      paramList$loadingSpin <- TRUE
+    }
+
+    # Check style
+    if (!is.null(style)) {
+      if (!is.list(style)) {
+        stop("'style' should be a list but got ", class(style))
+      }
+
+      paramList$style <- style
+    }
 
     # create the widget
     htmlwidgets::createWidget(
       name = "jexcel",
       x = paramList,
-      width = width,
-      height = height,
+      width = 0,
+      height = 0,
       package = 'excelR',
-      elementId = elementId
     )
   }

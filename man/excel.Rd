@@ -5,43 +5,99 @@
 \title{Create excel table using jexcel library}
 \usage{
 excel(data = NULL, columns = NULL, colHeaders = NULL,
-  rowHeight = NULL, nestedHeaders = NULL, minDimensions = NULL,
-  search = FALSE, pagination = NULL, allowComments = FALSE,
-  mergeCells = NULL, columnSorting = FALSE, lazyLoading = TRUE,
-  loadingSpin = TRUE, style = NULL, width = NULL, height = NULL,
-  elementId = NULL)
+  rowHeight = NULL, nestedHeaders = NULL, defaultColWidth = NULL,
+  minDimensions = NULL, columnSorting = TRUE, columnDrag = FALSE,
+  columnResize = TRUE, rowResize = FALSE, rowDrag = TRUE,
+  editable = TRUE, allowInsertRow = TRUE, allowInsertColumn = TRUE,
+  allowDeleteRow = TRUE, allowDeleteColumn = TRUE,
+  allowRenameColumn = TRUE, allowComments = FALSE, wordWrap = FALSE,
+  selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
+  pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
+  loadingSpin = FALSE, style = NULL)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix}
 
-\item{columns}{a datframe containing the attributes of columns in the table.
-The row number  of the dataframe specifies the column for with the attribute is to be specified
-Each header of the dataframe specifies the attribute.The following attributes are supported:
+\item{columns}{a dataframe containing different column attributes.
+The row number  of the dataframe specifies the column for which the attribute is to be specified and
+the header of the dataframe specifies the attribute.The following attributes are supported:
  \itemize{
-  \item \strong{title:} the title of the column or the column header
-  \item \strong{width:} the width of the column
+  \item \strong{title:} a string specifying title of the column or the column header.
+  \item \strong{width:} a numerical value specifying the width of the column.
   \item \strong{type:} the type of the column. It can be one of text, numeric, hidden, dropdown,
-  autocomplete, checkbox, radio, calendar, image or color
-  \item \strong{source:} the options for column whose type is 'dropdwown'.
-   We need to specify the source if type of column is 'dropdown'
-   \item \strong{multiple:} used to specify if the multiple options can be selected if the type is 'dropdown'.
+  autocomplete, checkbox, radio, calendar, image or color.
+  \item \strong{source:} a vector of options for column when the type is'dropdwown'.
+   \item \strong{multiple:} a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
    The default value is false.
 }}
 
-\item{colHeaders}{the column header, vector of column headers. If both colHeader and title attribute
-in columns is specified, the latter will take precedence}
+\item{colHeaders}{a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
+in columns is specified, the latter will take precedence.}
 
 \item{rowHeight}{a dataframe or matrix specifying heights of different rows. The first column specifies
-the row number while the second column speicifies the height in pixels}
+the row number while the second column specifies the height in pixels.}
 
 \item{nestedHeaders}{a list of dataframe having title and colspan as the attributes. The nested header
-in the same level should be in the same dataframe}
+in the same level should be in the same dataframe.}
 
-\item{minDimensions}{a vector that defines the minimum dimension size of the table irrespective of the size of data,
-the first parameter should be of column followed by row. If data is null then it will create an empty table with the given
-dimensions}
+\item{defaultColWidth}{a numeric value specifying the default width of column when the width attribute of column is not specified.
+The default value is 50.}
 
-\item{search}{a boolean value indicating if search should be enabled.}
+\item{minDimensions}{a vector that defines the minimum number of rows and columns in the tables irrespective of the size of data.
+The first parameter should be of number of columns followed by number of rows. If data is null then it will create an empty table
+with the given dimensions}
+
+\item{columnSorting}{a boolean value indicating if column sorting should be enabled. When enabled double click
+on the table headers sorts the column. By default it is set to true.}
+
+\item{columnDrag}{a boolean value indicating if column dragging is enabled. By default it is set to false.}
+
+\item{columnResize}{a boolean value indicating if column resizing is enabled. By default it is set to true.}
+
+\item{rowResize}{a boolean value indicating if row resizing is enabled. By default it is set to false.}
+
+\item{rowDrag}{a boolean value indicating if rowDragging is enabled or not. By default it is set to true.}
+
+\item{editable}{a boolean value indicating if the table can be edited. By default it is set to true}
+
+\item{allowInsertRow}{a boolean value indicating if user is allowed to insert new rows to the table.
+By default it is set to true.}
+
+\item{allowInsertColumn}{a boolean value indicating if user is allowed to insert a new column to the table.
+By default it is set to true.}
+
+\item{allowDeleteRow}{a boolean value indicating if user is allowed to delete a row in the table.
+By default it is set to true.}
+
+\item{allowDeleteColumn}{a boolean value indicating if user is allowed to delete a column in the table.
+By default it is set to true.}
+
+\item{allowRenameColumn}{a boolean value indicating if user is allowed to rename the column in the table
+By default it is set to true}
+
+\item{allowComments}{a boolean value indicating if commenting on cell should be enabled. By default it is set to false.}
+
+\item{wordWrap}{a boolean value indicating if words in the cells should wrap. By default it is set to false.}
+
+\item{selectionCopy}{a booleean value indicating if user is allowed to copy selected cells. By default it is
+is set to true.}
+
+\item{mergeCells}{a list containing vector of colspan and rowspan respectively such that the tag  of the list
+specify the cell number}
+
+\item{search}{a boolean value indicating if search should be enabled. By default it is set to false}
+
+\item{pagination}{numeric value indicating number of rows in a single page. If the data does not fit in a
+single page pagination is enabled.}
+
+\item{fullscreen}{a boolean value indicating if the table should be fullscreen. By default it is set to false.}
+
+\item{lazyLoading}{a boolean value indicating if lazy loading should be enabled. By default it is set to false.}
+
+\item{loadingSpin}{a boolean value indicating if loadingSpin should be enabled. By default it is set to false.}
+
+\item{style}{a list to specify style for each cell. The tag should be the cell value and the value should be
+a vector of css styles to be specified.}
 }
 \description{
 This function is used to create excel like table

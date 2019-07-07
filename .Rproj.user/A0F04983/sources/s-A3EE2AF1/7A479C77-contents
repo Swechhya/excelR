@@ -2,7 +2,7 @@
 #'
 #' This function is used to create excel like table
 #' @export
-#' @param data a data object, can either be dataframe or a matrix
+#' @param data a data object, can either be dataframe or a matrix.
 #' @param columns a dataframe containing different column attributes.
 #' The row number  of the dataframe specifies the column for which the attribute is to be specified and
 #' the header of the dataframe specifies the attribute.The following attributes are supported:
@@ -11,21 +11,21 @@
 #'   \item \strong{width:} a numerical value specifying the width of the column.
 #'   \item \strong{type:} the type of the column. It can be one of text, numeric, hidden, dropdown,
 #'   autocomplete, checkbox, radio, calendar, image or color.
-#'   \item \strong{source:} a vector of options for column when the type is'dropdwown'.
+#'   \item \strong{source:} a vector of options for column when the type is 'dropdwown'.
 #'    \item \strong{multiple:} a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
 #'    The default value is false.
 #' }
 #' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 #' in columns is specified, the latter will take precedence.
-#' @param rowHeight a dataframe or matrix specifying heights of different rows. The first column specifies
-#' the row number while the second column specifies the height in pixels.
+#' @param rowHeight a dataframe or matrix specifying height of different rows. The first column is consists of numerical value the
+#' specifiesthe row number while the second column is also numerical value that specifies the height in pixels.
 #' @param nestedHeaders a list of dataframe having title and colspan as the attributes. The nested header
 #' in the same level should be in the same dataframe.
 #' @param defaultColWidth a numeric value specifying the default width of column when the width attribute of column is not specified.
 #' The default value is 50.
 #' @param minDimensions a vector that defines the minimum number of rows and columns in the tables irrespective of the size of data.
 #' The first parameter should be of number of columns followed by number of rows. If data is null then it will create an empty table
-#' with the given dimensions
+#' with the given dimensions.
 #' @param columnSorting a boolean value indicating if column sorting should be enabled. When enabled double click
 #' on the table headers sorts the column. By default it is set to true.
 #' @param columnDrag a boolean value indicating if column dragging is enabled. By default it is set to false.
@@ -33,31 +33,27 @@
 #' @param rowResize a boolean value indicating if row resizing is enabled. By default it is set to false.
 #' @param rowDrag a boolean value indicating if rowDragging is enabled or not. By default it is set to true.
 #' @param editable a boolean value indicating if the table can be edited. By default it is set to true
-#' @param allowInsertRow a boolean value indicating if user is allowed to insert new rows to the table.
-#' By default it is set to true.
-#' @param allowInsertColumn a boolean value indicating if user is allowed to insert a new column to the table.
-#' By default it is set to true.
-#' @param allowDeleteRow  a boolean value indicating if user is allowed to delete a row in the table.
-#' By default it is set to true.
-#' @param allowDeleteColumn a boolean value indicating if user is allowed to delete a column in the table.
-#' By default it is set to true.
-#' @param allowRenameColumn a boolean value indicating if user is allowed to rename the column in the table
-#' By default it is set to true
+#' @param allowInsertRow a boolean value indicating if user is allowed to insert new rows. By default it is set to true.
+#' @param allowInsertColumn a boolean value indicating if user is allowed to insert a new column. By default it is set to true.
+#' @param allowDeleteRow  a boolean value indicating if user is allowed to delete a row. By default it is set to true.
+#' @param allowDeleteColumn a boolean value indicating if user is allowed to delete a column. By default it is set to true.
+#' @param allowRenameColumn a boolean value indicating if user is allowed to rename the columns. By default it is set to true
 #' @param allowComments a boolean value indicating if commenting on cell should be enabled. By default it is set to false.
 #' @param wordWrap a boolean value indicating if words in the cells should wrap. By default it is set to false.
-#' @param selectionCopy a booleean value indicating if user is allowed to copy selected cells. By default it is
-#' is set to true.
-#' @param mergeCells a list containing vector of colspan and rowspan respectively such that the tag  of the list
-#' specify the cell number
-#' @param search a boolean value indicating if search should be enabled. By default it is set to false
-#' @param pagination numeric value indicating number of rows in a single page. If the data does not fit in a
+#' @param selectionCopy a boolean value indicating if user is allowed to copy selected cells. By default it is set to true.
+#' @param mergeCells a list containing vector of colspan and rowspan respectively such that the tag  of the list specifies the
+#' cell number.
+#' @param search a boolean value indicating if search should be enabled. By default it is set to false.
+#' @param pagination a numeric value indicating number of rows in a single page. If the data does not fit in a
 #' single page pagination is enabled.
 #' @param fullscreen a boolean value indicating if the table should be fullscreen. By default it is set to false.
 #' @param lazyLoading a boolean value indicating if lazy loading should be enabled. By default it is set to false.
-#' @param loadingSpin a boolean value indicating if loadingSpin should be enabled. By default it is set to false.
+#' @param loadingSpin a boolean value indicating if loading spinner should be enabled. By default it is set to false.
 #' @param style a list to specify style for each cell. The tag should be the cell value and the value should be
-#' a vector of css styles to be specified.
-excel <-
+#' a vector of css styles to be applied.
+#' @import jsonlite
+#' @import htmlwidgets
+excelTable <-
   function(data = NULL,
            columns = NULL,
            colHeaders = NULL,
@@ -443,8 +439,8 @@ excel <-
     htmlwidgets::createWidget(
       name = "jexcel",
       x = paramList,
-      width = 0,
-      height = 0,
+      width = if(fullscreen)'100%' else 0,
+      height = if(fullscreen ) '100%' else 0,
       package = 'excelR',
     )
   }

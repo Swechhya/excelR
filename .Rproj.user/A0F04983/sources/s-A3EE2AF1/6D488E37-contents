@@ -11,3 +11,13 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
+
+if(interactive()) {
+  library(shiny)
+  library(excelR)
+  ui <- fluidPage(excelOutput("test"))
+  server <- function(input, output, session) {
+    output$test <-
+      renderExcel(excel(data = head(iris)))
+  }
+}

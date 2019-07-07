@@ -19,7 +19,9 @@ library(excelR)
 
  columns = data.frame(title=c('Model', 'Date', 'Availibility'),
                       width= c(300, 300, 300),
-                      type=c('text', 'calendar', 'checkbox')) excelTable(data=data, columns = columns)
+                      type=c('text', 'calendar', 'checkbox')) 
+
+ excelTable(data=data, columns = columns)
 ```
 
 ![excelTable](inst/images/basic_example.png "A simple example")

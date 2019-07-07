@@ -21,9 +21,10 @@ if(interactive()) {
   library(shiny)
   library(excelR)
   shinyApp(
+    ui = fluidPage(excelOutput("table")),
     server = function(input, output, session) {
       output$table <-
-     renderExcel(excel(data = head(iris)))
+     renderExcel(excelTable(data = head(iris)))
      }
    )
 }

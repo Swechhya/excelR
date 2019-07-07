@@ -10,10 +10,10 @@
 #'   library(shiny)
 #'   library(excelR)
 #'   shinyApp(
-#      ui = fluidPage(excelOutput("table))
+#'     ui = fluidPage(excelOutput("table")),
 #'     server = function(input, output, session) {
 #'       output$table <-
-#'      renderExcel(excel(data = head(iris)))
+#'      renderExcel(excelTable(data = head(iris)))
 #'      }
 #'    )
 #' }
@@ -35,10 +35,10 @@ excelOutput <- function(outputId, width = "100%", height = "400px") {
 #'   library(shiny)
 #'   library(excelR)
 #'   shinyApp(
-#      ui = fluidPage(excelOutput("table))
+#'     ui = fluidPage(excelOutput("table")),
 #'     server = function(input, output, session) {
 #'       output$table <-
-#'      renderExcel(excel(data = head(iris)))
+#'      renderExcel(excelTable(data = head(iris)))
 #'      }
 #'    )
 #' }

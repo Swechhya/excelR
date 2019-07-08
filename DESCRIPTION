@@ -4,7 +4,7 @@ Title: An Interface to 'jExcel.js' Library
 Version: 0.1.0
 Author: Swechhya Bista
 Maintainer: Swechhya Bista <swechhyabista@gmail.com>
-Description: An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla javascript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
+Description: An R interface to 'jExcel' 'JavaScript' library, which is a lightweight 'JavaScript' plugin to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 License: MIT + file LICENSE
 Imports:
     htmlwidgets (>= 1.3),

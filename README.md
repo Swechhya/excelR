@@ -6,7 +6,7 @@ An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla ja
 To install the latest development version from GitHub:
 ```r
 library(devtools)
-install_github('Swechhya/shinyanimate')
+install_github('Swechhya/excelR')
 ```
 
 ## Simple example

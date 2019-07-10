@@ -1,0 +1,266 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+[![version](http://www.r-pkg.org/badges/version/excelR)](https://CRAN.R-project.org/package=excelR)
+[![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/grand-total/excelR)](http://cran.r-project.org/package=excelR)
+
+# excelR
+An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla javascript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
+
+
+## Installation
+To install the stable CRAN version: 
+```r
+install.packages("excelR")
+```
+
+
+To install the latest development version from GitHub:
+```r
+library(devtools)
+install_github('Swechhya/excelR')
+```
+
+## Usage
+This documnetation gives example for following features:
+
+1. [Getting Started](#getting-started)
+2. [Basic usage](#basic-usage)
+3. [Different types of columns](#different-types-of-columns)
+4. [Row and column resizing](#resizing)
+5. [Drag and drop rows/columns](#drag-drop)
+6. [Merge Rows and Columns](#merge)
+7. [Nested Headers](#nested-headers)
+8. [Pagination](#pagination)
+9. [Search](#search)
+10. [Excel formulas](#excel-formulas)
+11. [Style](#style)
+12. [Shiny Integration](#shiny-integartion)
+
+#### Getting Started {#getting-started}
+
+Excel tables can be created using `excelTable` function as shown below:
+
+```r 
+library(excelR)
+
+data = data.frame(A =c (1:5), B = c(LETTERS[1:5]))
+
+excelTable(data=data)
+```
+![](inst/images/getting_started.png)
+
+#### Basic usage {#basic-usage}
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Date', 'Availibility'),
+                      width= c(300, 300, 300),
+                      type=c('text', 'calendar', 'checkbox')) 
+ excelTable(data=data, columns = columns)
+```
+
+![](inst/images/basic_example.png "A simple example")
+
+#### Different types of columns{#different-types-of-columns}
+ - Calendar
+ ```r
+ library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ))
+
+ columns = data.frame(title=c('Model', 'Date' ),
+                      width= c(300, 300),
+                      type=c('text', 'calendar')) 
+ excelTable(data=data, columns = columns)
+ ```
+![](inst/images/calendar_type.gif)
+
+- Checkbox
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Availibility'),
+                      width= c(300, 300),
+                      type=c('text', 'checkbox')) 
+ excelTable(data=data, columns = columns)
+```
+![](inst/images/checkbox_type.gif)
+
+- Dropdown
+```r
+library(excelR)
+
+ data = data.frame( Make = c('Honda', 'Honda', 'Hyundai'), 
+          Car = c('Civic', 'City', 'Polo'))
+
+ columns = data.frame(title=c('Make', 'Car'),
+                      width= c(300, 300),
+                      type=c('text', 'dropdown'),
+                      source=I(list(0,c('Civic', 'City',  'Polo', 'Creta', 'Santro'))))
+ excelTable(data=data, columns = columns)
+```
+![](inst/images/dropdown_type.gif)
+
+- Radio
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Choice = c(FALSE, FALSE, FALSE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Choice'),
+                      width= c(300, 300),
+                      type=c('text', 'radio')) 
+ excelTable(data=data, columns = columns)
+```
+![](inst/images/radio_type.gif)
+
+- Color
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Color= c('red', 'blue', 'yellow', 'black'))
+
+ columns = data.frame(title=c('Model', 'Color'),
+                      width= c(300, 300),
+                      type=c('text', 'color'),
+                      render=c(0, 'square')) 
+ excelTable(data=data, columns = columns)
+```
+![](inst/images/color_type.gif)
+
+#### Row and column resizing{#resizing}
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Date', 'Availibility' ),
+                      width= c(300, 300, 300),
+                      type=c('text', 'calendar', 'checkbox')) 
+ excelTable(data=data, columns = columns, rowResize = TRUE)
+```
+![](inst/images/resizing.gif)
+
+#### Drag and drop rows/columns {#drag-drop}
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Date', 'Availibility' ),
+                      width= c(300, 300, 300),
+                      type=c('text', 'calendar', 'checkbox')) 
+ excelTable(data=data, columns = columns, rowDrag = TRUE, columnDrag = TRUE)
+```
+![](inst/images/dragdrop.gif)
+
+#### Merge Rows and Columns {#merge}
+```r
+library(excelR)
+
+data = data.frame( Make = c('Honda', 'Honda', 'Hyundai'),
+                   Car = c('Civic', 'City', 'Creta'))
+
+ columns = data.frame(title=c('Make', 'Car'), width= c(300, 300))
+                      
+excelTable(data=data, columns = columns,  mergeCells = list(A1=c(1,2)))
+```
+![](inst/images/merge_cells.png)
+
+#### Nested Headers {#nested-headers}
+```r
+library(excelR)
+
+ columns = data.frame(title=c('Sepal Length', 'Sepal Width', 'Petal Length','Petal Width', 'Species'),
+                      width= c(200, 200, 200, 200, 200))
+                      
+ nestedHeaders = list( data.frame(title=c("Plant Attribute"), colspan=c(5)), 
+                       data.frame(title=c("Sepal Attributes", "Petal Attributes", "Species"), colspan=c(2, 2, 1)))
+ excelTable(data=head(iris), columns = columns, nestedHeaders = nestedHeaders)
+```
+![](inst/images/nested_headers.png)
+
+#### Pagination {#pagination}
+
+```r
+library(excelR)
+
+ columns = data.frame(title=c('Sepal Length', 'Sepal Width', 'Petal Length','Petal Width', 'Species'),
+                      width= c(200, 200, 200, 200, 200))
+                      
+ excelTable(data = iris, columns = columns, pagination=10)
+```
+![](inst/images/pagination.gif)
+
+#### Search {#search}
+```r
+library(excelR)
+
+ columns = data.frame(title=c('Sepal Length', 'Sepal Width', 'Petal Length','Petal Width', 'Species'),
+                      width= c(200, 200, 200, 200, 200))
+                      
+ excelTable(data = iris, columns = columns, search=TRUE)
+```
+![](inst/images/search.gif)
+
+
+#### Excel formulas {#excel-formulas}
+```r
+library(excelR)
+
+ columns = data.frame(title=c('Sepal Length', 'Sepal Width', 'Petal Length','Petal Width', 'Species'),
+                      width= c(200, 200, 200, 200, 200))
+                      
+ excelTable(data=head(iris), columns = columns, minDimension = c(5, 7))
+```
+![](inst/images/formula.gif)
+
+#### Style {#style}
+```r
+ library(excelR)
+
+ data = data.frame( Make = c('Honda', 'Honda', 'Hyundai'),
+                   Car = c('Civic', 'City', 'Creta'))
+
+ columns = data.frame(title=c('Make', 'Car'), width= c(300, 300))
+  
+ style = list(A1=c('background-color:orange', 'color:green'), B1=c('background-color:orange', 'color:green'))
+                      
+ excelTable(data=data, columns = columns, style = style)
+```
+![](inst/images/style.png)
+
+### Shiny Integration {#shiny-integartion}
+```r
+  library(shiny)
+  library(excelR)
+
+   shinyApp(
+     ui = fluidPage(excelOutput("table"))
+     server = function(input, output, session) {
+       output$table <-
+      renderExcel(excelTable(data = head(iris)))
+      }
+    )
+
+```

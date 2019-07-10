@@ -98,7 +98,6 @@ excelTable <-
     # List of parameters to send to js
     paramList <- list()
 
-
     # Check data
     if (!is.null(data))
     {
@@ -111,7 +110,6 @@ excelTable <-
       }
 
     }
-
 
     # Check column
     # If both columns and colHeaders are not specified, use the column names of the dataframe/matrix
@@ -185,7 +183,7 @@ excelTable <-
 
       # Check if all the attributes in the columns is a valid attribute i.e. colname(columns) should be subset of attributes
       colAttributes <-
-        c("title", "width", "type", "source", "multiple")
+        c("title", "width", "type", "source", "multiple", "render")
       if (!all(colnames(columns) %in% colAttributes)) {
         warning(
           "unknown attribute(s) ",

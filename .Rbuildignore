@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-_pkgdown.yml
+^_pkgdown\.yml$
+^docs$
+^inst\/images$
+^index\.Rmd

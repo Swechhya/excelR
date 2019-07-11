@@ -1,12 +1,12 @@
 # excelR
-An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla JavaScript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
+An R interface to [jExcel](https://bossanova.uk/jexcel/v3/) library to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 
 ## Installation
 
 To install the latest development version from GitHub:
 ```r
 library(devtools)
-install_github('Swechhya/shinyanimate')
+install_github('Swechhya/excelR')
 ```
 
 ## Simple example
@@ -17,7 +17,7 @@ library(excelR)
                    Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ),
                    Availability = c(TRUE, FALSE, TRUE, TRUE))
 
- columns = data.frame(title=c('Model', 'Date', 'Availibility'),
+ columns = data.frame(title=c('Model', 'Date', 'Availability'),
                       width= c(300, 300, 300),
                       type=c('text', 'calendar', 'checkbox')) 
 

@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "excelR"
 output: github_document
 ---
 
@@ -16,7 +16,7 @@ An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla ja
 ## Installation
 To install the stable CRAN version: 
 ```r
-install.packages("excelR")
+install.packages('excelR')
 ```
 
 
@@ -27,20 +27,6 @@ install_github('Swechhya/excelR')
 ```
 
 ## Usage
-This documnetation gives example for following features:
-
-1. [Getting Started](#getting-started)
-2. [Basic usage](#basic-usage)
-3. [Different types of columns](#different-types-of-columns)
-4. [Row and column resizing](#resizing)
-5. [Drag and drop rows/columns](#drag-drop)
-6. [Merge Rows and Columns](#merge)
-7. [Nested Headers](#nested-headers)
-8. [Pagination](#pagination)
-9. [Search](#search)
-10. [Excel formulas](#excel-formulas)
-11. [Style](#style)
-12. [Shiny Integration](#shiny-integartion)
 
 #### Getting Started {#getting-started}
 
@@ -55,7 +41,7 @@ excelTable(data=data)
 ```
 ![](inst/images/getting_started.png)
 
-#### Basic usage {#basic-usage}
+#### Basic Usage {#basic-usage}
 ```r
 library(excelR)
 
@@ -70,6 +56,21 @@ library(excelR)
 ```
 
 ![](inst/images/basic_example.png "A simple example")
+
+
+## Features
+This documentation gives example for following features:
+
+1. [Different types of columns](#different-types-of-columns)
+2. [Row and column resizing](#resizing)
+3. [Drag and drop rows and columns](#drag-drop)
+4. [Merge rows and columns](#merge)
+5. [Nested headers](#nested-headers)
+6. [Pagination](#pagination)
+7. [Search](#search)
+8. [Excel formulas](#excel-formulas)
+9. [Style](#style)
+10. [Shiny Integration](#shiny-integartion)
 
 #### Different types of columns{#different-types-of-columns}
  - Calendar
@@ -144,7 +145,7 @@ library(excelR)
 ```
 ![](inst/images/color_type.gif)
 
-#### Row and column resizing{#resizing}
+#### Row and Column Resizing{#resizing}
 ```r
 library(excelR)
 
@@ -159,7 +160,7 @@ library(excelR)
 ```
 ![](inst/images/resizing.gif)
 
-#### Drag and drop rows/columns {#drag-drop}
+#### Drag and Drop Rows and Columns {#drag-drop}
 ```r
 library(excelR)
 
@@ -195,7 +196,8 @@ library(excelR)
                       width= c(200, 200, 200, 200, 200))
                       
  nestedHeaders = list( data.frame(title=c("Plant Attribute"), colspan=c(5)), 
-                       data.frame(title=c("Sepal Attributes", "Petal Attributes", "Species"), colspan=c(2, 2, 1)))
+                       data.frame(title=c("Sepal Attributes", "Petal Attributes", "Species"), 
+                                  colspan=c(2, 2, 1)))
  excelTable(data=head(iris), columns = columns, nestedHeaders = nestedHeaders)
 ```
 ![](inst/images/nested_headers.png)
@@ -244,7 +246,8 @@ library(excelR)
 
  columns = data.frame(title=c('Make', 'Car'), width= c(300, 300))
   
- style = list(A1=c('background-color:orange', 'color:green'), B1=c('background-color:orange', 'color:green'))
+ style = list(A1=c('background-color:orange', 'color:green'), 
+              B1=c('background-color:orange', 'color:green'))
                       
  excelTable(data=data, columns = columns, style = style)
 ```

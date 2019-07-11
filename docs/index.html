@@ -77,7 +77,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To install the stable CRAN version:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"excelR"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'excelR'</span>)</span></code></pre></div>
 <p>To install the latest development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(devtools)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">'Swechhya/excelR'</span>)</span></code></pre></div>
@@ -85,21 +85,6 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>This documnetation gives example for following features:</p>
-<ol style="list-style-type: decimal">
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#basic-usage">Basic usage</a></li>
-<li><a href="#different-types-of-columns">Different types of columns</a></li>
-<li><a href="#resizing">Row and column resizing</a></li>
-<li><a href="#drag-drop">Drag and drop rows/columns</a></li>
-<li><a href="#merge">Merge Rows and Columns</a></li>
-<li><a href="#nested-headers">Nested Headers</a></li>
-<li><a href="#pagination">Pagination</a></li>
-<li><a href="#search">Search</a></li>
-<li><a href="#excel-formulas">Excel formulas</a></li>
-<li><a href="#style">Style</a></li>
-<li><a href="#shiny-integartion">Shiny Integration</a></li>
-</ol>
 <div id="getting-started" class="section level4">
 <h4 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h4>
@@ -113,7 +98,7 @@
 </div>
 <div id="basic-usage" class="section level4">
 <h4 class="hasAnchor">
-<a href="#basic-usage" class="anchor"></a>Basic usage</h4>
+<a href="#basic-usage" class="anchor"></a>Basic Usage</h4>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
@@ -126,6 +111,23 @@
 <span id="cb4-10"><a href="#cb4-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
 <p><img src="inst/images/basic_example.png" title="A simple example"></p>
 </div>
+</div>
+<div id="features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#features" class="anchor"></a>Features</h2>
+<p>This documentation gives example for following features:</p>
+<ol style="list-style-type: decimal">
+<li><a href="#different-types-of-columns">Different types of columns</a></li>
+<li><a href="#resizing">Row and column resizing</a></li>
+<li><a href="#drag-drop">Drag and drop rows and columns</a></li>
+<li><a href="#merge">Merge rows and columns</a></li>
+<li><a href="#nested-headers">Nested headers</a></li>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#search">Search</a></li>
+<li><a href="#excel-formulas">Excel formulas</a></li>
+<li><a href="#style">Style</a></li>
+<li><a href="#shiny-integartion">Shiny Integration</a></li>
+</ol>
 <div id="different-types-of-columns" class="section level4">
 <h4 class="hasAnchor">
 <a href="#different-types-of-columns" class="anchor"></a>Different types of columns</h4>
@@ -199,7 +201,7 @@
 </div>
 <div id="resizing" class="section level4">
 <h4 class="hasAnchor">
-<a href="#resizing" class="anchor"></a>Row and column resizing</h4>
+<a href="#resizing" class="anchor"></a>Row and Column Resizing</h4>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
 <span id="cb10-3"><a href="#cb10-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
@@ -214,7 +216,7 @@
 </div>
 <div id="drag-drop" class="section level4">
 <h4 class="hasAnchor">
-<a href="#drag-drop" class="anchor"></a>Drag and drop rows/columns</h4>
+<a href="#drag-drop" class="anchor"></a>Drag and Drop Rows and Columns</h4>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
@@ -249,8 +251,9 @@
 <span id="cb13-4"><a href="#cb13-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
 <span id="cb13-5"><a href="#cb13-5"></a>                      </span>
 <span id="cb13-6"><a href="#cb13-6"></a> nestedHeaders =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>( <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Plant Attribute"</span>), <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>)), </span>
-<span id="cb13-7"><a href="#cb13-7"></a>                       <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sepal Attributes"</span>, <span class="st">"Petal Attributes"</span>, <span class="st">"Species"</span>), <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)))</span>
-<span id="cb13-8"><a href="#cb13-8"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">nestedHeaders =</span> nestedHeaders)</span></code></pre></div>
+<span id="cb13-7"><a href="#cb13-7"></a>                       <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sepal Attributes"</span>, <span class="st">"Petal Attributes"</span>, <span class="st">"Species"</span>), </span>
+<span id="cb13-8"><a href="#cb13-8"></a>                                  <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)))</span>
+<span id="cb13-9"><a href="#cb13-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">nestedHeaders =</span> nestedHeaders)</span></code></pre></div>
 <p><img src="inst/images/nested_headers.png"></p>
 </div>
 <div id="pagination" class="section level4">
@@ -296,9 +299,10 @@
 <span id="cb17-5"><a href="#cb17-5"></a></span>
 <span id="cb17-6"><a href="#cb17-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
 <span id="cb17-7"><a href="#cb17-7"></a>  </span>
-<span id="cb17-8"><a href="#cb17-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>), <span class="dt">B1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>))</span>
-<span id="cb17-9"><a href="#cb17-9"></a>                      </span>
-<span id="cb17-10"><a href="#cb17-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
+<span id="cb17-8"><a href="#cb17-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>), </span>
+<span id="cb17-9"><a href="#cb17-9"></a>              <span class="dt">B1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>))</span>
+<span id="cb17-10"><a href="#cb17-10"></a>                      </span>
+<span id="cb17-11"><a href="#cb17-11"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
 <p><img src="inst/images/style.png"></p>
 </div>
 <div id="shiny-integartion" class="section level3">

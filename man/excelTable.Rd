@@ -35,7 +35,7 @@ the header of the dataframe specifies the attribute.The following attributes are
 in columns is specified, the latter will take precedence.}
 
 \item{rowHeight}{a dataframe or matrix specifying height of different rows. The first column is consists of numerical value the
-specifiesthe row number while the second column is also numerical value that specifies the height in pixels.}
+specifies the row number while the second column is also numerical value that specifies the height in pixels.}
 
 \item{nestedHeaders}{a list of dataframe having title and colspan as the attributes. The nested header
 in the same level should be in the same dataframe.}
@@ -104,7 +104,7 @@ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
                   Availability = c(TRUE, FALSE, TRUE, TRUE))
 
 
-columns = data.frame(title=c('Model', 'Date', 'Availibility'),
+columns = data.frame(title=c('Model', 'Date', 'Availability'),
                      width= c(300, 300, 300),
                      type=c('text', 'calendar', 'checkbox'))
 

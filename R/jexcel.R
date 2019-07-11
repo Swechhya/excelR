@@ -18,7 +18,7 @@
 #' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 #' in columns is specified, the latter will take precedence.
 #' @param rowHeight a dataframe or matrix specifying height of different rows. The first column is consists of numerical value the
-#' specifiesthe row number while the second column is also numerical value that specifies the height in pixels.
+#' specifies the row number while the second column is also numerical value that specifies the height in pixels.
 #' @param nestedHeaders a list of dataframe having title and colspan as the attributes. The nested header
 #' in the same level should be in the same dataframe.
 #' @param defaultColWidth a numeric value specifying the default width of column when the width attribute of column is not specified.
@@ -61,7 +61,7 @@
 #'                   Availability = c(TRUE, FALSE, TRUE, TRUE))
 #'
 #'
-#' columns = data.frame(title=c('Model', 'Date', 'Availibility'),
+#' columns = data.frame(title=c('Model', 'Date', 'Availability'),
 #'                      width= c(300, 300, 300),
 #'                      type=c('text', 'calendar', 'checkbox'))
 #'

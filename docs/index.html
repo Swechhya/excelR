@@ -72,7 +72,7 @@
 <div id="excelr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#excelr" class="anchor"></a>excelR</h1></div>
-<p>An R interface to ‘jExcel’ JavaScript library, which is a lightweight vanilla javascript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.</p>
+<p>An R interface to ‘jExcel’ JavaScript library, which is a lightweight vanilla JavaScript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -105,7 +105,7 @@
 <span id="cb4-4"><a href="#cb4-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ),</span>
 <span id="cb4-5"><a href="#cb4-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
 <span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availibility'</span>),</span>
+<span id="cb4-7"><a href="#cb4-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span>),</span>
 <span id="cb4-8"><a href="#cb4-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
 <span id="cb4-9"><a href="#cb4-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
 <span id="cb4-10"><a href="#cb4-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
@@ -126,7 +126,7 @@
 <li><a href="#search">Search</a></li>
 <li><a href="#excel-formulas">Excel formulas</a></li>
 <li><a href="#style">Style</a></li>
-<li><a href="#shiny-integartion">Shiny Integration</a></li>
+<li><a href="#shiny-integration">Shiny Integration</a></li>
 </ol>
 <div id="different-types-of-columns" class="section level4">
 <h4 class="hasAnchor">
@@ -152,7 +152,7 @@
 <span id="cb6-3"><a href="#cb6-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
 <span id="cb6-4"><a href="#cb6-4"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
 <span id="cb6-5"><a href="#cb6-5"></a></span>
-<span id="cb6-6"><a href="#cb6-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Availibility'</span>),</span>
+<span id="cb6-6"><a href="#cb6-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Availability'</span>),</span>
 <span id="cb6-7"><a href="#cb6-7"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>),</span>
 <span id="cb6-8"><a href="#cb6-8"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'checkbox'</span>)) </span>
 <span id="cb6-9"><a href="#cb6-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
@@ -208,7 +208,7 @@
 <span id="cb10-4"><a href="#cb10-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ),</span>
 <span id="cb10-5"><a href="#cb10-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
 <span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availibility'</span> ),</span>
+<span id="cb10-7"><a href="#cb10-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
 <span id="cb10-8"><a href="#cb10-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
 <span id="cb10-9"><a href="#cb10-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
 <span id="cb10-10"><a href="#cb10-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowResize =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
@@ -223,7 +223,7 @@
 <span id="cb11-4"><a href="#cb11-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ),</span>
 <span id="cb11-5"><a href="#cb11-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
 <span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availibility'</span> ),</span>
+<span id="cb11-7"><a href="#cb11-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
 <span id="cb11-8"><a href="#cb11-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
 <span id="cb11-9"><a href="#cb11-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
 <span id="cb11-10"><a href="#cb11-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowDrag =</span> <span class="ot">TRUE</span>, <span class="dt">columnDrag =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
@@ -305,9 +305,9 @@
 <span id="cb17-11"><a href="#cb17-11"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
 <p><img src="inst/images/style.png"></p>
 </div>
-<div id="shiny-integartion" class="section level3">
+<div id="shiny-integration" class="section level3">
 <h3 class="hasAnchor">
-<a href="#shiny-integartion" class="anchor"></a>Shiny Integration</h3>
+<a href="#shiny-integration" class="anchor"></a>Shiny Integration</h3>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>

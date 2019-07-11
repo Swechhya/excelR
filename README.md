@@ -1,5 +1,5 @@
 # excelR
-An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla javascript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
+An R interface to 'jExcel' JavaScript library, which is a lightweight vanilla JavaScript plugin to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
 
 ## Installation
 

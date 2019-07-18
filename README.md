@@ -1,7 +1,14 @@
 # excelR
+[![version](http://www.r-pkg.org/badges/version/excelR)](https://CRAN.R-project.org/package=excelR)
+[![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/grand-total/excelR)](http://cran.r-project.org/package=excelR)
+
 An R interface to [jExcel](https://bossanova.uk/jexcel/v3/) library to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 
 ## Installation
+To install the stable CRAN version: 
+```r
+install.packages('excelR')
+```
 
 To install the latest development version from GitHub:
 ```r

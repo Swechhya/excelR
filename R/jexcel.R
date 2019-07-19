@@ -14,6 +14,8 @@
 #'   \item \strong{source:} a vector of options for column when the type is 'dropdwown'.
 #'    \item \strong{multiple:} a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
 #'    The default value is false.
+#'    \item \strong{render:} a character value indicating if we want to render color for 'color' type instead of text. If render
+#'    is provided a value 'square', color is rendered instead of text.
 #' }
 #' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 #' in columns is specified, the latter will take precedence.

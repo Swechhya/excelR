@@ -256,7 +256,7 @@ library(excelR)
   library(excelR)
 
    shinyApp(
-     ui = fluidPage(excelOutput("table"))
+     ui = fluidPage(excelOutput("table")),
      server = function(input, output, session) {
        output$table <-
       renderExcel(excelTable(data = head(iris)))

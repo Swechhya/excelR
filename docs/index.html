@@ -308,7 +308,7 @@
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>
 <span id="cb18-4"><a href="#cb18-4"></a>   <span class="kw">shinyApp</span>(</span>
-<span id="cb18-5"><a href="#cb18-5"></a>     <span class="dt">ui =</span> <span class="kw">fluidPage</span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>))</span>
+<span id="cb18-5"><a href="#cb18-5"></a>     <span class="dt">ui =</span> <span class="kw">fluidPage</span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>)),</span>
 <span id="cb18-6"><a href="#cb18-6"></a>     <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb18-7"><a href="#cb18-7"></a>       output<span class="op">$</span>table &lt;-</span>
 <span id="cb18-8"><a href="#cb18-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
@@ -323,6 +323,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=excelR">https://​cloud.r-project.org/​package=excelR</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/Swechhya/excelR">https://​github.com/​Swechhya/​excelR</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/Swechhya/excelR/issues">https://​github.com/​Swechhya/​excelR/​issues</a>

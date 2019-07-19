@@ -6,6 +6,8 @@
 
 * add examples
 
+* being to add tests
+
 
 # excelR 0.1.0
 

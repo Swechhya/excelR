@@ -9,9 +9,16 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(params) {
-        const { rowHeight,style, ...otherParams } = params;
+        var rowHeight = params.hasOwnProperty("rowHeight") ? params.rowHeight : undefined;
+        var style = params.hasOwnProperty("style") ? params.style : undefined;
+        var otherParams = {};
+        Object.keys(params).forEach(function(ky) {
+          if(params !== "rowHeight" && params !== "otherParams") {
+            otherParams[ky] = params[ky];
+          }
+        });
 
-        const rows = (() => {
+        var rows = (function() {
           if (rowHeight) {
             const rows = {};
             rowHeight.map(data => (rows[data[0]] = { height: `${data[1]}px` }));
@@ -19,28 +26,31 @@ HTMLWidgets.widget({
           }
           return {};
         })();
-        
-        const formattedStyle = (()=>{
+
+        // this is the only one I do not think I got right
+        // also on the js docs I do not see an initialization property called formattedStyle
+        // https://bossanova.uk/jexcel/v2/docs/quick-reference
+        var formattedStyle = (function() {
           if(style){
-            const formattedStyle = Object.keys(style).reduce((acc, cur)=>({...acc, [cur]:style[cur].join(';')}),{})
-            return formattedStyle
+            return Object.keys(style).reduce(function(acc, cur) {
+              return [acc, style[cur]].join(';');
+            });
+          } else {
+            return {};
           }
+        })();
 
-          return {};
-        })()
+        otherParams.rows = rows;
+        otherParams.tableOverflow = true;
+        otherParams.style = formattedStyle;
 
-        jexcel(container, {
-          ...otherParams,
-          rows,
-          tableOverflow: true,
-          style: formattedStyle,
+        jexcel(container, otherParams);
           // tableHeight: height,
           // tableWidth: width,
-        });
       },
 
       resize: function(width, height) {
-    
+
       }
     };
   }

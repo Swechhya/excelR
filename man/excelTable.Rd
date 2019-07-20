@@ -92,13 +92,15 @@ single page pagination is enabled.}
 
 \item{loadingSpin}{a boolean value indicating if loading spinner should be enabled. By default it is set to false.}
 
-\item{style}{a list to specify style for each cell. The tag should be the cell value and the value should be
-a vector of css styles to be applied.}
+\item{style}{a named list to specify style for each cell. The name should be the cell address and the value should be
+a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+\code{style = list("A1" = "background-color: gray;")}.}
 }
 \description{
 This function is used to create excel like table
 }
 \examples{
+### table example ---
 library(excelR)
 
 data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
@@ -111,4 +113,45 @@ columns = data.frame(title=c('Model', 'Date', 'Availability'),
                      type=c('text', 'calendar', 'checkbox'))
 
 excelTable(data=data, columns = columns)
+
+### no arguments with matrix ----
+excelTable(matrix(1:20, ncol=4))
+
+### some additional arguments with mtcars ----
+library(excelR)
+
+# for now we need to manipulate a data.frame with rownames
+mtcars2 <- cbind(name = rownames(mtcars), mtcars, stringsAsFactors = FALSE)
+mtcars2$name <- rownames(mtcars)
+# change rownames so jsonlite will not convert to a column
+rownames(mtcars2) <- seq_len(nrow(mtcars2))
+
+excelTable(
+  data = mtcars2,
+  colHeaders = toupper(colnames(mtcars2)), # upper case the column names
+  fullscreen = TRUE,  # fill screen with table
+  columnDrag = TRUE,  # allow dragging (reordering) of columns
+  rowDrag = FALSE, # disallow dragging (reordering) of rows
+  wordWrap = TRUE, # wrap text in a cell if is longer than cell width
+)
+
+# an empty table
+excelTable(
+  data = NULL,
+  minDimensions = c(5,20) # columns, rows
+)
+
+
+### styling cells ----
+library(excelR)
+
+excelTable(
+  data = matrix(1:100, ncol = 10),
+  style = list(
+    "A1" = 'background-color: orange; fontWeight: bold; color: white;',
+    "B1" = 'background-color: orange;',
+    "C1" = 'background-color: orange;',
+    "D1" = 'background-color: orange;'
+  )
+)
 }

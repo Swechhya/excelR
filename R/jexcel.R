@@ -51,23 +51,12 @@
 #' @param fullscreen a boolean value indicating if the table should be fullscreen. By default it is set to false.
 #' @param lazyLoading a boolean value indicating if lazy loading should be enabled. By default it is set to false.
 #' @param loadingSpin a boolean value indicating if loading spinner should be enabled. By default it is set to false.
-#' @param style a list to specify style for each cell. The tag should be the cell value and the value should be
-#' a vector of css styles to be applied.
+#' @param style a named list to specify style for each cell. The name should be the cell address and the value should be
+#' a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+#' \code{style = list("A1" = "background-color: gray;")}.
 #' @import jsonlite
 #' @import htmlwidgets
-#' @examples
-#' library(excelR)
-#'
-#' data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
-#'                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ),
-#'                   Availability = c(TRUE, FALSE, TRUE, TRUE))
-#'
-#'
-#' columns = data.frame(title=c('Model', 'Date', 'Availability'),
-#'                      width= c(300, 300, 300),
-#'                      type=c('text', 'calendar', 'checkbox'))
-#'
-#' excelTable(data=data, columns = columns)
+#' @example inst/examples/examples_widget.R
 excelTable <-
   function(data = NULL,
            columns = NULL,
@@ -310,75 +299,37 @@ excelTable <-
       paramList$minDimensions <- minDimensions
     }
 
-    # Check columnSorting
-    if (!columnSorting) {
-      paramList$columnSorting = columnSorting
-
-    }
-
-    #Check columnDrag
-    if (columnDrag) {
-      paramList$columnDrag <- TRUE
-    }
-
-    # Check columnResize
-    if (!columnResize) {
-      paramList$columnResize <- FALSE
-    }
-
-    # Check rowResize
-    if (rowResize) {
-      paramList$rowResize <- TRUE
-    }
-
-    # Check rowDrag
-    if (!rowDrag) {
-      paramList$rowDrag <- FALSE
-    }
-
-    # Check editable
-    if (!editable) {
-      paramList$editable <- FALSE
-    }
-
-    # Check allowInsertRow
-    if (!allowInsertRow) {
-      paramList$allowInsertRow <- FALSE
-    }
-
-    # Check allowInsertColumn
-    if (!allowInsertColumn) {
-      paramList$allowInsertColumn <- FALSE
-    }
-
-    # Check allowDeleteRow
-    if (!allowDeleteRow) {
-      paramList$allowDeleteRow <- FALSE
-    }
-
-    # Check allowDeleteColumn
-    if (!allowDeleteColumn) {
-      paramList$allowDeleteColumn <- FALSE
-    }
-
-    # Check allowRenameColumn
-    if (!allowRenameColumn) {
-      paramList$allowRenameColumn <- FALSE
-    }
-
-    # Check allowComments
-    if (allowComments) {
-      paramList$allowComments <- TRUE
-    }
-
-    # Check wordWrap
-    if (wordWrap) {
-      paramList$wordWrap <- TRUE
-    }
-
-    # Check selectionCopy
-    if (!selectionCopy) {
-      paramList$selectionCopy <- FALSE
+    # Check logical arguments
+    for (arg in c(
+      "columnSorting",
+      "columnDrag",
+      "columnResize",
+      "rowResize",
+      "rowDrag",
+      "editable",
+      "allowInsertRow",
+      "allowInsertColumn",
+      "allowDeleteRow",
+      "allowDeleteColumn",
+      "allowRenameColumn",
+      "allowComments",
+      "wordWrap",
+      "selectionCopy",
+      "search",
+      "fullscreen",
+      "lazyLoading",
+      "loadingSpin"
+    )) {
+      argvalue <- get(arg)
+      if(!is.null(argvalue)) {
+        # now check these arguments to make sure they are logical
+        if(is.logical(argvalue)) {
+          paramList[[arg]] <- argvalue
+        } else {
+          warning("Argument ", arg, " should be either TRUE or FALSE.  Ignoring ", arg, ".", call. = FALSE)
+          paramList[[arg]] <- NULL
+        }
+      }
     }
 
     # Check mergeCells
@@ -409,11 +360,6 @@ excelTable <-
 
     }
 
-    # Search
-    if (search) {
-      paramList$search <- TRUE
-    }
-
     # Check pagination
     if (!is.null(pagination)) {
       if (!is.numeric(pagination)) {
@@ -422,21 +368,6 @@ excelTable <-
       }
 
       paramList$pagination <- pagination
-    }
-
-    # Check fullscreen
-    if (fullscreen) {
-      paramList$fullscreen <- TRUE
-    }
-
-    # Check lazyLoading
-    if (lazyLoading) {
-      paramList$lazyLoading <- TRUE
-    }
-
-    # Check loadingSpin
-    if (loadingSpin) {
-      paramList$loadingSpin <- TRUE
     }
 
     # Check style

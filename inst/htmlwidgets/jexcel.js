@@ -9,9 +9,15 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(params) {
-        const { rowHeight,style, ...otherParams } = params;
+        var rowHeight = params.hasOwnProperty("rowHeight") ? params.rowHeight : undefined;
+        var otherParams = {};
+        Object.keys(params).forEach(function(ky) {
+          if(params !== "rowHeight" && params !== "otherParams") {
+            otherParams[ky] = params[ky];
+          }
+        });
 
-        const rows = (() => {
+        var rows = (function() {
           if (rowHeight) {
             const rows = {};
             rowHeight.map(data => (rows[data[0]] = { height: `${data[1]}px` }));
@@ -19,28 +25,17 @@ HTMLWidgets.widget({
           }
           return {};
         })();
-        
-        const formattedStyle = (()=>{
-          if(style){
-            const formattedStyle = Object.keys(style).reduce((acc, cur)=>({...acc, [cur]:style[cur].join(';')}),{})
-            return formattedStyle
-          }
 
-          return {};
-        })()
+        otherParams.rows = rows;
+        otherParams.tableOverflow = true;
 
-        jexcel(container, {
-          ...otherParams,
-          rows,
-          tableOverflow: true,
-          style: formattedStyle,
+        jexcel(container, otherParams);
           // tableHeight: height,
           // tableWidth: width,
-        });
       },
 
       resize: function(width, height) {
-    
+
       }
     };
   }

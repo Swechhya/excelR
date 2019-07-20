@@ -4,6 +4,8 @@
 
 * rewrite JavaScript binding so works with older RStudio versions
 
+* change `style` argument to a named list of `character` CSS styles
+
 * add examples
 
 * begin to add tests

@@ -49,8 +49,9 @@
 #' @param fullscreen a boolean value indicating if the table should be fullscreen. By default it is set to false.
 #' @param lazyLoading a boolean value indicating if lazy loading should be enabled. By default it is set to false.
 #' @param loadingSpin a boolean value indicating if loading spinner should be enabled. By default it is set to false.
-#' @param style a list to specify style for each cell. The tag should be the cell value and the value should be
-#' a vector of css styles to be applied.
+#' @param style a named list to specify style for each cell. The name should be the cell address and the value should be
+#' a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+#' \code{style = list("A1" = "background-color: gray;")}.
 #' @import jsonlite
 #' @import htmlwidgets
 #' @example inst/examples/examples_widget.R

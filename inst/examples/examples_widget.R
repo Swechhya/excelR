@@ -38,3 +38,17 @@ excelTable(
   data = NULL,
   minDimensions = c(5,20) # columns, rows
 )
+
+
+### styling cells ----
+library(excelR)
+
+excelTable(
+  data = matrix(1:100, ncol = 10),
+  style = list(
+    "A1" = 'background-color: orange; fontWeight: bold; color: white;',
+    "B1" = 'background-color: orange;',
+    "C1" = 'background-color: orange;',
+    "D1" = 'background-color: orange;'
+  )
+)

@@ -18,3 +18,5 @@
 ^inst\/images\/search.gif$
 ^inst\/images\/style.png$
 ^index\.Rmd
+^\.travis\.yml$
+^appveyor\.yml$

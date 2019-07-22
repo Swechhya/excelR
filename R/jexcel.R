@@ -117,7 +117,7 @@ excelTable <-
 
       #Check if column header is a vector
       if (!is.vector(colHeaders)) {
-        stop("'colHeader' must be a vector, cannot be",
+        stop("'colHeaders' must be a vector, cannot be ",
              class(colHeaders))
       }
 
@@ -140,7 +140,7 @@ excelTable <-
     {
       #Check if 'columns' is a dataframe
       if (!is.data.frame(columns)) {
-        stop("'columns' must be a dataframe, cannot be", class(columns))
+        stop("'columns' must be a dataframe, cannot be ", class(columns))
       }
 
       #Check if number of rows in 'columns' is equal to the number of columns in 'data'
@@ -150,7 +150,7 @@ excelTable <-
           stop(
             "number of rows in 'columns' should be equal to number of columns in 'data', expected number of rows in 'columns' to be ",
             ncol(data),
-            "but got ",
+            " but got ",
             nrow(columns)
           )
         }
@@ -179,7 +179,7 @@ excelTable <-
         warning(
           "unknown attribute(s) ",
           colnames(columns)[!colnames(columns) %in% colAttributes],
-          " for 'columns' found, ignoring those attributes"
+          " for 'columns' found, ignoring those attribute(s)"
         )
       }
 

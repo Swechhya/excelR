@@ -28,6 +28,7 @@ HTMLWidgets.widget({
 
         otherParams.rows = rows;
         otherParams.tableOverflow = true;
+        otherParams.onchange = this.onChange;
 
         jexcel(container, otherParams);
           // tableHeight: height,
@@ -36,6 +37,16 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
+      },
+
+      onChange: function(obj){
+        if (HTMLWidgets.shinyMode) {
+          Shiny.setInputValue(obj.id, 
+            {
+              data:this.data, 
+              colHeaders: this.colHeaders
+            })
+        }
       }
     };
   }

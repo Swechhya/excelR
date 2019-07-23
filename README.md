@@ -61,6 +61,7 @@ This package can be used in `shiny`
 - Pagination
 - Lazy loading
 - Native color picker
-- Great data picker: dropdown, autocomplete, multiple, group options and icons
+- Data picker dropdown with autocomplete, multiple, and icons feature
+- Date picker
 
 

@@ -3,6 +3,7 @@
 [![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/grand-total/excelR)](http://cran.r-project.org/package=excelR)
 [![Travis-CI Build Status](https://travis-ci.org/Swechhya/excelR.svg?branch=master)](https://travis-ci.org/Swechhya/excelR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Swechhya/excelR?branch=master&svg=true)](https://ci.appveyor.com/project/Swechhya/excelR)
+[![Coverage Status](https://img.shields.io/codecov/c/github/Swechhya/excelR/master.svg)](https://codecov.io/github/Swechhya/excelR?branch=master)
 
 An R interface to [jExcel](https://bossanova.uk/jexcel/v3/) library to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 

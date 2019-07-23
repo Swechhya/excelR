@@ -45,6 +45,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -307,8 +310,8 @@
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>
-<span id="cb18-4"><a href="#cb18-4"></a>   <span class="kw">shinyApp</span>(</span>
-<span id="cb18-5"><a href="#cb18-5"></a>     <span class="dt">ui =</span> <span class="kw">fluidPage</span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>)),</span>
+<span id="cb18-4"><a href="#cb18-4"></a>   <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
+<span id="cb18-5"><a href="#cb18-5"></a>     <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>)),</span>
 <span id="cb18-6"><a href="#cb18-6"></a>     <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb18-7"><a href="#cb18-7"></a>       output<span class="op">$</span>table &lt;-</span>
 <span id="cb18-8"><a href="#cb18-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
@@ -353,6 +356,7 @@
 <li><a href="http://cran.r-project.org/package=excelR"><img src="http://cranlogs.r-pkg.org/badges/grand-total/excelR" alt="CRAN_Download_Badge"></a></li>
 <li><a href="https://travis-ci.org/Swechhya/excelR"><img src="https://travis-ci.org/Swechhya/excelR.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/Swechhya/excelR"><img src="https://ci.appveyor.com/api/projects/status/github/Swechhya/excelR?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://codecov.io/github/Swechhya/excelR?branch=master"><img src="https://img.shields.io/codecov/c/github/Swechhya/excelR/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>
 </div>

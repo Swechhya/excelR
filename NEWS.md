@@ -10,6 +10,8 @@
 
 * begin to add tests
 
+* add communication with shiny
+
 
 # excelR 0.1.0
 

@@ -19,8 +19,8 @@
 #' }
 #' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 #' in columns is specified, the latter will take precedence.
-#' @param rowHeight a dataframe or matrix specifying height of different rows. The first column is consists of numerical value the
-#' specifies the row number while the second column is also numerical value that specifies the height in pixels.
+#' @param rowHeight a dataframe or matrix specifying height of different rows. The first column consists of numerical value that
+#' specifies the row number and the second column is also numerical value that specifies the height in pixels.
 #' @param nestedHeaders a list of dataframe having title and colspan as the attributes. The nested header
 #' in the same level should be in the same dataframe.
 #' @param defaultColWidth a numeric value specifying the default width of column when the width attribute of column is not specified.
@@ -117,7 +117,7 @@ excelTable <-
 
       #Check if column header is a vector
       if (!is.vector(colHeaders)) {
-        stop("'colHeader' must be a vector, cannot be",
+        stop("'colHeaders' must be a vector, cannot be ",
              class(colHeaders))
       }
 
@@ -140,7 +140,7 @@ excelTable <-
     {
       #Check if 'columns' is a dataframe
       if (!is.data.frame(columns)) {
-        stop("'columns' must be a dataframe, cannot be", class(columns))
+        stop("'columns' must be a dataframe, cannot be ", class(columns))
       }
 
       #Check if number of rows in 'columns' is equal to the number of columns in 'data'
@@ -150,7 +150,7 @@ excelTable <-
           stop(
             "number of rows in 'columns' should be equal to number of columns in 'data', expected number of rows in 'columns' to be ",
             ncol(data),
-            "but got ",
+            " but got ",
             nrow(columns)
           )
         }
@@ -179,7 +179,7 @@ excelTable <-
         warning(
           "unknown attribute(s) ",
           colnames(columns)[!colnames(columns) %in% colAttributes],
-          " for 'columns' found, ignoring those attributes"
+          " for 'columns' found, ignoring those attribute(s)"
         )
       }
 
@@ -191,12 +191,12 @@ excelTable <-
     #Check row height
     if (!is.null(rowHeight)) {
       if (!is.data.frame(rowHeight) && !is.matrix(rowHeight)) {
-        stop("'rowHeight' must be either a matrix or a dataframe, cannot be ",
+        stop("'rowHeight' must either be a matrix or a dataframe, cannot be ",
              class(rowHeight))
       }
       if (ncol(rowHeight) != 2) {
         stop(
-          "'rowHeight' must be either a matrix or dataframe with two columns, but got ",
+          "'rowHeight' must either be a matrix or a dataframe with two columns, but got ",
           ncol(rowHeight),
           " column(s)"
         )
@@ -209,8 +209,8 @@ excelTable <-
     if (!is.null(nestedHeaders)) {
       # nestedHeaders should be list
       if (!is.list(nestedHeaders)) {
-        stop("'nestedHeaders' must be a list of dataframe(s), cannot be ",
-             class(nestedHeaders))
+        stop("'nestedHeaders' must be a list of dataframe(s), cannot be ", 
+        class(nestedHeaders))
       }
 
       headerAttributes <- c("title", "colspan")
@@ -229,8 +229,7 @@ excelTable <-
         # data.frame nestedHeaders should have atleast two column and one row
         if (ncol(nestedHeader) < 2 || nrow(nestedHeader) < 1) {
           stop(
-            "the dataframe(s) in 'nestedHeaders must contain at least two columns and one row,
-             'title' and 'colspan', but got only ",
+            "the dataframe(s) in 'nestedHeaders must contain at least two columns and one row, 'title' and 'colspan', but got only ",
             ncol(nestedHeader),
             " column and ",
             nrow(nestedHeader),
@@ -241,8 +240,7 @@ excelTable <-
         # the dataframe in nestedHeaders should have one column named as title
         if (!"title" %in% colnames(nestedHeader)) {
           stop(
-            "one of the column in the dataframe in list of 'nestedHeaders' should have 'title' as header
-             which will be used as title of the nested header"
+            "one of the column in the dataframe in list of 'nestedHeaders' should have 'title' as header which will be used as title of the nested header"
           )
         }
 
@@ -250,8 +248,7 @@ excelTable <-
         # the dataframe in nestedHeaders should have one column named as colspan
         if (!"colspan" %in% colnames(nestedHeader)) {
           stop(
-            "one of the column in the dataframe in list of 'nestedHeaders' should have 'colspan' as header
-             which will be used to determine the number of column it needs to span"
+            "one of the column in the dataframe in list of 'nestedHeaders' should have 'colspan' as header which will be used to determine the number of column it needs to span"
           )
         }
 
@@ -271,9 +268,9 @@ excelTable <-
     }
 
     if (!is.null(defaultColWidth)) {
-      if (!is.numeric(defaultColWidth)) {
-        stop("'defaultColWidth' must be a numeric value but got ",
-             class(defaultColWidth))
+      if (!is.numeric(defaultColWidth) || length(defaultColWidth) > 1) {
+        stop("'defaultColWidth' must be a numeric value of length 1 but got ",
+             class(defaultColWidth), " of length ", length(defaultColWidth))
       }
 
       paramList$defaultColWidth <- defaultColWidth
@@ -291,7 +288,7 @@ excelTable <-
       # minDimensions must be length of 2
       if (length(minDimensions) != 2) {
         stop(
-          "'minDimensions' must be a vector of length but got length of ",
+          "'minDimensions' must be a vector of length of 2 but got length of ",
           length(minDimensions)
         )
       }
@@ -350,7 +347,7 @@ excelTable <-
 
         if (length(mergeCell) != 2) {
           stop(
-            "expected each parameter in 'mergeCells' list to be a vector of length  2 but got vector of lrngth",
+            "expected each parameter in 'mergeCells' list to be a vector of length  2 but got vector of length ",
             length(mergeCells)
           )
         }
@@ -362,9 +359,9 @@ excelTable <-
 
     # Check pagination
     if (!is.null(pagination)) {
-      if (!is.numeric(pagination)) {
-        stop("'pagination' must be an integer but got ",
-             class(pagination))
+      if (!is.numeric(pagination) || length(pagination) > 1) {
+        stop("'pagination' must be an integer of length 1 but got ",
+             class(pagination), " of length ", length(pagination))
       }
 
       paramList$pagination <- pagination

@@ -7,7 +7,7 @@ test_that("excelTable makes a htmlwidget", {
 
 
 
-context("arguments")
+context("logical arguments")
 test_that("logical arguments are logical and if not become NULL", {
   for (arg in c(
         "columnSorting",
@@ -60,3 +60,4 @@ test_that("valid logical arguments are passed to htmlwidget", {
     testthat::expect_true(suppressWarnings(do.call(excelTable, l))$x[[arg]])
   }
 })
+

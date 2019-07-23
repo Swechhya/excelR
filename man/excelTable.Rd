@@ -36,8 +36,8 @@ the header of the dataframe specifies the attribute.The following attributes are
 \item{colHeaders}{a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 in columns is specified, the latter will take precedence.}
 
-\item{rowHeight}{a dataframe or matrix specifying height of different rows. The first column is consists of numerical value the
-specifies the row number while the second column is also numerical value that specifies the height in pixels.}
+\item{rowHeight}{a dataframe or matrix specifying height of different rows. The first column consists of numerical value that
+specifies the row number and the second column is also numerical value that specifies the height in pixels.}
 
 \item{nestedHeaders}{a list of dataframe having title and colspan as the attributes. The nested header
 in the same level should be in the same dataframe.}

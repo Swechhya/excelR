@@ -2,6 +2,7 @@
 
 export(excelOutput)
 export(excelTable)
+export(excel_to_R)
 export(renderExcel)
 import(htmlwidgets)
 import(jsonlite)

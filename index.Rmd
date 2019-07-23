@@ -238,6 +238,7 @@ library(excelR)
 ![](inst/images/formula.gif)
 
 #### Style {#style}
+
 ```r
  library(excelR)
 
@@ -254,6 +255,8 @@ library(excelR)
 ![](inst/images/style.png)
 
 ### Shiny Integration {#shiny-integration}
+
+#### Creating excel table in Shiny
 ```r
   library(shiny)
   library(excelR)
@@ -263,6 +266,23 @@ library(excelR)
      server = function(input, output, session) {
        output$table <-
       renderExcel(excelTable(data = head(iris)))
+      }
+    )
+
+```
+#### Reading changed data from excel table in Shiny
+```r
+  library(shiny)
+  library(excelR)
+
+   shinyApp(
+     ui = fluidPage(excelOutput("table")),
+     server = function(input, output, session) {
+       output$table <-
+      renderExcel(excelTable(data = head(iris)))
+      observeEvent(input$table,{
+        print(excel_to_R(input$table))
+      })
       }
     )
 

@@ -239,6 +239,7 @@ library(excelR)
 
 #### Style {#style}
 
+Styling in version `0.1.0`:
 ```r
  library(excelR)
 
@@ -252,6 +253,22 @@ library(excelR)
                       
  excelTable(data=data, columns = columns, style = style)
 ```
+
+Styling from version `0.2.0` onwards:
+```r
+ library(excelR)
+
+ data = data.frame( Make = c('Honda', 'Honda', 'Hyundai'),
+                   Car = c('Civic', 'City', 'Creta'))
+
+ columns = data.frame(title=c('Make', 'Car'), width= c(300, 300))
+  
+ style = list(A1='background-color:orange; color:green;', 
+              B1='background-color:orange; color:green;')
+                      
+ excelTable(data=data, columns = columns, style = style)
+```
+
 ![](inst/images/style.png)
 
 ### Shiny Integration {#shiny-integration}

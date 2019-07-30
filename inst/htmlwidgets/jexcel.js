@@ -16,7 +16,7 @@ HTMLWidgets.widget({
             otherParams[ky] = params[ky];
           }
         });
-
+  
         var rows = (function() {
           if (rowHeight) {
             const rows = {};
@@ -29,6 +29,11 @@ HTMLWidgets.widget({
         otherParams.rows = rows;
         otherParams.tableOverflow = true;
         otherParams.onchange = this.onChange;
+
+        // Remove any jexcel table if present (Issue #13, https://github.com/Swechhya/excelR/issues/13)
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+      }
 
         jexcel(container, otherParams);
           // tableHeight: height,

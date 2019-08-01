@@ -16,6 +16,7 @@
 #'    The default value is false.
 #'    \item \strong{render:} a character value indicating if we want to render color for 'color' type instead of text. If render
 #'    is provided a value 'square', color is rendered instead of text.
+#'   \item \strong{readOnly:} a boolean value specifying the readonly column.
 #' }
 #' @param colHeaders a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 #' in columns is specified, the latter will take precedence.
@@ -174,7 +175,7 @@ excelTable <-
 
       # Check if all the attributes in the columns is a valid attribute i.e. colname(columns) should be subset of attributes
       colAttributes <-
-        c("title", "width", "type", "source", "multiple", "render")
+        c("title", "width", "type", "source", "multiple", "render", "readOnly")
       if (!all(colnames(columns) %in% colAttributes)) {
         warning(
           "unknown attribute(s) ",

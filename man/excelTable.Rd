@@ -31,6 +31,7 @@ the header of the dataframe specifies the attribute.The following attributes are
    The default value is false.
    \item \strong{render:} a character value indicating if we want to render color for 'color' type instead of text. If render
    is provided a value 'square', color is rendered instead of text.
+  \item \strong{readOnly:} a boolean value specifying the readonly column.
 }}
 
 \item{colHeaders}{a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute

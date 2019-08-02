@@ -6,6 +6,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var elementId = el.id;
     var container = document.getElementById(elementId);
+    var excel =null;
 
     return {
       renderValue: function(params) {
@@ -30,14 +31,22 @@ HTMLWidgets.widget({
         otherParams.tableOverflow = true;
         otherParams.onchange = this.onChange;
 
-        // Remove any jexcel table if present (Issue #13, https://github.com/Swechhya/excelR/issues/13)
+        // If new instance of the table   
+        if(excel === null) {
+          excel =  jexcel(container, otherParams);
+          
+          return;
+        }
+
+        var  selection  = excel.selectedCell;
+
         while (container.firstChild) {
           container.removeChild(container.firstChild);
       }
 
-        jexcel(container, otherParams);
-          // tableHeight: height,
-          // tableWidth: width,
+        excel = jexcel(container, otherParams);
+        excel.updateSelectionFromCoords(selection[0], selection[1], selection[2], selection[3]);
+
       },
 
       resize: function(width, height) {

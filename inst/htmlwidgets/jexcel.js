@@ -31,7 +31,6 @@ HTMLWidgets.widget({
         otherParams.tableOverflow = true;
         otherParams.onchange = this.onChange;
 
-
         // If new instance of the table   
         if(excel === null) {
           excel =  jexcel(container, otherParams);

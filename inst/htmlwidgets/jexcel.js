@@ -30,6 +30,13 @@ HTMLWidgets.widget({
         otherParams.rows = rows;
         otherParams.tableOverflow = true;
         otherParams.onchange = this.onChange;
+        otherParams.oninsertrow = this.onChange;
+        otherParams.ondeleterow = this.onChange;
+        otherParams.oninsertcolumn = this.onChange;
+        otherParams.ondeletecolumn = this.onChange;
+        otherParams.onsort = this.onChange;
+        otherParams.onmoverow = this.onChange;
+        otherParams.onchangeheader = this.onChangeHeader;
 
         // If new instance of the table   
         if(excel === null) {
@@ -55,10 +62,25 @@ HTMLWidgets.widget({
 
       onChange: function(obj){
         if (HTMLWidgets.shinyMode) {
+      
           Shiny.setInputValue(obj.id, 
             {
               data:this.data, 
               colHeaders: this.colHeaders
+            })
+        }
+      },
+
+      onChangeHeader: function(obj, column, oldValue, newValue){
+        debugger;
+        if (HTMLWidgets.shinyMode) {
+          var newColHeader = this.colHeaders;
+          newColHeader[parseInt(column)] = newValue;
+
+          Shiny.setInputValue(obj.id, 
+            {
+              data:this.data, 
+              colHeaders: newColHeader
             })
         }
       }

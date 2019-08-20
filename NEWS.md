@@ -1,3 +1,13 @@
+# excelR 0.2.1
+
+* fix bug for shiny table update
+
+* add readonly column attribute for columns
+
+* fix bug to maintain cell selection on table update
+
+* fix bug to handle events fired by jexcel
+
 # excelR 0.2.0
 
 * fix bug in which various arguments are not passed to the `htmlwidget`

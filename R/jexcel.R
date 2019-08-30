@@ -94,17 +94,17 @@ excelTable <-
     paramList <- list()
 
     # Check data
-    if (!is.null(data))
-    {
-      # It either has to be dataframe or matrix
-      if (is.data.frame(data) || is.matrix(data)) {
-        paramList$data <- jsonlite::toJSON(data, dataframe = "values")
-      } else {
-        stop("'data' must be either a matrix or a data frame, cannot be ",
-             class(data))
-      }
-
-    }
+    # if (!is.null(data))
+    # {
+    #   # It either has to be dataframe or matrix
+    #   if (is.data.frame(data) || is.matrix(data)) {
+    #     paramList$data <- jsonlite::toJSON(data, dataframe = "values")
+    #   } else {
+    #     stop("'data' must be either a matrix or a data frame, cannot be ",
+    #          class(data))
+    #   }
+    #
+    # }
 
     # Check column
     # If both columns and colHeaders are not specified, use the column names of the dataframe/matrix
@@ -194,7 +194,7 @@ excelTable <-
     #Check autoColTypes
     #If 'type' attribute is not specified in column and autoColTypes is true, then we map this and add it
     #column attributes
-    if(autoColTypes){
+    if(autoColTypes && !is.null(data)){
       if(is.null(columns)){
         message("Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'")
 

@@ -18,9 +18,10 @@ get_col_types <-  function(data) {
     switch(colType,
            factor = "text",
            integer="integer",
-           double="double",
+           double="numeric",
            logical="checkbox",
            Date="calendar",
+           numeric="numeric",
            "text")
   })
 

@@ -13,7 +13,7 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
   allowRenameColumn = TRUE, allowComments = FALSE, wordWrap = FALSE,
   selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
   pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
-  loadingSpin = FALSE, style = NULL, autoColTypes = FALSE)
+  loadingSpin = FALSE, style = NULL, autoColTypes = TRUE)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}

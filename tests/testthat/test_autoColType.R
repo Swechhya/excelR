@@ -17,8 +17,7 @@ test_that("'autoColType' returns null when 'data' is not null and 'type' attribu
 columns <-  data.frame(title=c('Model', 'Date' ),
                      width= c(300, 300),
                      type=c('text', 'calendar'))
-excelTable(data=data, columns = columns)
-  testthat::expect_null(suppressWarnings(excelTable(data = d, autoColType = FALSE)$x$autoColType))
+  testthat::expect_null(suppressWarnings(excelTable(data = data, columns=columns)$x$autoColType))
 })
 
 test_that("'autoColType' returns valid values when 'data' is not null and 'type' attribute in columns is not specified", {

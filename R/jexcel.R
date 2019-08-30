@@ -54,6 +54,8 @@
 #' @param loadingSpin a boolean value indicating if loading spinner should be enabled. By default it is set to false.
 #' @param style a named list to specify style for each cell. The name should be the cell address and the value should be
 #' a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+#' @param autoColTypes a boolean value indicating if column type should be automatically detected if
+#' 'type' is not specified in 'columns' attribute
 #' \code{style = list("A1" = "background-color: gray;")}.
 #' @import jsonlite
 #' @import htmlwidgets
@@ -86,7 +88,8 @@ excelTable <-
            fullscreen = FALSE,
            lazyLoading = FALSE,
            loadingSpin = FALSE,
-           style = NULL) {
+           style = NULL,
+           autoColTypes = TRUE) {
     # List of parameters to send to js
     paramList <- list()
 
@@ -137,8 +140,7 @@ excelTable <-
       paramList$colHeaders <- jsonlite::toJSON(colHeaders)
 
 
-    } else if (!is.null(columns))
-    {
+    } else if (!is.null(columns)) {
       #Check if 'columns' is a dataframe
       if (!is.data.frame(columns)) {
         stop("'columns' must be a dataframe, cannot be ", class(columns))
@@ -189,6 +191,29 @@ excelTable <-
 
     }
 
+    #Check autoColTypes
+    #If 'type' attribute is not specified in column and autoColTypes is true, then we map this and add it
+    #column attributes
+    if(autoColTypes){
+      if(is.null(columns)){
+        message("Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'")
+
+        colTypes <- get_col_types(data)
+        columns <- data.frame(type=colTypes)
+        paramList$columns <- jsonlite::toJSON(columns)
+      }else{
+        if(!"type" %in% colnames(columns) && autoColTypes){
+          message("Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'")
+
+          colTypes <- get_col_types(data)
+          columns$type <- colTypes
+          paramList$columns <-
+            jsonlite::toJSON(columns[colnames(columns) %in% colAttributes])
+        }
+      }
+    }
+
+
     #Check row height
     if (!is.null(rowHeight)) {
       if (!is.data.frame(rowHeight) && !is.matrix(rowHeight)) {
@@ -210,7 +235,7 @@ excelTable <-
     if (!is.null(nestedHeaders)) {
       # nestedHeaders should be list
       if (!is.list(nestedHeaders)) {
-        stop("'nestedHeaders' must be a list of dataframe(s), cannot be ", 
+        stop("'nestedHeaders' must be a list of dataframe(s), cannot be ",
         class(nestedHeaders))
       }
 

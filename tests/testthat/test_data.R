@@ -9,3 +9,10 @@ test_that("valid 'data' object is passed to htmlwidget", {
   d <- matrix(1:100, ncol=10)
   testthat::expect_s3_class(suppressWarnings(excelTable(data=d))$x$data, "json")
 })
+
+test_that("valid 'data' object is passed to htmlwidget", {
+  d <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+  testthat::expect_s3_class(suppressWarnings(excelTable(data=d))$x$data, "json")
+})
+

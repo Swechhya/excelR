@@ -52,7 +52,10 @@ HTMLWidgets.widget({
       }
 
         excel = jexcel(container, otherParams);
-        excel.updateSelectionFromCoords(selection[0], selection[1], selection[2], selection[3]);
+        
+        if(selection){
+          excel.updateSelectionFromCoords(selection[0], selection[1], selection[2], selection[3]);
+        }
 
       },
 
@@ -72,7 +75,7 @@ HTMLWidgets.widget({
       },
 
       onChangeHeader: function(obj, column, oldValue, newValue){
-        debugger;
+  
         if (HTMLWidgets.shinyMode) {
           var newColHeader = this.colHeaders;
           newColHeader[parseInt(column)] = newValue;

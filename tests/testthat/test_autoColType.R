@@ -38,3 +38,10 @@ test_that("'type' attribute of 'columns' should return supplied value when 'data
    testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type, 
    c("text", "calendar", "checkbox"))
 })
+
+test_that("'autoColType' returns valid values when 'data' is not null and 'type' attribute in columns is not specified", {
+  data <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                  Date=c('TRUE', 'FALSE', 'TRUE', 'TRUE' ))
+
+   testthat::expect_message(suppressWarnings(excelTable(data = data)))
+})

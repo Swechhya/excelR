@@ -49,3 +49,8 @@ test_that("'get_col_types' argument gives error if 'data' not a dataframe or mat
     d <- 1
     testthat::expect_error(get_col_types(data = d), c("'data' must be either a matrix or a data frame, cannot be numeric"))
 })
+
+test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {
+  d <- matrix( c(as.double(1), as.double(2.5)), ncol=1)
+  testthat::expect_equal(get_col_types(data=d), c("numeric"))
+})

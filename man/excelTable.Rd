@@ -101,7 +101,7 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 
 \item{autoColTypes}{a boolean value indicating if column type should be automatically detected if}
 
-\item{showToolbar}{a boolean value indicating if toolbar should be shown .}
+\item{showToolbar}{a boolean value indicating if toolbar should be shown. By default it is set to false.}
 }
 \description{
 This function is used to create excel like table

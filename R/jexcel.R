@@ -57,7 +57,7 @@
 #' 'type' is not specified in 'columns' attribute
 #' \code{style = list("A1" = "background-color: gray;")}.
 #' @param autoColTypes a boolean value indicating if column type should be automatically detected if
-#' @param showToolbar a boolean value indicating if toolbar should be shown .
+#' @param showToolbar a boolean value indicating if toolbar should be shown. By default it is set to false.
 #' @import jsonlite
 #' @import htmlwidgets
 #' @example inst/examples/examples_widget.R

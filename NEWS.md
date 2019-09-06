@@ -1,4 +1,4 @@
-# excelR 0.3
+# excelR 0.3.0
 
 * add feature to auto detect column type from the data
 

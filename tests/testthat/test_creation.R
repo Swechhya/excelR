@@ -55,7 +55,7 @@ test_that("valid logical arguments are passed to htmlwidget", {
         "search",
         "lazyLoading",
         "loadingSpin",
-        "showToolbbar"
+        "showToolbar"
   )) {
     l <- list()
     l[[arg]] <- TRUE

@@ -1,3 +1,9 @@
+# excelR 0.3
+
+* add feature to auto detect column type from the data
+
+* add feature to show toolbar
+
 # excelR 0.2.1
 
 * fix bug for shiny table update

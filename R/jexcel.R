@@ -54,9 +54,10 @@
 #' @param loadingSpin a boolean value indicating if loading spinner should be enabled. By default it is set to false.
 #' @param style a named list to specify style for each cell. The name should be the cell address and the value should be
 #' a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
-#' @param autoColTypes a boolean value indicating if column type should be automatically detected if
 #' 'type' is not specified in 'columns' attribute
 #' \code{style = list("A1" = "background-color: gray;")}.
+#' @param autoColTypes a boolean value indicating if column type should be automatically detected if
+#' @param showToolbar a boolean value indicating if toolbar should be shown .
 #' @import jsonlite
 #' @import htmlwidgets
 #' @example inst/examples/examples_widget.R
@@ -89,7 +90,8 @@ excelTable <-
            lazyLoading = FALSE,
            loadingSpin = FALSE,
            style = NULL,
-           autoColTypes = TRUE) {
+           autoColTypes = TRUE,
+           showToolbar = FALSE) {
     # List of parameters to send to js
     paramList <- list()
 
@@ -341,7 +343,8 @@ excelTable <-
       "search",
       "fullscreen",
       "lazyLoading",
-      "loadingSpin"
+      "loadingSpin",
+      "showToolbar"
     )) {
       argvalue <- get(arg)
       if(!is.null(argvalue)) {

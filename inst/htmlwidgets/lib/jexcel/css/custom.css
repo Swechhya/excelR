@@ -1,0 +1,8 @@
+.jcolor td {
+   padding: 7px; 
+}
+
+.jexcel_toolbar {
+    width: 450px;
+    justify-content: space-around;
+}

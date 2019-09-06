@@ -70,7 +70,9 @@ This documentation gives example for following features:
 7. [Search](#search)
 8. [Excel formulas](#excel-formulas)
 9. [Style](#style)
-10. [Shiny Integration](#shiny-integration)
+10. [Automated Column Types](#auto-col-types)
+11. [Toolbar](#toolbar)
+12. [Shiny Integration](#shiny-integration)
 
 #### Different types of columns{#different-types-of-columns}
  - Calendar
@@ -270,6 +272,35 @@ Styling from version `0.2.0` onwards:
 ```
 
 ![](inst/images/style.png)
+
+#### Automated Column Types {#auto-col-types}
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c(as.Date('2006-01-01'), as.Date('2005-01-01'), as.Date('2004-01-01'), as.Date('2003-01-01') ),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Date', 'Availability' ),
+                      width= c(300, 300, 300)) 
+ excelTable(data=data, columns = columns)
+```
+![](inst/images/auto_col_type.gif)
+
+
+#### Toolbar {#toolbar}
+```r
+library(excelR)
+
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ))
+
+ columns = data.frame(title=c('Model', 'Date'),
+                      width= c(200, 200),
+                      type=c('text', 'calendar')) 
+ excelTable(data=data, columns = columns, showToolbar=TRUE)
+```
+![](inst/images/toolbar.png)
 
 ### Shiny Integration {#shiny-integration}
 

@@ -17,6 +17,10 @@
 ^inst\/images\/resizing.gif$
 ^inst\/images\/search.gif$
 ^inst\/images\/style.png$
+^inst\/images\/auto_col_type.gif$
+^inst\/images\/toolbar.png$
 ^index\.Rmd
 ^\.travis\.yml$
 ^appveyor\.yml$
+^CODE_OF_CONDUCT\.md
+^\.github

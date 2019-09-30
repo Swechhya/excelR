@@ -16,7 +16,7 @@ get_col_types <-  function(data) {
   }
   mappedColTypes <- sapply(colTypes, function(colType){
     switch(colType,
-           factor = "text",
+           factor = "dropdown",
            integer="integer",
            double="numeric",
            logical="checkbox",

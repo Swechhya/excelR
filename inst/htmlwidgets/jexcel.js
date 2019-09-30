@@ -82,12 +82,18 @@
         },
 
         onChange: function(obj){
+
           if (HTMLWidgets.shinyMode) {
         
+            var colType = this.columns.map(function(column){
+              return column.type;
+            })
+
             Shiny.setInputValue(obj.id, 
               {
                 data:this.data, 
-                colHeaders: this.colHeaders
+                colHeaders: this.colHeaders,
+                colType: colType,
               })
           }
         },
@@ -98,10 +104,15 @@
             var newColHeader = this.colHeaders;
             newColHeader[parseInt(column)] = newValue;
 
+            var colType = this.columns.map(function(column){
+              return column.type;
+            })
+
             Shiny.setInputValue(obj.id, 
               {
                 data:this.data, 
-                colHeaders: newColHeader
+                colHeaders: newColHeader,
+                colType: colType
               })
           }
         }

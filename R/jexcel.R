@@ -95,7 +95,7 @@ excelTable <-
     {
       # It either has to be dataframe or matrix
       if (is.data.frame(data) || is.matrix(data)) {
-        paramList$data <- jsonlite::toJSON(data, dataframe = "values")
+        paramList$data <- jsonlite::toJSON(data, dataframe = "values", na = "null")
       } else {
         stop("'data' must be either a matrix or a data frame, cannot be ",
              class(data))

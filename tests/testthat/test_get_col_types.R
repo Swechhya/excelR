@@ -13,13 +13,13 @@ test_that("'get_col_types' argument gives character if 'data' a dataframe or mat
 test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {
   d <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'))
 
-  testthat::expect_equal(get_col_types(data=d), c("text"))
+  testthat::expect_equal(get_col_types(data=d), c("dropdown"))
 })
 
 test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {
   d <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
                    Availability = c(TRUE, FALSE, TRUE, TRUE))
-  testthat::expect_equal(get_col_types(data=d), c("text", "checkbox"))
+  testthat::expect_equal(get_col_types(data=d), c("dropdown", "checkbox"))
 })
 
 test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {
@@ -27,7 +27,7 @@ test_that("'get_col_types' argument gives character if 'data' a dataframe or mat
                     Date=c(as.Date('2006-01-01'), as.Date('2005-01-01'),
                     as.Date('2004-01-01'), as.Date('2003-01-01' )))
 
-  testthat::expect_equal(get_col_types(data=d), c("text", "calendar"))
+  testthat::expect_equal(get_col_types(data=d), c("dropdown", "calendar"))
 })
 
 test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {

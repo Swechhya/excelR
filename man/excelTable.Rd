@@ -13,7 +13,8 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
   allowRenameColumn = TRUE, allowComments = FALSE, wordWrap = FALSE,
   selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
   pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
-  loadingSpin = FALSE, style = NULL)
+  loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
+  showToolbar = FALSE)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -95,7 +96,12 @@ single page pagination is enabled.}
 
 \item{style}{a named list to specify style for each cell. The name should be the cell address and the value should be
 a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+'type' is not specified in 'columns' attribute
 \code{style = list("A1" = "background-color: gray;")}.}
+
+\item{autoColTypes}{a boolean value indicating if column type should be automatically detected if}
+
+\item{showToolbar}{a boolean value indicating if toolbar should be shown. By default it is set to false.}
 }
 \description{
 This function is used to create excel like table

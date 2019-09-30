@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">excelR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -122,7 +122,8 @@
   <span class='kw'>allowRenameColumn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allowComments</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>wordWrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>selectionCopy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mergeCells</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>pagination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lazyLoading</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>loadingSpin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>loadingSpin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autoColTypes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,6 +146,7 @@ the header of the dataframe specifies the attribute.The following attributes are
    The default value is false.</p></li>
 <li><p><strong>render:</strong> a character value indicating if we want to render color for 'color' type instead of text. If render
    is provided a value 'square', color is rendered instead of text.</p></li>
+<li><p><strong>readOnly:</strong> a boolean value specifying the readonly column.</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -260,7 +262,16 @@ single page pagination is enabled.</p></td>
       <th>style</th>
       <td><p>a named list to specify style for each cell. The name should be the cell address and the value should be
 a valid 'css' string with styles.  For example, to style cell 'A1', the list should look like
+'type' is not specified in 'columns' attribute
 <code>style = list("A1" = "background-color: gray;")</code>.</p></td>
+    </tr>
+    <tr>
+      <th>autoColTypes</th>
+      <td><p>a boolean value indicating if column type should be automatically detected if</p></td>
+    </tr>
+    <tr>
+      <th>showToolbar</th>
+      <td><p>a boolean value indicating if toolbar should be shown. By default it is set to false.</p></td>
     </tr>
     </table>
     
@@ -281,7 +292,7 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 <span class='fu'>excelTable</span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>)
 
 <span class='co'>### no arguments with matrix ----</span>
-<span class='fu'>excelTable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>20</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>4</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='input'>
+<span class='fu'>excelTable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>20</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>4</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'>### some additional arguments with mtcars ----</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
 
@@ -298,8 +309,7 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
   <span class='kw'>columnDrag</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,  <span class='co'># allow dragging (reordering) of columns</span>
   <span class='kw'>rowDrag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='co'># disallow dragging (reordering) of rows</span>
   <span class='kw'>wordWrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='co'># wrap text in a cell if is longer than cell width</span>
-)
-
+)</div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'># an empty table</span>
 <span class='fu'>excelTable</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -318,7 +328,7 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
     <span class='st'>"C1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange;'</span>,
     <span class='st'>"D1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange;'</span>
   )
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div></pre>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -10,3 +10,5 @@ dependencies:
       - css/jexcel.min.css
       - css/japp.css
       - css/jsuites.css
+      - css/materialicon/material-icons.css
+      - css/custom.css

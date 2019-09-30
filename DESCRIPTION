@@ -1,10 +1,11 @@
 Package: excelR
 Type: Package
 Title: A Wrapper of the 'JavaScript' Library 'jExcel'
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(person("Swechhya", "Bista", email = "swechhyabista@gmail.com",
                   role = c("aut", "cre")),
-            person("Kent", "Russell", role = c("ctb")))
+            person("Kent", "Russell", role = c("ctb")),
+            person("Mārcis", "Bratka", role = c("ctb")))
 Maintainer: Swechhya Bista <swechhyabista@gmail.com>
 Description: An R interface to 'jExcel' library to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 License: MIT + file LICENSE

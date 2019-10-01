@@ -45,3 +45,14 @@ test_that("'autoColType' returns valid values when 'data' is not null and 'type'
 
    testthat::expect_message(suppressWarnings(excelTable(data = data)))
 })
+
+test_that("'autoColType' returns valid values when 'data' is not null and 'type' attribute in columns is not specified",{
+ data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
+                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+
+ columns = data.frame(title=c('Model', 'Availability'),
+                      width= c(300, 300))
+ excelTable(data=data, columns = columns)
+   testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type, 
+   c("dropdown", "checkbox"))
+})

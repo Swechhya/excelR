@@ -37,7 +37,7 @@ add_source_for_dropdown_type <- function(data, columns) {
 
     get_source_for_dropdown_type <- function(col){
       if(any(colWithDropdown == col)){
-      list(levels(data[,col]))
+      list(levels(data[[col]]))
       }else{
         0;
       }

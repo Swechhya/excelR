@@ -279,7 +279,7 @@ library(excelR)
 
  data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
                    Date=c(as.Date('2006-01-01'), as.Date('2005-01-01'), as.Date('2004-01-01'), as.Date('2003-01-01') ),
-                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+                   Availability = c(TRUE, FALSE, TRUE, TRUE), stringsAsFactors = FALSE)
 
  columns = data.frame(title=c('Model', 'Date', 'Availability' ),
                       width= c(300, 300, 300)) 

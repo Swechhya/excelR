@@ -1,3 +1,8 @@
+# excelR 0.3.1
+* fix bug when NA is present in data
+
+* fix bug date and character columns are converted to factor after editing any cell.
+
 # excelR 0.3.0
 
 * add feature to auto detect column type from the data

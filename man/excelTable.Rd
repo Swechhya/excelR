@@ -14,7 +14,7 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
   selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
   pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
   loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
-  showToolbar = FALSE)
+  showToolbar = FALSE, dateFormat = "DD/MM/YYYY")
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -102,6 +102,10 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 \item{autoColTypes}{a boolean value indicating if column type should be automatically detected if}
 
 \item{showToolbar}{a boolean value indicating if toolbar should be shown. By default it is set to false.}
+
+\item{dateFormat}{a  string value indicating the date format if column of type 'calendar' is present. By default the
+format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
+and 'YYYY-MM-DD'}
 }
 \description{
 This function is used to create excel like table

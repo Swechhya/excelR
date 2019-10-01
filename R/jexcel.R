@@ -202,6 +202,7 @@ excelTable <-
 
         colTypes <- get_col_types(data)
         columns <- data.frame(type=colTypes)
+        columns <- add_source_for_dropdown_type(data, columns)
         paramList$columns <- jsonlite::toJSON(columns)
       }else{
         if(!"type" %in% colnames(columns) && autoColTypes){
@@ -209,6 +210,7 @@ excelTable <-
 
           colTypes <- get_col_types(data)
           columns$type <- colTypes
+          columns <- add_source_for_dropdown_type(data, columns)
           paramList$columns <-
             jsonlite::toJSON(columns[colnames(columns) %in% colAttributes])
         }

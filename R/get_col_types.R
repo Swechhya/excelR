@@ -16,7 +16,7 @@ get_col_types <-  function(data) {
   }
   mappedColTypes <- sapply(colTypes, function(colType){
     switch(colType,
-           factor = "text",
+           factor = "dropdown",
            integer="integer",
            double="numeric",
            logical="checkbox",
@@ -26,4 +26,27 @@ get_col_types <-  function(data) {
   })
 
   as.character(mappedColTypes)
+}
+
+# If any of the auto detected column is dropdwon add the source
+add_source_for_dropdown_type <- function(data, columns) {
+
+# Check if any the data contains 'dropdown' type
+  if(any(as.vector(columns$type) == 'dropdown')){
+    colWithDropdown <- which(columns$type == 'dropdown')
+
+    get_source_for_dropdown_type <- function(col){
+      if(any(colWithDropdown == col)){
+      unique(as.vector(data[col]))
+      }else{
+        0;
+      }
+    }
+
+    # Make the required format
+    source <- sapply(seq(ncol(data)), get_source_for_dropdown_type)
+    columns$source <- I(source);
+  }
+
+  columns;
 }

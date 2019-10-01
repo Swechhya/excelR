@@ -23,7 +23,21 @@ excel_to_R <- function(excelObj) {
    if (!is.null(excelObj)) {
       data <- excelObj$data
       colHeaders <- excelObj$colHeaders
+      colType <- excelObj$colType
       dataOutput <- do.call(rbind.data.frame, data)
+
+      # Change text variables to character
+      if(any(colType == 'text')) {
+         characterVariables<- which(colType == 'text' )
+         dataOutput[characterVariables] <- lapply(dataOutput[characterVariables], as.character)
+      }
+
+      # Change clandar variables to date
+      if(any(colType == 'calendar')){
+         dateVariables<- which(colType == 'calendar' )
+         dataOutput[dateVariables] <- lapply(dataOutput[dateVariables], as.Date)
+      }
+
       rownames(dataOutput) <- NULL
       colnames(dataOutput) <- unlist(colHeaders)
 

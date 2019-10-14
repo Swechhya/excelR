@@ -26,16 +26,20 @@ excel_to_R <- function(excelObj) {
       colType <- excelObj$colType
       dataOutput <- do.call(rbind.data.frame, data)
 
-      # Change text variables to character
-      if(any(colType == 'text')) {
-         characterVariables<- which(colType == 'text' )
-         dataOutput[characterVariables] <- lapply(dataOutput[characterVariables], as.character)
-      }
-
       # Change clandar variables to date
       if(any(colType == 'calendar')){
          dateVariables<- which(colType == 'calendar' )
          dataOutput[dateVariables] <- lapply(dataOutput[dateVariables], as.Date)
+      }
+
+      #if any of the column is not dropdown but is factor convert it to character
+      factorCols <- which(sapply(dataOutput, is.factor))
+      dropdownCols <- which(colType == 'dropdown')
+
+      # At least one of the factor column is not dropdown,convert that to character
+      if(length(factorCols) != length(dropdownCols) || !all(factorCols == dropdownCols)){
+         diffCols <- setdiff(factorCols, dropdownCols)
+         dataOutput[diffCols] <- lapply(dataOutput[diffCols], as.character)
       }
 
       rownames(dataOutput) <- NULL

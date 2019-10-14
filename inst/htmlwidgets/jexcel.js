@@ -89,10 +89,16 @@
               return column.type;
             })
 
+            var colHeaders = this.colHeaders;
+
+            if(this.colHeaders.every(function (val){return (val ==='')})){
+              var colHeaders = this.columns.map(function(column){ return column.title})
+            }
+
             Shiny.setInputValue(obj.id, 
               {
                 data:this.data, 
-                colHeaders: this.colHeaders,
+                colHeaders: colHeaders,
                 colType: colType,
               })
           }
@@ -101,7 +107,14 @@
         onChangeHeader: function(obj, column, oldValue, newValue){
     
           if (HTMLWidgets.shinyMode) {
-            var newColHeader = this.colHeaders;
+
+            var colHeaders = this.colHeaders;
+
+            if(this.colHeaders.every(function (val){return (val ==='')})){
+              var colHeaders = this.columns.map(function(column){ return column.title})
+            }
+
+            var newColHeader = colHeaders;
             newColHeader[parseInt(column)] = newValue;
 
             var colType = this.columns.map(function(column){

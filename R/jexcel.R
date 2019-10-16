@@ -58,6 +58,7 @@
 #' \code{style = list("A1" = "background-color: gray;")}.
 #' @param autoColTypes a boolean value indicating if column type should be automatically detected if
 #' @param showToolbar a boolean value indicating if toolbar should be shown. By default it is set to false.
+#' @param updateTable a character value that defines Javascript function to create rules to customize the data should be shown to the user.
 #' @import jsonlite
 #' @import htmlwidgets
 #' @example inst/examples/examples_widget.R
@@ -91,7 +92,8 @@ excelTable <-
            loadingSpin = FALSE,
            style = NULL,
            autoColTypes = TRUE,
-           showToolbar = FALSE) {
+           showToolbar = FALSE,
+           updateTable = NULL) {
     # List of parameters to send to js
     paramList <- list()
 
@@ -405,6 +407,16 @@ excelTable <-
       }
 
       paramList$style <- style
+    }
+
+
+    if (!is.null(updateTable)) {
+      if (!is.character(updateTable) || length(updateTable) > 1) {
+        stop("'updateTable' must be a character value of length 1 but got ",
+             class(updateTable), " of length ", length(updateTable))
+      }
+
+      paramList$updateTable <- htmlwidgets::JS(updateTable)
     }
 
     # create the widget

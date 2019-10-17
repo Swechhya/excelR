@@ -12,11 +12,25 @@
         renderValue: function(params) {
           var rowHeight = params.hasOwnProperty("rowHeight") ? params.rowHeight : undefined;
           var showToolbar = params.hasOwnProperty("showToolbar")? params.showToolbar: false;
+          var dateFormat = params.hasOwnProperty("dateFormat")? params.dateFormat: "DD/MM/YYYY";
           var otherParams = {};
           Object.keys(params).forEach(function(ky) {
-            if(params !== "rowHeight" && params !== "otherParams") {
-              otherParams[ky] = params[ky];
+        
+
+            if(ky !== "dateFormat" && ky !== "rowHeight" && ky !== "otherParams" ) {
+              // Check if the key is columns and check if the type is calendar, if yes add the date format
+              if(ky === "columns" && dateFormat !== "DD/MM/YYYY"){
+                otherParams[ky] = params[ky].map(function(column){
+                  if(column.type === "calendar"){
+                    column.options = {format: dateFormat}
+                  }
+                  return column
+                })
+              
+                return;
             }
+          }
+            otherParams[ky] = params[ky];
           });
     
           var rows = (function() {

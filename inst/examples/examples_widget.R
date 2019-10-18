@@ -71,7 +71,7 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
             }
 }"
 
-excelR::excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
+excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
 
 
 
@@ -94,7 +94,8 @@ data <- jsonlite::fromJSON('[
 
 columns <- jsonlite::fromJSON('[
   { "type": "autocomplete", "title":"Country", "width":"250", "url":"/jexcel/countries" },
-  { "type": "autocomplete", "title":"Food", "width":"150", "source":["Apples","Bananas","Carrots","Oranges","Cheese","Kiwi","Chocolats","Pears"] },
+  { "type": "autocomplete", "title":"Food", "width":"150",
+      "source":["Apples","Bananas","Carrots","Oranges","Cheese","Kiwi","Chocolats","Pears"] },
   { "type": "checkbox", "title":"Stock", "width":"100" },
   { "type": "number", "title":"Price", "width":"100" }
   ]')
@@ -138,7 +139,7 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
         }
     }"
 
-excelR::excelTable(data = data, columns = columns, updateTable = htmlwidgets::JS(updateTable))
+excelTable(data = data, columns = columns, updateTable = htmlwidgets::JS(updateTable))
 
 
 

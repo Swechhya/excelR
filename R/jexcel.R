@@ -61,6 +61,7 @@
 #' @param dateFormat a  string value indicating the date format if column of type 'calendar' is present. By default the
 #' format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
 #' and 'YYYY-MM-DD'
+#' @param  ... other jexcel parameters, e.g., updateTable
 #' @import jsonlite
 #' @import htmlwidgets
 #' @example inst/examples/examples_widget.R
@@ -95,7 +96,9 @@ excelTable <-
            style = NULL,
            autoColTypes = TRUE,
            showToolbar = FALSE,
-           dateFormat = 'DD/MM/YYYY') {
+           dateFormat = 'DD/MM/YYYY',
+           ...
+           ) {
     # List of parameters to send to js
     paramList <- list()
 
@@ -422,6 +425,10 @@ excelTable <-
       }
 
     }
+
+    # Add al other parameters
+    paramList <- append(paramList, list(...))
+
 
     # create the widget
     htmlwidgets::createWidget(

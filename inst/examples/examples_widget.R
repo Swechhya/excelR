@@ -73,9 +73,6 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
 
 excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
 
-
-
-
 # exmaple from  https://bossanova.uk/jexcel/v3/examples/table-style
 library(excelR)
 
@@ -140,6 +137,3 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
     }"
 
 excelTable(data = data, columns = columns, updateTable = htmlwidgets::JS(updateTable))
-
-
-

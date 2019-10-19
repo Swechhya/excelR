@@ -426,7 +426,7 @@ excelTable <-
 
     }
 
-    # Add al other parameters
+    # Add all other parameters
     paramList <- append(paramList, list(...))
 
 

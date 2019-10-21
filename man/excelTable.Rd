@@ -14,7 +14,7 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
   selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
   pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
   loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
-  showToolbar = FALSE, dateFormat = "DD/MM/YYYY")
+  showToolbar = FALSE, dateFormat = "DD/MM/YYYY", ...)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -106,6 +106,8 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 \item{dateFormat}{a  string value indicating the date format if column of type 'calendar' is present. By default the
 format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
 and 'YYYY-MM-DD'}
+
+\item{...}{other jexcel parameters, e.g., updateTable}
 }
 \description{
 This function is used to create excel like table
@@ -165,4 +167,89 @@ excelTable(
     "D1" = 'background-color: orange;'
   )
 )
+
+### custom formating ----
+# conditional formats
+library(excelR)
+
+set.seed(1)
+data <- matrix(sample(c(-1:1), size = 25, replace = TRUE), nrow = 5)
+
+updateTable <- "function(instance, cell, col, row, val, label, cellName) {
+            val = cell.innerText;
+            if (val < 0) {
+                cell.style.color = 'red';
+            } else if (val > 0) {
+                cell.style.color = 'green';
+            } else {
+                cell.style.color = 'orange';
+            }
+}"
+
+excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
+
+# example from  https://bossanova.uk/jexcel/v3/examples/table-style
+library(excelR)
+
+data <- jsonlite::fromJSON('[
+    ["BR", "Cheese", 1, 3.99],
+    ["CA", "Apples", 0, 1.00],
+    ["US", "Carrots", 1, 0.90],
+    ["GB", "Oranges", 0, 1.20],
+    ["CH", "Chocolats", 1, 0.40],
+    ["AR", "Apples", 1, 1.10],
+    ["AR", "Bananas", 1, 0.30],
+    ["BR", "Oranges", 1, 0.95],
+    ["BR", "Pears", 1, 0.90],
+    ["", "", "", "=ROUND(SUM(D1:D8), 2)"]
+]')
+
+columns <- jsonlite::fromJSON('[
+  { "type": "autocomplete", "title":"Country", "width":"250", "url":"/jexcel/countries" },
+  { "type": "autocomplete", "title":"Food", "width":"150",
+      "source":["Apples","Bananas","Carrots","Oranges","Cheese","Kiwi","Chocolats","Pears"] },
+  { "type": "checkbox", "title":"Stock", "width":"100" },
+  { "type": "number", "title":"Price", "width":"100" }
+  ]')
+
+# url option to source in excelTable param columns
+columns$source[1] <- list(jsonlite::fromJSON(paste0('https://bossanova.uk', columns$url[1])))
+columns$url <- NULL
+
+updateTable <- "function(instance, cell, col, row, val, label, cellName) {
+        // Number formating
+        if (col == 3) {
+            // Get text
+            txt = cell.innerText;
+
+            // Format text
+            txt = txt.replace('$ ','');
+
+            // Update cell value
+            cell.innerHTML = '$ ' + txt;
+        }
+
+        // Odd row colours
+        if (row \% 2) {
+            cell.style.backgroundColor = '#edf3ff';
+        }
+
+        // Total row
+        if (row == 9) {
+            if (col < 3) {
+                cell.innerHTML = '';
+            }
+
+            if (col == 2) {
+                cell.innerHTML = 'Total';
+                cell.style.fontWeight = 'bold';
+            }
+
+            cell.className = '';
+            cell.style.backgroundColor = '#f46e42';
+            cell.style.color = '#ffffff';
+        }
+    }"
+
+excelTable(data = data, columns = columns, updateTable = htmlwidgets::JS(updateTable))
 }

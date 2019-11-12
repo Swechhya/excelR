@@ -23,16 +23,7 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
 The row number  of the dataframe specifies the column for which the attribute is to be specified and
 the header of the dataframe specifies the attribute.The following attributes are supported:
  \itemize{
-  \item \strong{title:} a string specifying title of the column or the column header.
-  \item \strong{width:} a numerical value specifying the width of the column.
-  \item \strong{type:} the type of the column. It can be one of text, numeric, hidden, dropdown,
-  autocomplete, checkbox, radio, calendar, image or color.
-  \item \strong{source:} a vector of options for column when the type is 'dropdwown'.
-   \item \strong{multiple:} a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
-   The default value is false.
-   \item \strong{render:} a character value indicating if we want to render color for 'color' type instead of text. If render
-   is provided a value 'square', color is rendered instead of text.
-  \item \strong{readOnly:} a boolean value specifying the readonly column.
+  \item \strong{...} jexcel columns parameters, e.g., title, width, type, source, multiple, render, readOnly
 }}
 
 \item{colHeaders}{a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
@@ -127,6 +118,26 @@ columns = data.frame(title=c('Model', 'Date', 'Availability'),
 
 excelTable(data=data, columns = columns)
 
+### columns parameter ----
+# https://bossanova.uk/jexcel/v3/examples/column-types
+data <- data.frame(Car = c("Jazz", "Civic"),
+                   Make = c("Honda", "Honda" ),
+                   Available = as.Date(c("2019-02-12", "2018-07-11")),
+                   Photo = c("", ""),
+                   Stock = c(TRUE, TRUE),
+                   Price = c(2000, 4000.01),
+                   Color = c("#777700", "#007777"))
+
+columns <- data.frame(title = colnames(data),
+                      type = c("hidden", "dropdown", "calendar",  "image", "checkbox", "numeric", "color"),
+                      width = c(120, 200, 200, 120, 80, 100, 100),
+                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA, NA)),
+                      mask = c(NA, NA, NA, NA, NA, "$ #.##,00", NA),
+                      decimal = c(NA, NA, NA, NA, NA, ",", NA),
+                      render = c(NA, NA, NA, NA, NA, NA, "square"))
+
+excelTable(data = data, columns = columns)
+
 ### no arguments with matrix ----
 excelTable(matrix(1:20, ncol=4))
 
@@ -188,7 +199,7 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
 
 excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
 
-# example from  https://bossanova.uk/jexcel/v3/examples/table-style
+# example from  https://bossanova.uk/jexcel/v3/examples/table-scripting
 library(excelR)
 
 data <- jsonlite::fromJSON('[

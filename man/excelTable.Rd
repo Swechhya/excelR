@@ -21,10 +21,7 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
 
 \item{columns}{a dataframe containing different column attributes.
 The row number  of the dataframe specifies the column for which the attribute is to be specified and
-the header of the dataframe specifies the attribute.The following attributes are supported:
- \itemize{
-  \item \strong{...} jexcel columns parameters, e.g., title, width, type, source, multiple, render, readOnly
-}}
+the header of the dataframe specifies the attribute, e.g., title, width, type, source, multiple, render, readOnly.}
 
 \item{colHeaders}{a vector of specifying the column headers. If both 'colHeaders' and 'title' attribute
 in columns is specified, the latter will take precedence.}

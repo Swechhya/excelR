@@ -19,12 +19,11 @@ test_that("'columns' argument gives error if number of column in 'data' is not e
             testthat::expect_error(excelTable(data = d, columns = c),  "number of rows in 'columns' should be equal to number of columns in 'data', expected number of rows in 'columns' to be 2 but got 4")
           })
 
-test_that("invalid 'columns' attributes should not be passed to htmlwidgets", {
+test_that("'columns' attributes length passed to htmlwidgets", {
   c <- data.frame(title=c('Model', 'Date', 'Availability'),
              length= c(300, 300, 300),
              type=c('text', 'calendar', 'checkbox'))
-  testthat::expect_warning(excelTable(columns = c))
-  testthat::expect_length(colnames(jsonlite::fromJSON(suppressWarnings(excelTable(columns = c)$x$columns))), 2)
+  testthat::expect_length(colnames(jsonlite::fromJSON(suppressWarnings(excelTable(columns = c)$x$columns))), 3)
 })
 
 test_that("all valid 'columns' attribute should be passed to htmlwidgets",{

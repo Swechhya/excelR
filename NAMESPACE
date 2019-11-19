@@ -3,6 +3,8 @@
 export(excelOutput)
 export(excelTable)
 export(excel_to_R)
+export(getComments)
 export(renderExcel)
+export(setComments)
 import(htmlwidgets)
 import(jsonlite)

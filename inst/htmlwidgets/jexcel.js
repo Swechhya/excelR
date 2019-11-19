@@ -6,7 +6,7 @@
     factory: function(el, width, height) {
       var elementId = el.id;
       var container = document.getElementById(elementId);
-      var excel =null;
+      var excel = null;
 
       return {
         renderValue: function(params) {
@@ -14,9 +14,8 @@
           var showToolbar = params.hasOwnProperty("showToolbar")? params.showToolbar: false;
           var dateFormat = params.hasOwnProperty("dateFormat")? params.dateFormat: "DD/MM/YYYY";
           var otherParams = {};
-          Object.keys(params).forEach(function(ky) {
-        
 
+          Object.keys(params).forEach(function(ky) {
             if(ky !== "dateFormat" && ky !== "rowHeight" && ky !== "otherParams" ) {
               // Check if the key is columns and check if the type is calendar, if yes add the date format
               if(ky === "columns" && dateFormat !== "DD/MM/YYYY"){
@@ -73,7 +72,8 @@
           // If new instance of the table   
           if(excel === null) {
             excel =  jexcel(container, otherParams);
-            
+            container.excel = excel;
+    
             return;
           }
 
@@ -88,6 +88,8 @@
           if(selection){
             excel.updateSelectionFromCoords(selection[0], selection[1], selection[2], selection[3]);
           }
+
+          container.excel = excel;
 
         },
 
@@ -146,3 +148,30 @@
       };
     }
   });
+
+
+  if (HTMLWidgets.shinyMode) {
+
+    // This function is used to set comments in the table
+    Shiny.addCustomMessageHandler("excelR:setComments", function(message) {
+   
+      var el = document.getElementById(message[0]);
+      if (el) {
+        el.excel.setComments(message[1], message[2]);
+      }
+    });
+
+    // This function is used to get comments  from table
+    Shiny.addCustomMessageHandler("excelR:getComments", function(message) {
+
+      var el = document.getElementById(message[0]);
+      if (el) {
+        var comments = message[1] ? el.excel.getComments(message[1]): el.excel.getComments(null);
+
+        Shiny.setInputValue(message[0], 
+          {
+           comments
+          });
+      }
+    });
+  }

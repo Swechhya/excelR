@@ -24,3 +24,4 @@
 ^appveyor\.yml$
 ^CODE_OF_CONDUCT\.md
 ^\.github
+^inst\/images\/getSetCommrnt.gif$

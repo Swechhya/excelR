@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • excelR</title>
+<title>Add comment to a specified cell — setComments • excelR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Add comment to a specified cell — setComments" />
+
+<meta property="og:description" content="This function is used to add comment to the specified cell" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -97,72 +100,62 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Add comment to a specified cell</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Swechhya/excelR/blob/master/R/comments.R'><code>R/comments.R</code></a></small>
+    <div class="hidden name"><code>setComments.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>This function is used to add comment to the specified cell</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="excelOutput.html">excelOutput()</a></code> </p>
-        </td>
-        <td><p>Helper function for using jexcel table in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="excelTable.html">excelTable()</a></code> </p>
-        </td>
-        <td><p>Create excel table using jexcel library</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="excel_to_R.html">excel_to_R()</a></code> </p>
-        </td>
-        <td><p>Convert excel object to data.frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getComments.html">getComments()</a></code> </p>
-        </td>
-        <td><p>This function is used to add comment to the specified cell</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renderExcel.html">renderExcel()</a></code> </p>
-        </td>
-        <td><p>Helper function for using jexcel table in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="setComments.html">setComments()</a></code> </p>
-        </td>
-        <td><p>Add comment to a specified cell</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>setComments</span>(<span class='no'>tableId</span>, <span class='no'>cellId</span>, <span class='no'>comment</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tableId</th>
+      <td><p>the id of the table for which the comment is to be added</p></td>
+    </tr>
+    <tr>
+      <th>cellId</th>
+      <td><p>the id of the cell for which the comment is to be added</p></td>
+    </tr>
+    <tr>
+      <th>comment</th>
+      <td><p>the comment that is to be added to the cell</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()) {
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>shiny</span>)
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(
+  <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(<span class='fu'><a href='excelOutput.html'>excelOutput</a></span>(<span class='st'>"table"</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>175</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(<span class='st'>'comment'</span>, <span class='st'>'Set Comments to cell A1'</span>)),
+     <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+         <span class='no'>output</span>$<span class='no'>table</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='renderExcel.html'>renderExcel</a></span>(<span class='fu'><a href='excelTable.html'>excelTable</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>iris</span>)))
+         <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>comment</span>,{
+             <span class='fu'>setComments</span>(<span class='st'>"table"</span>, <span class='st'>"A1"</span>, <span class='st'>"This is a comment"</span>)
+         })
+     }
+     )
+ }</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

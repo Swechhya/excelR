@@ -18,16 +18,16 @@ This function is used to add comment to the specified cell
 }
 \examples{
 if(interactive()) {
-library(shiny)
-library(excelR)
-shinyApp(
- ui = fluidPage(excelOutput("table", height = 175), actionButton('comment', 'Set Comments to cell A1')),
- server = function(input, output, session) {
-     output$table <- renderExcel(excelTable(data = head(iris)))
-     observeEvent(input$comment,{
-         setComments("table", "A1", "This is a comment")
-     })
-   }
- )
-}
+ library(shiny)
+ library(excelR)
+ shinyApp(
+  ui = fluidPage(excelOutput("table", height = 175), actionButton('comment', 'Set Comments to cell A1')),
+     server = function(input, output, session) {
+         output$table <- renderExcel(excelTable(data = head(iris)))
+         observeEvent(input$comment,{
+             setComments("table", "A1", "This is a comment")
+         })
+     }
+     )
+ }
 }

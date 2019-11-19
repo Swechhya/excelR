@@ -335,3 +335,38 @@ library(excelR)
     )
 
 ```
+#### Getting/Setting comment in Shiny (Currently only available in development version)
+```r
+library(excelR)
+library(shiny)
+
+shinyApp(
+  
+  ui = fluidPage(actionButton('set', 'Set Comments to cell A1'),
+                 actionButton('get', 'Get Comments from cell A1'),
+                 textAreaInput("fetchedComment", "Comments from A1:"),
+                 excelOutput("table", height = 175)),
+                 
+  server = function(input, output, session) {
+  
+      output$table <- renderExcel(excelTable(data = head(iris), allowComments = TRUE))
+      
+      # Set the comment
+      observeEvent(input$set,{
+        setComments("table", "A1", "This is a comment")
+      })
+      
+      # Get the comment
+      observeEvent(input$get,{
+          getComments("table", "A1")
+      })
+      
+      # Print the comment to the text area
+      observeEvent(input$table,{
+        updateTextAreaInput(session, 'fetchedComment', value = input$table$comment )
+      })
+    }
+  )
+
+```
+![](inst/images/getSetComment.gif)

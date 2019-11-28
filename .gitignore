@@ -1,5 +1,12 @@
 .Rproj.user
+.Ruserdata
 .Rhistory
 .RData
-.Ruserdata
+docs/inst/images/.DS_Store
+docs/inst/.DS_Store
+docs/.DS_Store
+inst/images/.DS_Store
+inst/htmlwidgets/lib/jexcel/css/materialicon/.DS_Store
+inst/htmlwidgets/lib/jexcel/css/.DS_Store
+R/.DS_Store
 .DS_Store

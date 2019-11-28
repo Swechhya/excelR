@@ -57,8 +57,16 @@ context("'colHeaders' and columns argument not specified")
 
 test_that("there should be warning if both 'colHeaders' and 'title' attribute of 'column' argument is not specified",{
   d <- matrix(1:10, ncol = 2)
-  testthat::expect_warning(excelTable(data=d))
+  c <-  data.frame( width= c(300, 300))
+  testthat::expect_warning(excelTable(data = d, columns = c ))
 })
+
+test_that("valid 'colHeaders' argument is passed to htmlwidget ", {
+  c <-  c(1, 2)
+  col <-  data.frame( width= c(300, 300))
+  testthat::expect_s3_class(suppressWarnings(excelTable(colHeaders = c, columns = col))$x$colHeaders, "json")
+})
+
 
 
 

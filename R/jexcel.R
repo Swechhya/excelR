@@ -59,8 +59,7 @@
 #' @param autoColTypes a boolean value indicating if column type should be automatically detected if
 #' @param showToolbar a boolean value indicating if toolbar should be shown. By default it is set to false.
 #' @param dateFormat a  string value indicating the date format if column of type 'calendar' is present. By default the
-#' format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
-#' and 'YYYY-MM-DD'
+#' format is 'DD/MM/YYYY'.
 #' @param digits number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.
 #' @param  ... other jexcel parameters, e.g., updateTable
 #' @import jsonlite
@@ -418,14 +417,7 @@ excelTable <-
 
     # Check date format
     if(!is.null(dateFormat)){
-      validDateFormats <- c('DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY', 'YYYY-MM-DD' )
-      if (!dateFormat %in% validDateFormats)  {
-        warning("Invalid dateFormat ", dateFormat, " specified, using 'DD/MM/YYYY' instead.")
-        paramList$dateFormat <- 'DD/MM/YYYY'
-      }else{
         paramList$dateFormat <- dateFormat
-      }
-
     }
 
     # Add all other parameters

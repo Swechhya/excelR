@@ -1,5 +1,5 @@
 .Rproj.user
+.Ruserdata
+inst/.DS_Store
 .Rhistory
 .RData
-.Ruserdata
-.DS_Store

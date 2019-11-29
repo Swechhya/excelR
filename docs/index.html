@@ -416,6 +416,32 @@
 <span id="cb23-30"><a href="#cb23-30"></a>  )</span></code></pre></div>
 <p><img src="inst/images/getSetComment.gif"></p>
 </div>
+<div id="getting-selected-data-in-shiny-currently-only-available-in-development-version" class="section level4">
+<h4 class="hasAnchor">
+<a href="#getting-selected-data-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting selected data in Shiny (Currently only available in development version)</h4>
+<pre><code><a href="https://www.rdocumentation.org/packages/base/topics/library">library(excelR)
+library(shiny)
+
+shinyApp(
+  
+  ui = fluidPage( tags$h6("Selected Data:"),
+                  tableOutput("selectedData"),
+                  tags$h6("Excel Table:"),
+                 excelOutput("table", height = 175)),
+  
+  server = function(input, output, session) {
+    
+    output$table &lt;- renderExcel(excelTable(data = head(iris), allowComments = TRUE))
+    
+    # Print the selected data in table
+    observeEvent(input$table,{
+      output$selectedData &lt;- renderTable(get_selected_data(input$table))
+    })
+  }
+)
+</a></code></pre>
+<p><img src="inst/images/selected_data.gif"></p>
+</div>
 </div>
 </div>
 </div>

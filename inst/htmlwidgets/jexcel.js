@@ -51,6 +51,7 @@
           otherParams.onsort = this.onChange;
           otherParams.onmoverow = this.onChange;
           otherParams.onchangeheader = this.onChangeHeader;
+          otherParams.onselection = this.onSelection;
 
           if(showToolbar) {
             // Add toolbar to param
@@ -144,6 +145,37 @@
                 colType: colType
               })
           }
+        },
+        onSelection: function(obj, borderLeft, borderTop, borderRight, borderBottom, origin){
+          if (HTMLWidgets.shinyMode) {
+          // Get arrays between top to bottom, this will return the array of array for selected data
+           var data =  this.data.reduce(function(acc, value, index){
+    
+            if(index >= borderTop && index <= borderBottom){
+              
+              var val = value.reduce(function(innerAcc, innerValue, innerIndex){
+    
+                if(innerIndex >= borderLeft && innerIndex <= borderRight){
+         
+                   innerAcc.push(innerValue);
+                }
+
+                return innerAcc;
+              },[])
+
+              acc.push(val);
+            }
+
+            return acc;
+           },[])
+       
+           Shiny.setInputValue(obj.id, 
+            {
+              data: data, 
+          
+            })
+
+          }
         }
       };
     }
@@ -174,4 +206,4 @@
           });
       }
     });
-  }
+}

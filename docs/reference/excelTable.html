@@ -123,7 +123,7 @@
   <span class='kw'>selectionCopy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mergeCells</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>pagination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lazyLoading</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>loadingSpin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autoColTypes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dateFormat</span> <span class='kw'>=</span> <span class='st'>"DD/MM/YYYY"</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dateFormat</span> <span class='kw'>=</span> <span class='st'>"DD/MM/YYYY"</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -276,8 +276,11 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
     <tr>
       <th>dateFormat</th>
       <td><p>a  string value indicating the date format if column of type 'calendar' is present. By default the
-format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
-and 'YYYY-MM-DD'</p></td>
+format is 'DD/MM/YYYY'.</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>number of decimal digits passed to <code><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON</a></code>. By default it is set to 4, use <code>NA</code> for max precision.</p></td>
     </tr>
     <tr>
       <th>...</th>

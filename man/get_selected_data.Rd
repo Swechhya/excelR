@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_selected_data.R
 \name{get_selected_data}
 \alias{get_selected_data}
-\title{Convert excel object to data.frame}
+\title{Get selected cells from excel table}
 \usage{
 get_selected_data(excelObj)
 }
@@ -10,7 +10,7 @@ get_selected_data(excelObj)
 \item{excelObj}{the json data retuned from excel table}
 }
 \description{
-This function is used to the data selected in jexcel table
+This function is used to the data selected in excel table
 }
 \examples{
 if(interactive()){

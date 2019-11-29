@@ -1,6 +1,6 @@
-#' Convert excel object to data.frame
+#' Get selected cells from excel table
 #'
-#' This function is used to the data selected in jexcel table
+#' This function is used to the data selected in excel table
 #' @export
 #' @param excelObj the json data retuned from excel table
 #' @examples

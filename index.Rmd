@@ -373,7 +373,7 @@ shinyApp(
 
 #### Getting selected data in Shiny  (Currently only available in development version)
 
-```
+```r
 library(excelR)
 library(shiny)
 

@@ -26,6 +26,22 @@ test_that("'columns' attributes length passed to htmlwidgets", {
   testthat::expect_length(colnames(jsonlite::fromJSON(suppressWarnings(excelTable(columns = c)$x$columns))), 3)
 })
 
+test_that("'columns' attributes data.frame", {
+  c <- data.frame(title = c("Car", "Make", "Available", "Stock", "Price", "Color"),
+                  type = c("hidden", "dropdown", "calendar", "checkbox", "numeric", "color"),
+                  width = c(120, 200, 200, 80, 100, 100),
+                  source = NA,
+                  mask = c(NA, NA, NA, NA, "$ #.##,00", NA),
+                  decimal = c(NA, NA, NA, NA, ",", NA),
+                  render = c(NA, NA, NA, NA, NA, "square"),
+                  stringsAsFactors = FALSE)
+
+  # list, not AsIs class
+  c$source <- list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA)
+
+  testthat::expect_equal(c, jsonlite::fromJSON(suppressWarnings(excelTable(columns = c)$x$columns)))
+})
+
 test_that("all valid 'columns' attribute should be passed to htmlwidgets",{
   c <- data.frame(title = c(1), width = c(1), type = c(1), source = c(1), multiple =c(1), render = c(1))
   testthat::expect_length(colnames(jsonlite::fromJSON(excelTable(columns = c)$x$columns)), 6)

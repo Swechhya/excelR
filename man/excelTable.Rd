@@ -4,40 +4,17 @@
 \alias{excelTable}
 \title{Create excel table using jexcel library}
 \usage{
-excelTable(
-  data = NULL,
-  columns = NULL,
-  colHeaders = NULL,
-  rowHeight = NULL,
-  nestedHeaders = NULL,
-  defaultColWidth = NULL,
-  minDimensions = NULL,
-  columnSorting = TRUE,
-  columnDrag = FALSE,
-  columnResize = TRUE,
-  rowResize = FALSE,
-  rowDrag = TRUE,
-  editable = TRUE,
-  allowInsertRow = TRUE,
-  allowInsertColumn = TRUE,
-  allowDeleteRow = TRUE,
-  allowDeleteColumn = TRUE,
-  allowRenameColumn = TRUE,
-  allowComments = FALSE,
-  wordWrap = FALSE,
-  selectionCopy = TRUE,
-  mergeCells = NULL,
-  search = FALSE,
-  pagination = NULL,
-  fullscreen = FALSE,
-  lazyLoading = FALSE,
-  loadingSpin = FALSE,
-  style = NULL,
-  autoColTypes = TRUE,
-  showToolbar = FALSE,
-  dateFormat = "DD/MM/YYYY",
-  ...
-)
+excelTable(data = NULL, columns = NULL, colHeaders = NULL,
+  rowHeight = NULL, nestedHeaders = NULL, defaultColWidth = NULL,
+  minDimensions = NULL, columnSorting = TRUE, columnDrag = FALSE,
+  columnResize = TRUE, rowResize = FALSE, rowDrag = TRUE,
+  editable = TRUE, allowInsertRow = TRUE, allowInsertColumn = TRUE,
+  allowDeleteRow = TRUE, allowDeleteColumn = TRUE,
+  allowRenameColumn = TRUE, allowComments = FALSE, wordWrap = FALSE,
+  selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
+  pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
+  loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
+  showToolbar = FALSE, dateFormat = "DD/MM/YYYY", digits = 4, ...)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -115,8 +92,9 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 \item{showToolbar}{a boolean value indicating if toolbar should be shown. By default it is set to false.}
 
 \item{dateFormat}{a  string value indicating the date format if column of type 'calendar' is present. By default the
-format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
-and 'YYYY-MM-DD'}
+format is 'DD/MM/YYYY'.}
+
+\item{digits}{number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.}
 
 \item{...}{other jexcel parameters, e.g., updateTable}
 }

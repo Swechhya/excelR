@@ -47,8 +47,8 @@
 #' @param autoColTypes a boolean value indicating if column type should be automatically detected if
 #' @param showToolbar a boolean value indicating if toolbar should be shown. By default it is set to false.
 #' @param dateFormat a  string value indicating the date format if column of type 'calendar' is present. By default the
-#' format is 'DD/MM/YYYY'. Valid date formats are 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY'
-#' and 'YYYY-MM-DD'
+#' format is 'DD/MM/YYYY'.
+#' @param digits number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.
 #' @param  ... other jexcel parameters, e.g., updateTable
 #' @import jsonlite
 #' @import htmlwidgets
@@ -85,6 +85,7 @@ excelTable <-
            autoColTypes = TRUE,
            showToolbar = FALSE,
            dateFormat = 'DD/MM/YYYY',
+           digits = 4,
            ...
            ) {
     # List of parameters to send to js
@@ -95,7 +96,7 @@ excelTable <-
     {
       # It either has to be dataframe or matrix
       if (is.data.frame(data) || is.matrix(data)) {
-        paramList$data <- jsonlite::toJSON(data, dataframe = "values", na = "null")
+        paramList$data <- jsonlite::toJSON(data, dataframe = "values", na = "null", digits = digits)
       } else {
         stop("'data' must be either a matrix or a data frame, cannot be ",
              class(data))
@@ -392,14 +393,7 @@ excelTable <-
 
     # Check date format
     if(!is.null(dateFormat)){
-      validDateFormats <- c('DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY', 'MM-DD-YYYY', 'YYYY-MM-DD' )
-      if (!dateFormat %in% validDateFormats)  {
-        warning("Invalid dateFormat ", dateFormat, " specified, using 'DD/MM/YYYY' instead.")
-        paramList$dateFormat <- 'DD/MM/YYYY'
-      }else{
         paramList$dateFormat <- dateFormat
-      }
-
     }
 
     # Add all other parameters

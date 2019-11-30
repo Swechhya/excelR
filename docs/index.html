@@ -381,6 +381,66 @@
 <span id="cb22-12"><a href="#cb22-12"></a>      }</span>
 <span id="cb22-13"><a href="#cb22-13"></a>    )</span></code></pre></div>
 </div>
+<div id="gettingsetting-comment-in-shiny-currently-only-available-in-development-version" class="section level4">
+<h4 class="hasAnchor">
+<a href="#gettingsetting-comment-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting/Setting comment in Shiny (Currently only available in development version)</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  </span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'set'</span>, <span class="st">'Set Comments to cell A1'</span>),</span>
+<span id="cb23-7"><a href="#cb23-7"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'get'</span>, <span class="st">'Get Comments from cell A1'</span>),</span>
+<span id="cb23-8"><a href="#cb23-8"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/textAreaInput">textAreaInput</a></span>(<span class="st">"fetchedComment"</span>, <span class="st">"Comments from A1:"</span>),</span>
+<span id="cb23-9"><a href="#cb23-9"></a>                 <span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>, <span class="dt">height =</span> <span class="dv">175</span>)),</span>
+<span id="cb23-10"><a href="#cb23-10"></a>                 </span>
+<span id="cb23-11"><a href="#cb23-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb23-12"><a href="#cb23-12"></a>  </span>
+<span id="cb23-13"><a href="#cb23-13"></a>      output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb23-14"><a href="#cb23-14"></a>      </span>
+<span id="cb23-15"><a href="#cb23-15"></a>      <span class="co"># Set the comment</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>set,{</span>
+<span id="cb23-17"><a href="#cb23-17"></a>        <span class="kw"><a href="reference/setComments.html">setComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>, <span class="st">"This is a comment"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18"></a>      })</span>
+<span id="cb23-19"><a href="#cb23-19"></a>      </span>
+<span id="cb23-20"><a href="#cb23-20"></a>      <span class="co"># Get the comment</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>get,{</span>
+<span id="cb23-22"><a href="#cb23-22"></a>          <span class="kw"><a href="reference/getComments.html">getComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>)</span>
+<span id="cb23-23"><a href="#cb23-23"></a>      })</span>
+<span id="cb23-24"><a href="#cb23-24"></a>      </span>
+<span id="cb23-25"><a href="#cb23-25"></a>      <span class="co"># Print the comment to the text area</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
+<span id="cb23-27"><a href="#cb23-27"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/updateTextAreaInput">updateTextAreaInput</a></span>(session, <span class="st">'fetchedComment'</span>, <span class="dt">value =</span> input<span class="op">$</span>table<span class="op">$</span>comment )</span>
+<span id="cb23-28"><a href="#cb23-28"></a>      })</span>
+<span id="cb23-29"><a href="#cb23-29"></a>    }</span>
+<span id="cb23-30"><a href="#cb23-30"></a>  )</span></code></pre></div>
+<p><img src="inst/images/getSetComment.gif"></p>
+</div>
+<div id="getting-selected-data-in-shiny-currently-only-available-in-development-version" class="section level4">
+<h4 class="hasAnchor">
+<a href="#getting-selected-data-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting selected data in Shiny (Currently only available in development version)</h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  </span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>( tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Selected Data:"</span>),</span>
+<span id="cb24-7"><a href="#cb24-7"></a>                  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/tableOutput">tableOutput</a></span>(<span class="st">"selectedData"</span>),</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                  tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Excel Table:"</span>),</span>
+<span id="cb24-9"><a href="#cb24-9"></a>                 <span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>, <span class="dt">height =</span> <span class="dv">175</span>)),</span>
+<span id="cb24-10"><a href="#cb24-10"></a>  </span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    </span>
+<span id="cb24-13"><a href="#cb24-13"></a>    output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb24-14"><a href="#cb24-14"></a>    </span>
+<span id="cb24-15"><a href="#cb24-15"></a>    <span class="co"># Print the selected data in table</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
+<span id="cb24-17"><a href="#cb24-17"></a>      output<span class="op">$</span>selectedData &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderTable">renderTable</a></span>(<span class="kw"><a href="reference/get_selected_data.html">get_selected_data</a></span>(input<span class="op">$</span>table))</span>
+<span id="cb24-18"><a href="#cb24-18"></a>    })</span>
+<span id="cb24-19"><a href="#cb24-19"></a>  }</span>
+<span id="cb24-20"><a href="#cb24-20"></a>)</span></code></pre></div>
+<p><img src="inst/images/selected_data.gif"></p>
+</div>
 </div>
 </div>
 </div>

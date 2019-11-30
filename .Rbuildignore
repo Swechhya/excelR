@@ -24,3 +24,5 @@
 ^appveyor\.yml$
 ^CODE_OF_CONDUCT\.md
 ^\.github
+^inst\/images\/getSetComment.gif$
+^inst\/images\/selected_data.gif$

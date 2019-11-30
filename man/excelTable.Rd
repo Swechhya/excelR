@@ -4,17 +4,40 @@
 \alias{excelTable}
 \title{Create excel table using jexcel library}
 \usage{
-excelTable(data = NULL, columns = NULL, colHeaders = NULL,
-  rowHeight = NULL, nestedHeaders = NULL, defaultColWidth = NULL,
-  minDimensions = NULL, columnSorting = TRUE, columnDrag = FALSE,
-  columnResize = TRUE, rowResize = FALSE, rowDrag = TRUE,
-  editable = TRUE, allowInsertRow = TRUE, allowInsertColumn = TRUE,
-  allowDeleteRow = TRUE, allowDeleteColumn = TRUE,
-  allowRenameColumn = TRUE, allowComments = FALSE, wordWrap = FALSE,
-  selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
-  pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
-  loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
-  showToolbar = FALSE, dateFormat = "DD/MM/YYYY", ...)
+excelTable(
+  data = NULL,
+  columns = NULL,
+  colHeaders = NULL,
+  rowHeight = NULL,
+  nestedHeaders = NULL,
+  defaultColWidth = NULL,
+  minDimensions = NULL,
+  columnSorting = TRUE,
+  columnDrag = FALSE,
+  columnResize = TRUE,
+  rowResize = FALSE,
+  rowDrag = TRUE,
+  editable = TRUE,
+  allowInsertRow = TRUE,
+  allowInsertColumn = TRUE,
+  allowDeleteRow = TRUE,
+  allowDeleteColumn = TRUE,
+  allowRenameColumn = TRUE,
+  allowComments = FALSE,
+  wordWrap = FALSE,
+  selectionCopy = TRUE,
+  mergeCells = NULL,
+  search = FALSE,
+  pagination = NULL,
+  fullscreen = FALSE,
+  lazyLoading = FALSE,
+  loadingSpin = FALSE,
+  style = NULL,
+  autoColTypes = TRUE,
+  showToolbar = FALSE,
+  dateFormat = "DD/MM/YYYY",
+  ...
+)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -120,18 +143,17 @@ excelTable(data=data, columns = columns)
 data <- data.frame(Car = c("Jazz", "Civic"),
                    Make = c("Honda", "Honda" ),
                    Available = as.Date(c("2019-02-12", "2018-07-11")),
-                   Photo = c("", ""),
                    Stock = c(TRUE, TRUE),
                    Price = c(2000, 4000.01),
                    Color = c("#777700", "#007777"))
 
 columns <- data.frame(title = colnames(data),
-                      type = c("hidden", "dropdown", "calendar",  "image", "checkbox", "numeric", "color"),
-                      width = c(120, 200, 200, 120, 80, 100, 100),
-                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA, NA)),
-                      mask = c(NA, NA, NA, NA, NA, "$ #.##,00", NA),
-                      decimal = c(NA, NA, NA, NA, NA, ",", NA),
-                      render = c(NA, NA, NA, NA, NA, NA, "square"))
+                      type = c("hidden", "dropdown", "calendar", "checkbox", "numeric", "color"),
+                      width = c(120, 200, 200, 80, 100, 100),
+                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA)),
+                      mask = c(NA, NA, NA, NA, "$ #.##,00", NA),
+                      decimal = c(NA, NA, NA, NA, ",", NA),
+                      render = c(NA, NA, NA, NA, NA, "square"))
 
 excelTable(data = data, columns = columns)
 

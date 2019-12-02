@@ -91,7 +91,7 @@
               { type:'color', content:'format_color_fill', k:'background-color' },
           ]
           }
-debugger;
+
           // If new instance of the table   
           if(excel === null) {
             excel =  jexcel(container, otherParams);

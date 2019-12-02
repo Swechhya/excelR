@@ -12,6 +12,25 @@ columns = data.frame(title=c('Model', 'Date', 'Availability'),
 
 excelTable(data=data, columns = columns)
 
+### columns parameter ----
+# https://bossanova.uk/jexcel/v3/examples/column-types
+data <- data.frame(Car = c("Jazz", "Civic"),
+                   Make = c("Honda", "Honda" ),
+                   Available = as.Date(c("2019-02-12", "2018-07-11")),
+                   Stock = c(TRUE, TRUE),
+                   Price = c(2000, 4000.01),
+                   Color = c("#777700", "#007777"))
+
+columns <- data.frame(title = colnames(data),
+                      type = c("hidden", "dropdown", "calendar", "checkbox", "numeric", "color"),
+                      width = c(120, 200, 200, 80, 100, 100),
+                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA)),
+                      mask = c(NA, NA, NA, NA, "$ #.##,00", NA),
+                      decimal = c(NA, NA, NA, NA, ",", NA),
+                      render = c(NA, NA, NA, NA, NA, "square"))
+
+excelTable(data = data, columns = columns)
+
 ### no arguments with matrix ----
 excelTable(matrix(1:20, ncol=4))
 
@@ -73,7 +92,7 @@ updateTable <- "function(instance, cell, col, row, val, label, cellName) {
 
 excelTable(data = data, updateTable = htmlwidgets::JS(updateTable))
 
-# example from  https://bossanova.uk/jexcel/v3/examples/table-style
+# example from  https://bossanova.uk/jexcel/v3/examples/table-scripting
 library(excelR)
 
 data <- jsonlite::fromJSON('[

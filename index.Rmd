@@ -147,7 +147,7 @@ library(excelR)
 ```
 ![](inst/images/color_type.gif)
 
-- Image
+- Image (Currently only available in development version)
 ```r
 library(excelR)
 

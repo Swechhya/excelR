@@ -49,6 +49,10 @@
 #' @param dateFormat a  string value indicating the date format if column of type 'calendar' is present. By default the
 #' format is 'DD/MM/YYYY'.
 #' @param digits number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.
+#' @param autoWidth a boolean value indicating should the width of the column be automatically adjusted. By default this value is set to TRUE.
+#' The width value specified in 'columns' param will have higher precedence.
+#' @param autoFill a boolen value indicating wheather the excel table fill the container. By default this value is set to false.
+#' The width value specified in 'columns' param will have highest precendence followed by autoWidth.
 #' @param  ... other jexcel parameters, e.g., updateTable
 #' @import jsonlite
 #' @import htmlwidgets
@@ -86,6 +90,8 @@ excelTable <-
            showToolbar = FALSE,
            dateFormat = 'DD/MM/YYYY',
            digits = 4,
+           autoWidth = TRUE,
+           autoFill = FALSE,
            ...
            ) {
     # List of parameters to send to js
@@ -330,7 +336,9 @@ excelTable <-
       "fullscreen",
       "lazyLoading",
       "loadingSpin",
-      "showToolbar"
+      "showToolbar",
+      "autoWidth",
+      "autoFill"
     )) {
       argvalue <- get(arg)
       if(!is.null(argvalue)) {

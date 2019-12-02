@@ -13,11 +13,13 @@
           var rowHeight = params.hasOwnProperty("rowHeight") ? params.rowHeight : undefined;
           var showToolbar = params.hasOwnProperty("showToolbar")? params.showToolbar: false;
           var dateFormat = params.hasOwnProperty("dateFormat")? params.dateFormat: "DD/MM/YYYY";
-          var imageColIndex = undefined
+          var autoWidth = params.hasOwnProperty("autoWidth")? params.autoWidth: true;
+          var autoFill = params.hasOwnProperty("autoFill")? params.autoFill: false;
+          var imageColIndex = undefined;
           var otherParams = {};
 
           Object.keys(params).forEach(function(ky) {
-            if(ky !== "dateFormat" && ky !== "rowHeight" && ky !== "otherParams" ) {
+            if(ky !== "dateFormat" && ky !== "rowHeight" && ky !== "autoWidth" && ky !== "otherParams" ) {
               // Check if the key is columns and check if the type is calendar, if yes add the date format
               if(ky === "columns"){
                 otherParams[ky] = params[ky].map(function(column, index){
@@ -89,12 +91,22 @@
               { type:'color', content:'format_color_fill', k:'background-color' },
           ]
           }
-
+debugger;
           // If new instance of the table   
           if(excel === null) {
-            excel =  jexcel(container, otherParams,);
+            excel =  jexcel(container, otherParams);
+
+            if(autoWidth){
+              excel.table.setAttribute("style", "width: auto; height: auto; white-space: normal;")
+            }
+
+            if(!autoWidth && autoFill){
+              excel.table.setAttribute("style", "width: 100%; height: 100%; white-space: normal;")
+              container.getElementsByClassName("jexcel_content")[0].setAttribute("style", "height:100%")
+            }
+
             container.excel = excel;
-    
+
             return;
           }
 
@@ -108,6 +120,16 @@
           
           if(selection){
             excel.updateSelectionFromCoords(selection[0], selection[1], selection[2], selection[3]);
+          }
+
+
+          if(autoWidth){
+            excel.table.setAttribute("style", "width: auto; height: auto; white-space: normal;")
+          }
+
+          if(!autoWidth && autoFill){
+            excel.table.setAttribute("style", "width: 100%; height: 100%; white-space: normal;")
+            container.getElementsByClassName("jexcel_content")[0].setAttribute("style", "height:100%")
           }
 
           container.excel = excel;

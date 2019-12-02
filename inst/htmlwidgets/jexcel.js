@@ -28,7 +28,7 @@
 
                   // If image url is specified, we'll need to pass it to jexcel table only
                   // in updateTable function,so here we'll first find the column index. This 
-                  if(column.type === "image" && "data:image" != r.substr(0, 10)){
+                  if(column.type === "image"){
                     imageColIndex = index;
                   }
                   return column;
@@ -55,7 +55,7 @@
           //Lets add the image url in the update table function
           if(imageColIndex){
             otherParams.updateTable = function (instance, cell, col, row, val, id) {
-              if (col == imageColIndex) {
+              if (col == imageColIndex && "data:image" != val.substr(0, 10)) {
                   cell.innerHTML = '<img src="' + val + '" style="width:100px;height:100px">';
               }
             }

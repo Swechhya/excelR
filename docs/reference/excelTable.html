@@ -136,18 +136,7 @@
       <th>columns</th>
       <td><p>a dataframe containing different column attributes.
 The row number  of the dataframe specifies the column for which the attribute is to be specified and
-the header of the dataframe specifies the attribute.The following attributes are supported:</p><ul>
-<li><p><strong>title:</strong> a string specifying title of the column or the column header.</p></li>
-<li><p><strong>width:</strong> a numerical value specifying the width of the column.</p></li>
-<li><p><strong>type:</strong> the type of the column. It can be one of text, numeric, hidden, dropdown,
-  autocomplete, checkbox, radio, calendar, image or color.</p></li>
-<li><p><strong>source:</strong> a vector of options for column when the type is 'dropdwown'.</p></li>
-<li><p><strong>multiple:</strong> a boolean value indicating if the multiple options can be selected when the type is 'dropdown'.
-   The default value is false.</p></li>
-<li><p><strong>render:</strong> a character value indicating if we want to render color for 'color' type instead of text. If render
-   is provided a value 'square', color is rendered instead of text.</p></li>
-<li><p><strong>readOnly:</strong> a boolean value specifying the readonly column.</p></li>
-</ul></td>
+the header of the dataframe specifies the attribute, e.g., title, width, type, source, multiple, render, readOnly.</p></td>
     </tr>
     <tr>
       <th>colHeaders</th>
@@ -304,6 +293,25 @@ format is 'DD/MM/YYYY'.</p></td>
 
 <span class='fu'>excelTable</span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>)
 
+<span class='co'>### columns parameter ----</span>
+<span class='co'># https://bossanova.uk/jexcel/v3/examples/column-types</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>Car</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Jazz"</span>, <span class='st'>"Civic"</span>),
+                   <span class='kw'>Make</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Honda"</span>, <span class='st'>"Honda"</span> ),
+                   <span class='kw'>Available</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-02-12"</span>, <span class='st'>"2018-07-11"</span>)),
+                   <span class='kw'>Stock</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>),
+                   <span class='kw'>Price</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>4000.01</span>),
+                   <span class='kw'>Color</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"#777700"</span>, <span class='st'>"#007777"</span>))
+
+<span class='no'>columns</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>data</span>),
+                      <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hidden"</span>, <span class='st'>"dropdown"</span>, <span class='st'>"calendar"</span>, <span class='st'>"checkbox"</span>, <span class='st'>"numeric"</span>, <span class='st'>"color"</span>),
+                      <span class='kw'>width</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>120</span>, <span class='fl'>200</span>, <span class='fl'>200</span>, <span class='fl'>80</span>, <span class='fl'>100</span>, <span class='fl'>100</span>),
+                      <span class='kw'>source</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/AsIs'>I</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Honda"</span>, <span class='st'>"Alfa Romeo"</span>, <span class='st'>"Audi"</span>, <span class='st'>"Bmw"</span>), <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>)),
+                      <span class='kw'>mask</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"$ #.##,00"</span>, <span class='fl'>NA</span>),
+                      <span class='kw'>decimal</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>","</span>, <span class='fl'>NA</span>),
+                      <span class='kw'>render</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"square"</span>))
+
+<span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>)
+
 <span class='co'>### no arguments with matrix ----</span>
 <span class='fu'>excelTable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>20</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>4</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'>### some additional arguments with mtcars ----</span>
@@ -361,7 +369,7 @@ format is 'DD/MM/YYYY'.</p></td>
 }"</span>
 
 <span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>updateTable</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='no'>updateTable</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
-<span class='co'># example from  https://bossanova.uk/jexcel/v3/examples/table-style</span>
+<span class='co'># example from  https://bossanova.uk/jexcel/v3/examples/table-scripting</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
 
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>fromJSON</a></span>(<span class='st'>'[

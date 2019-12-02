@@ -147,6 +147,22 @@ library(excelR)
 ```
 ![](inst/images/color_type.gif)
 
+- Image
+```r
+library(excelR)
+
+data <- data.frame(Title = c("Paul Parker", "Mark Ellen"),
+                   Cover =  c("https://marketplace.canva.com/MACcZp2p4po/2/0/thumbnail_large/canva-black-white-acoustic-album-cover-MACcZp2p4po.jpg",                          "https://marketplace.canva.com/MACcY55adP4/1/0/thumbnail_large/canva-black-and-white-masculine-acoustic-modern-album-cover-MACcY55adP4.jpg"))
+
+columns <- data.frame(title = colnames(data),
+                      type = c("text", "image"),
+                      width = c(120, 200))
+
+excelTable(data = data, columns = columns)
+
+```
+![](inst/images/image.png)
+
 #### Row and Column Resizing{#resizing}
 ```r
 library(excelR)

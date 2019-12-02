@@ -199,25 +199,24 @@
 <span id="cb9-9"><a href="#cb9-9"></a>                      <span class="dt">render=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="st">'square'</span>)) </span>
 <span id="cb9-10"><a href="#cb9-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
 <p><img src="inst/images/color_type.gif"></p>
+<ul>
+<li>Image</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Paul Parker"</span>, <span class="st">"Mark Ellen"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                   <span class="dt">Cover =</span>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"https://marketplace.canva.com/MACcZp2p4po/2/0/thumbnail_large/canva-black-white-acoustic-album-cover-MACcZp2p4po.jpg"</span>,                          <span class="st">"https://marketplace.canva.com/MACcY55adP4/1/0/thumbnail_large/canva-black-and-white-masculine-acoustic-modern-album-cover-MACcY55adP4.jpg"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>columns &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>(data),</span>
+<span id="cb10-7"><a href="#cb10-7"></a>                      <span class="dt">type =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"text"</span>, <span class="st">"image"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8"></a>                      <span class="dt">width =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">120</span>, <span class="dv">200</span>))</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> data, <span class="dt">columns =</span> columns)</span></code></pre></div>
+<p><img src="inst/images/image.png"></p>
 </div>
 <div id="resizing" class="section level4">
 <h4 class="hasAnchor">
 <a href="#resizing" class="anchor"></a>Row and Column Resizing</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
-<span id="cb10-4"><a href="#cb10-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ),</span>
-<span id="cb10-5"><a href="#cb10-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
-<span id="cb10-8"><a href="#cb10-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
-<span id="cb10-9"><a href="#cb10-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
-<span id="cb10-10"><a href="#cb10-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowResize =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="inst/images/resizing.gif"></p>
-</div>
-<div id="drag-drop" class="section level4">
-<h4 class="hasAnchor">
-<a href="#drag-drop" class="anchor"></a>Drag and Drop Rows and Columns</h4>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
@@ -227,85 +226,88 @@
 <span id="cb11-7"><a href="#cb11-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
 <span id="cb11-8"><a href="#cb11-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
 <span id="cb11-9"><a href="#cb11-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
-<span id="cb11-10"><a href="#cb11-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowDrag =</span> <span class="ot">TRUE</span>, <span class="dt">columnDrag =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<span id="cb11-10"><a href="#cb11-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowResize =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="inst/images/resizing.gif"></p>
+</div>
+<div id="drag-drop" class="section level4">
+<h4 class="hasAnchor">
+<a href="#drag-drop" class="anchor"></a>Drag and Drop Rows and Columns</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
+<span id="cb12-4"><a href="#cb12-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ),</span>
+<span id="cb12-5"><a href="#cb12-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>))</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
+<span id="cb12-8"><a href="#cb12-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>),</span>
+<span id="cb12-9"><a href="#cb12-9"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>, <span class="st">'checkbox'</span>)) </span>
+<span id="cb12-10"><a href="#cb12-10"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">rowDrag =</span> <span class="ot">TRUE</span>, <span class="dt">columnDrag =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p><img src="inst/images/dragdrop.gif"></p>
 </div>
 <div id="merge" class="section level4">
 <h4 class="hasAnchor">
 <a href="#merge" class="anchor"></a>Merge Rows and Columns</h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a>data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>( <span class="dt">Make =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Honda'</span>, <span class="st">'Honda'</span>, <span class="st">'Hyundai'</span>),</span>
-<span id="cb12-4"><a href="#cb12-4"></a>                   <span class="dt">Car =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Civic'</span>, <span class="st">'City'</span>, <span class="st">'Creta'</span>))</span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
-<span id="cb12-7"><a href="#cb12-7"></a>                      </span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns,  <span class="dt">mergeCells =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>( <span class="dt">Make =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Honda'</span>, <span class="st">'Honda'</span>, <span class="st">'Hyundai'</span>),</span>
+<span id="cb13-4"><a href="#cb13-4"></a>                   <span class="dt">Car =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Civic'</span>, <span class="st">'City'</span>, <span class="st">'Creta'</span>))</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
+<span id="cb13-7"><a href="#cb13-7"></a>                      </span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns,  <span class="dt">mergeCells =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span></code></pre></div>
 <p><img src="inst/images/merge_cells.png"></p>
 </div>
 <div id="nested-headers" class="section level4">
 <h4 class="hasAnchor">
 <a href="#nested-headers" class="anchor"></a>Nested Headers</h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Sepal Length'</span>, <span class="st">'Sepal Width'</span>, <span class="st">'Petal Length'</span>,<span class="st">'Petal Width'</span>, <span class="st">'Species'</span>),</span>
-<span id="cb13-4"><a href="#cb13-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
-<span id="cb13-5"><a href="#cb13-5"></a>                      </span>
-<span id="cb13-6"><a href="#cb13-6"></a> nestedHeaders =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>( <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Plant Attribute"</span>), <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>)), </span>
-<span id="cb13-7"><a href="#cb13-7"></a>                       <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sepal Attributes"</span>, <span class="st">"Petal Attributes"</span>, <span class="st">"Species"</span>), </span>
-<span id="cb13-8"><a href="#cb13-8"></a>                                  <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)))</span>
-<span id="cb13-9"><a href="#cb13-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">nestedHeaders =</span> nestedHeaders)</span></code></pre></div>
-<p><img src="inst/images/nested_headers.png"></p>
-</div>
-<div id="pagination" class="section level4">
-<h4 class="hasAnchor">
-<a href="#pagination" class="anchor"></a>Pagination</h4>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Sepal Length'</span>, <span class="st">'Sepal Width'</span>, <span class="st">'Petal Length'</span>,<span class="st">'Petal Width'</span>, <span class="st">'Species'</span>),</span>
 <span id="cb14-4"><a href="#cb14-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
 <span id="cb14-5"><a href="#cb14-5"></a>                      </span>
-<span id="cb14-6"><a href="#cb14-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> iris, <span class="dt">columns =</span> columns, <span class="dt">pagination=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="inst/images/pagination.gif"></p>
+<span id="cb14-6"><a href="#cb14-6"></a> nestedHeaders =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>( <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Plant Attribute"</span>), <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>)), </span>
+<span id="cb14-7"><a href="#cb14-7"></a>                       <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sepal Attributes"</span>, <span class="st">"Petal Attributes"</span>, <span class="st">"Species"</span>), </span>
+<span id="cb14-8"><a href="#cb14-8"></a>                                  <span class="dt">colspan=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)))</span>
+<span id="cb14-9"><a href="#cb14-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">nestedHeaders =</span> nestedHeaders)</span></code></pre></div>
+<p><img src="inst/images/nested_headers.png"></p>
 </div>
-<div id="search" class="section level4">
+<div id="pagination" class="section level4">
 <h4 class="hasAnchor">
-<a href="#search" class="anchor"></a>Search</h4>
+<a href="#pagination" class="anchor"></a>Pagination</h4>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
 <span id="cb15-3"><a href="#cb15-3"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Sepal Length'</span>, <span class="st">'Sepal Width'</span>, <span class="st">'Petal Length'</span>,<span class="st">'Petal Width'</span>, <span class="st">'Species'</span>),</span>
 <span id="cb15-4"><a href="#cb15-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
 <span id="cb15-5"><a href="#cb15-5"></a>                      </span>
-<span id="cb15-6"><a href="#cb15-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> iris, <span class="dt">columns =</span> columns, <span class="dt">search=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="inst/images/search.gif"></p>
+<span id="cb15-6"><a href="#cb15-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> iris, <span class="dt">columns =</span> columns, <span class="dt">pagination=</span><span class="dv">10</span>)</span></code></pre></div>
+<p><img src="inst/images/pagination.gif"></p>
 </div>
-<div id="excel-formulas" class="section level4">
+<div id="search" class="section level4">
 <h4 class="hasAnchor">
-<a href="#excel-formulas" class="anchor"></a>Excel formulas</h4>
+<a href="#search" class="anchor"></a>Search</h4>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb16-2"><a href="#cb16-2"></a></span>
 <span id="cb16-3"><a href="#cb16-3"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Sepal Length'</span>, <span class="st">'Sepal Width'</span>, <span class="st">'Petal Length'</span>,<span class="st">'Petal Width'</span>, <span class="st">'Species'</span>),</span>
 <span id="cb16-4"><a href="#cb16-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
 <span id="cb16-5"><a href="#cb16-5"></a>                      </span>
-<span id="cb16-6"><a href="#cb16-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">minDimension =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">7</span>))</span></code></pre></div>
+<span id="cb16-6"><a href="#cb16-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> iris, <span class="dt">columns =</span> columns, <span class="dt">search=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="inst/images/search.gif"></p>
+</div>
+<div id="excel-formulas" class="section level4">
+<h4 class="hasAnchor">
+<a href="#excel-formulas" class="anchor"></a>Excel formulas</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Sepal Length'</span>, <span class="st">'Sepal Width'</span>, <span class="st">'Petal Length'</span>,<span class="st">'Petal Width'</span>, <span class="st">'Species'</span>),</span>
+<span id="cb17-4"><a href="#cb17-4"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>, <span class="dv">200</span>))</span>
+<span id="cb17-5"><a href="#cb17-5"></a>                      </span>
+<span id="cb17-6"><a href="#cb17-6"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">columns =</span> columns, <span class="dt">minDimension =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">7</span>))</span></code></pre></div>
 <p><img src="inst/images/formula.gif"></p>
 </div>
 <div id="style" class="section level4">
 <h4 class="hasAnchor">
 <a href="#style" class="anchor"></a>Style</h4>
 <p>Styling in version <code>0.1.0</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>( <span class="dt">Make =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Honda'</span>, <span class="st">'Honda'</span>, <span class="st">'Hyundai'</span>),</span>
-<span id="cb17-4"><a href="#cb17-4"></a>                   <span class="dt">Car =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Civic'</span>, <span class="st">'City'</span>, <span class="st">'Creta'</span>))</span>
-<span id="cb17-5"><a href="#cb17-5"></a></span>
-<span id="cb17-6"><a href="#cb17-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
-<span id="cb17-7"><a href="#cb17-7"></a>  </span>
-<span id="cb17-8"><a href="#cb17-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>), </span>
-<span id="cb17-9"><a href="#cb17-9"></a>              <span class="dt">B1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>))</span>
-<span id="cb17-10"><a href="#cb17-10"></a>                      </span>
-<span id="cb17-11"><a href="#cb17-11"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
-<p>Styling from version <code>0.2.0</code> onwards:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
 <span id="cb18-3"><a href="#cb18-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>( <span class="dt">Make =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Honda'</span>, <span class="st">'Honda'</span>, <span class="st">'Hyundai'</span>),</span>
@@ -313,38 +315,50 @@
 <span id="cb18-5"><a href="#cb18-5"></a></span>
 <span id="cb18-6"><a href="#cb18-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
 <span id="cb18-7"><a href="#cb18-7"></a>  </span>
-<span id="cb18-8"><a href="#cb18-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="st">'background-color:orange; color:green;'</span>, </span>
-<span id="cb18-9"><a href="#cb18-9"></a>              <span class="dt">B1=</span><span class="st">'background-color:orange; color:green;'</span>)</span>
+<span id="cb18-8"><a href="#cb18-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>), </span>
+<span id="cb18-9"><a href="#cb18-9"></a>              <span class="dt">B1=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'background-color:orange'</span>, <span class="st">'color:green'</span>))</span>
 <span id="cb18-10"><a href="#cb18-10"></a>                      </span>
 <span id="cb18-11"><a href="#cb18-11"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
+<p>Styling from version <code>0.2.0</code> onwards:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>( <span class="dt">Make =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Honda'</span>, <span class="st">'Honda'</span>, <span class="st">'Hyundai'</span>),</span>
+<span id="cb19-4"><a href="#cb19-4"></a>                   <span class="dt">Car =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Civic'</span>, <span class="st">'City'</span>, <span class="st">'Creta'</span>))</span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Make'</span>, <span class="st">'Car'</span>), <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>))</span>
+<span id="cb19-7"><a href="#cb19-7"></a>  </span>
+<span id="cb19-8"><a href="#cb19-8"></a> style =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A1=</span><span class="st">'background-color:orange; color:green;'</span>, </span>
+<span id="cb19-9"><a href="#cb19-9"></a>              <span class="dt">B1=</span><span class="st">'background-color:orange; color:green;'</span>)</span>
+<span id="cb19-10"><a href="#cb19-10"></a>                      </span>
+<span id="cb19-11"><a href="#cb19-11"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">style =</span> style)</span></code></pre></div>
 <p><img src="inst/images/style.png"></p>
 </div>
 <div id="auto-col-types" class="section level4">
 <h4 class="hasAnchor">
 <a href="#auto-col-types" class="anchor"></a>Automated Column Types</h4>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
-<span id="cb19-4"><a href="#cb19-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2006-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2005-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2004-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2003-01-01'</span>) ),</span>
-<span id="cb19-5"><a href="#cb19-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
-<span id="cb19-8"><a href="#cb19-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>)) </span>
-<span id="cb19-9"><a href="#cb19-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2006-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2005-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2004-01-01'</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">'2003-01-01'</span>) ),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>                   <span class="dt">Availability =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>, <span class="st">'Availability'</span> ),</span>
+<span id="cb20-8"><a href="#cb20-8"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>)) </span>
+<span id="cb20-9"><a href="#cb20-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns)</span></code></pre></div>
 <p><img src="inst/images/auto_col_type.gif"></p>
 </div>
 <div id="toolbar" class="section level4">
 <h4 class="hasAnchor">
 <a href="#toolbar" class="anchor"></a>Toolbar</h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
-<span id="cb20-4"><a href="#cb20-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ))</span>
-<span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>),</span>
-<span id="cb20-7"><a href="#cb20-7"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>),</span>
-<span id="cb20-8"><a href="#cb20-8"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>)) </span>
-<span id="cb20-9"><a href="#cb20-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">showToolbar=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a> data =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">Model =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Mazda'</span>, <span class="st">'Pegeout'</span>, <span class="st">'Honda Fit'</span>, <span class="st">'Honda CRV'</span>),</span>
+<span id="cb21-4"><a href="#cb21-4"></a>                   <span class="dt">Date=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'2006-01-01'</span>, <span class="st">'2005-01-01'</span>,<span class="st">'2004-01-01'</span>, <span class="st">'2003-01-01'</span> ))</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a> columns =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">title=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Model'</span>, <span class="st">'Date'</span>),</span>
+<span id="cb21-7"><a href="#cb21-7"></a>                      <span class="dt">width=</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>, <span class="dv">200</span>),</span>
+<span id="cb21-8"><a href="#cb21-8"></a>                      <span class="dt">type=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'text'</span>, <span class="st">'calendar'</span>)) </span>
+<span id="cb21-9"><a href="#cb21-9"></a> <span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data=</span>data, <span class="dt">columns =</span> columns, <span class="dt">showToolbar=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 <p><img src="inst/images/toolbar.png"></p>
 </div>
 <div id="shiny-integration" class="section level3">
@@ -353,20 +367,6 @@
 <div id="creating-excel-table-in-shiny" class="section level4">
 <h4 class="hasAnchor">
 <a href="#creating-excel-table-in-shiny" class="anchor"></a>Creating excel table in Shiny</h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb21-3"><a href="#cb21-3"></a></span>
-<span id="cb21-4"><a href="#cb21-4"></a>   <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
-<span id="cb21-5"><a href="#cb21-5"></a>     <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>)),</span>
-<span id="cb21-6"><a href="#cb21-6"></a>     <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb21-7"><a href="#cb21-7"></a>       output<span class="op">$</span>table &lt;-</span>
-<span id="cb21-8"><a href="#cb21-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
-<span id="cb21-9"><a href="#cb21-9"></a>      }</span>
-<span id="cb21-10"><a href="#cb21-10"></a>    )</span></code></pre></div>
-</div>
-<div id="reading-changed-data-from-excel-table-in-shiny" class="section level4">
-<h4 class="hasAnchor">
-<a href="#reading-changed-data-from-excel-table-in-shiny" class="anchor"></a>Reading changed data from excel table in Shiny</h4>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
 <span id="cb22-2"><a href="#cb22-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb22-3"><a href="#cb22-3"></a></span>
@@ -375,70 +375,84 @@
 <span id="cb22-6"><a href="#cb22-6"></a>     <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb22-7"><a href="#cb22-7"></a>       output<span class="op">$</span>table &lt;-</span>
 <span id="cb22-8"><a href="#cb22-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
-<span id="cb22-9"><a href="#cb22-9"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
-<span id="cb22-10"><a href="#cb22-10"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="reference/excel_to_R.html">excel_to_R</a></span>(input<span class="op">$</span>table))</span>
-<span id="cb22-11"><a href="#cb22-11"></a>      })</span>
-<span id="cb22-12"><a href="#cb22-12"></a>      }</span>
-<span id="cb22-13"><a href="#cb22-13"></a>    )</span></code></pre></div>
+<span id="cb22-9"><a href="#cb22-9"></a>      }</span>
+<span id="cb22-10"><a href="#cb22-10"></a>    )</span></code></pre></div>
+</div>
+<div id="reading-changed-data-from-excel-table-in-shiny" class="section level4">
+<h4 class="hasAnchor">
+<a href="#reading-changed-data-from-excel-table-in-shiny" class="anchor"></a>Reading changed data from excel table in Shiny</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>   <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
+<span id="cb23-5"><a href="#cb23-5"></a>     <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>)),</span>
+<span id="cb23-6"><a href="#cb23-6"></a>     <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb23-7"><a href="#cb23-7"></a>       output<span class="op">$</span>table &lt;-</span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
+<span id="cb23-9"><a href="#cb23-9"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
+<span id="cb23-10"><a href="#cb23-10"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="reference/excel_to_R.html">excel_to_R</a></span>(input<span class="op">$</span>table))</span>
+<span id="cb23-11"><a href="#cb23-11"></a>      })</span>
+<span id="cb23-12"><a href="#cb23-12"></a>      }</span>
+<span id="cb23-13"><a href="#cb23-13"></a>    )</span></code></pre></div>
 </div>
 <div id="gettingsetting-comment-in-shiny-currently-only-available-in-development-version" class="section level4">
 <h4 class="hasAnchor">
 <a href="#gettingsetting-comment-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting/Setting comment in Shiny (Currently only available in development version)</h4>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
-<span id="cb23-5"><a href="#cb23-5"></a>  </span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'set'</span>, <span class="st">'Set Comments to cell A1'</span>),</span>
-<span id="cb23-7"><a href="#cb23-7"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'get'</span>, <span class="st">'Get Comments from cell A1'</span>),</span>
-<span id="cb23-8"><a href="#cb23-8"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/textAreaInput">textAreaInput</a></span>(<span class="st">"fetchedComment"</span>, <span class="st">"Comments from A1:"</span>),</span>
-<span id="cb23-9"><a href="#cb23-9"></a>                 <span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>, <span class="dt">height =</span> <span class="dv">175</span>)),</span>
-<span id="cb23-10"><a href="#cb23-10"></a>                 </span>
-<span id="cb23-11"><a href="#cb23-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb23-12"><a href="#cb23-12"></a>  </span>
-<span id="cb23-13"><a href="#cb23-13"></a>      output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb23-14"><a href="#cb23-14"></a>      </span>
-<span id="cb23-15"><a href="#cb23-15"></a>      <span class="co"># Set the comment</span></span>
-<span id="cb23-16"><a href="#cb23-16"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>set,{</span>
-<span id="cb23-17"><a href="#cb23-17"></a>        <span class="kw"><a href="reference/setComments.html">setComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>, <span class="st">"This is a comment"</span>)</span>
-<span id="cb23-18"><a href="#cb23-18"></a>      })</span>
-<span id="cb23-19"><a href="#cb23-19"></a>      </span>
-<span id="cb23-20"><a href="#cb23-20"></a>      <span class="co"># Get the comment</span></span>
-<span id="cb23-21"><a href="#cb23-21"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>get,{</span>
-<span id="cb23-22"><a href="#cb23-22"></a>          <span class="kw"><a href="reference/getComments.html">getComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>)</span>
-<span id="cb23-23"><a href="#cb23-23"></a>      })</span>
-<span id="cb23-24"><a href="#cb23-24"></a>      </span>
-<span id="cb23-25"><a href="#cb23-25"></a>      <span class="co"># Print the comment to the text area</span></span>
-<span id="cb23-26"><a href="#cb23-26"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
-<span id="cb23-27"><a href="#cb23-27"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/updateTextAreaInput">updateTextAreaInput</a></span>(session, <span class="st">'fetchedComment'</span>, <span class="dt">value =</span> input<span class="op">$</span>table<span class="op">$</span>comment )</span>
-<span id="cb23-28"><a href="#cb23-28"></a>      })</span>
-<span id="cb23-29"><a href="#cb23-29"></a>    }</span>
-<span id="cb23-30"><a href="#cb23-30"></a>  )</span></code></pre></div>
-<p><img src="inst/images/getSetComment.gif"></p>
-</div>
-<div id="getting-selected-data-in-shiny-currently-only-available-in-development-version" class="section level4">
-<h4 class="hasAnchor">
-<a href="#getting-selected-data-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting selected data in Shiny (Currently only available in development version)</h4>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
 <span id="cb24-4"><a href="#cb24-4"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
 <span id="cb24-5"><a href="#cb24-5"></a>  </span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>( tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Selected Data:"</span>),</span>
-<span id="cb24-7"><a href="#cb24-7"></a>                  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/tableOutput">tableOutput</a></span>(<span class="st">"selectedData"</span>),</span>
-<span id="cb24-8"><a href="#cb24-8"></a>                  tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Excel Table:"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'set'</span>, <span class="st">'Set Comments to cell A1'</span>),</span>
+<span id="cb24-7"><a href="#cb24-7"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">'get'</span>, <span class="st">'Get Comments from cell A1'</span>),</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                 <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/textAreaInput">textAreaInput</a></span>(<span class="st">"fetchedComment"</span>, <span class="st">"Comments from A1:"</span>),</span>
 <span id="cb24-9"><a href="#cb24-9"></a>                 <span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>, <span class="dt">height =</span> <span class="dv">175</span>)),</span>
-<span id="cb24-10"><a href="#cb24-10"></a>  </span>
+<span id="cb24-10"><a href="#cb24-10"></a>                 </span>
 <span id="cb24-11"><a href="#cb24-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb24-12"><a href="#cb24-12"></a>    </span>
-<span id="cb24-13"><a href="#cb24-13"></a>    output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb24-14"><a href="#cb24-14"></a>    </span>
-<span id="cb24-15"><a href="#cb24-15"></a>    <span class="co"># Print the selected data in table</span></span>
-<span id="cb24-16"><a href="#cb24-16"></a>    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
-<span id="cb24-17"><a href="#cb24-17"></a>      output<span class="op">$</span>selectedData &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderTable">renderTable</a></span>(<span class="kw"><a href="reference/get_selected_data.html">get_selected_data</a></span>(input<span class="op">$</span>table))</span>
-<span id="cb24-18"><a href="#cb24-18"></a>    })</span>
-<span id="cb24-19"><a href="#cb24-19"></a>  }</span>
-<span id="cb24-20"><a href="#cb24-20"></a>)</span></code></pre></div>
+<span id="cb24-12"><a href="#cb24-12"></a>  </span>
+<span id="cb24-13"><a href="#cb24-13"></a>      output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb24-14"><a href="#cb24-14"></a>      </span>
+<span id="cb24-15"><a href="#cb24-15"></a>      <span class="co"># Set the comment</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>set,{</span>
+<span id="cb24-17"><a href="#cb24-17"></a>        <span class="kw"><a href="reference/setComments.html">setComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>, <span class="st">"This is a comment"</span>)</span>
+<span id="cb24-18"><a href="#cb24-18"></a>      })</span>
+<span id="cb24-19"><a href="#cb24-19"></a>      </span>
+<span id="cb24-20"><a href="#cb24-20"></a>      <span class="co"># Get the comment</span></span>
+<span id="cb24-21"><a href="#cb24-21"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>get,{</span>
+<span id="cb24-22"><a href="#cb24-22"></a>          <span class="kw"><a href="reference/getComments.html">getComments</a></span>(<span class="st">"table"</span>, <span class="st">"A1"</span>)</span>
+<span id="cb24-23"><a href="#cb24-23"></a>      })</span>
+<span id="cb24-24"><a href="#cb24-24"></a>      </span>
+<span id="cb24-25"><a href="#cb24-25"></a>      <span class="co"># Print the comment to the text area</span></span>
+<span id="cb24-26"><a href="#cb24-26"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
+<span id="cb24-27"><a href="#cb24-27"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/updateTextAreaInput">updateTextAreaInput</a></span>(session, <span class="st">'fetchedComment'</span>, <span class="dt">value =</span> input<span class="op">$</span>table<span class="op">$</span>comment )</span>
+<span id="cb24-28"><a href="#cb24-28"></a>      })</span>
+<span id="cb24-29"><a href="#cb24-29"></a>    }</span>
+<span id="cb24-30"><a href="#cb24-30"></a>  )</span></code></pre></div>
+<p><img src="inst/images/getSetComment.gif"></p>
+</div>
+<div id="getting-selected-data-in-shiny-currently-only-available-in-development-version" class="section level4">
+<h4 class="hasAnchor">
+<a href="#getting-selected-data-in-shiny-currently-only-available-in-development-version" class="anchor"></a>Getting selected data in Shiny (Currently only available in development version)</h4>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(excelR)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(</span>
+<span id="cb25-5"><a href="#cb25-5"></a>  </span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="dt">ui =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>( tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Selected Data:"</span>),</span>
+<span id="cb25-7"><a href="#cb25-7"></a>                  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/tableOutput">tableOutput</a></span>(<span class="st">"selectedData"</span>),</span>
+<span id="cb25-8"><a href="#cb25-8"></a>                  tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h6</a></span>(<span class="st">"Excel Table:"</span>),</span>
+<span id="cb25-9"><a href="#cb25-9"></a>                 <span class="kw"><a href="reference/excelOutput.html">excelOutput</a></span>(<span class="st">"table"</span>, <span class="dt">height =</span> <span class="dv">175</span>)),</span>
+<span id="cb25-10"><a href="#cb25-10"></a>  </span>
+<span id="cb25-11"><a href="#cb25-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb25-12"><a href="#cb25-12"></a>    </span>
+<span id="cb25-13"><a href="#cb25-13"></a>    output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb25-14"><a href="#cb25-14"></a>    </span>
+<span id="cb25-15"><a href="#cb25-15"></a>    <span class="co"># Print the selected data in table</span></span>
+<span id="cb25-16"><a href="#cb25-16"></a>    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
+<span id="cb25-17"><a href="#cb25-17"></a>      output<span class="op">$</span>selectedData &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderTable">renderTable</a></span>(<span class="kw"><a href="reference/get_selected_data.html">get_selected_data</a></span>(input<span class="op">$</span>table))</span>
+<span id="cb25-18"><a href="#cb25-18"></a>    })</span>
+<span id="cb25-19"><a href="#cb25-19"></a>  }</span>
+<span id="cb25-20"><a href="#cb25-20"></a>)</span></code></pre></div>
 <p><img src="inst/images/selected_data.gif"></p>
 </div>
 </div>

@@ -25,7 +25,7 @@ setComments <- function(tableId, cellId, comment) {
 }
 
 #'
-#' This function is used to add comment to the specified cell
+#' This function is used to get comment from specified cell
 #' @export
 #' @param tableId the id of the table from which the comment is to be fetched
 #' @param cellId the id of the cell from which the comment is to be fetched

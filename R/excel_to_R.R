@@ -20,7 +20,7 @@
 #'}
 
 excel_to_R <- function(excelObj) {
-   if (!is.null(excelObj)) {
+   if (!is.null(excelObj) && !excelObj$forSelectedVals ) {
       data <- excelObj$data
       colHeaders <- excelObj$colHeaders
       colType <- excelObj$colType

@@ -159,6 +159,7 @@
                 data:this.data, 
                 colHeaders: colHeaders,
                 colType: colType,
+                forSelectedVals: false, 
               })
           }
         },
@@ -184,7 +185,8 @@
               {
                 data:this.data, 
                 colHeaders: newColHeader,
-                colType: colType
+                colType: colType,
+                forSelectedVals: false, 
               })
           }
         },
@@ -213,7 +215,8 @@
        
            Shiny.setInputValue(obj.id, 
             {
-              data: data, 
+              data: data,
+              forSelectedVals: true, 
           
             })
 

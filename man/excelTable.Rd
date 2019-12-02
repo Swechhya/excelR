@@ -14,7 +14,8 @@ excelTable(data = NULL, columns = NULL, colHeaders = NULL,
   selectionCopy = TRUE, mergeCells = NULL, search = FALSE,
   pagination = NULL, fullscreen = FALSE, lazyLoading = FALSE,
   loadingSpin = FALSE, style = NULL, autoColTypes = TRUE,
-  showToolbar = FALSE, dateFormat = "DD/MM/YYYY", digits = 4, ...)
+  showToolbar = FALSE, dateFormat = "DD/MM/YYYY", digits = 4,
+  autoWidth = TRUE, autoFill = FALSE, ...)
 }
 \arguments{
 \item{data}{a data object, can either be dataframe or a matrix.}
@@ -95,6 +96,12 @@ a valid 'css' string with styles.  For example, to style cell 'A1', the list sho
 format is 'DD/MM/YYYY'.}
 
 \item{digits}{number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.}
+
+\item{autoWidth}{a boolean value indicating should the width of the column be automatically adjusted. By default this value is set to TRUE.
+The width value specified in 'columns' param will have higher precedence.}
+
+\item{autoFill}{a boolen value indicating wheather the excel table fill the container. By default this value is set to false.
+The width value specified in 'columns' param will have highest precendence followed by autoWidth.}
 
 \item{...}{other jexcel parameters, e.g., updateTable}
 }

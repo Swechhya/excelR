@@ -13,18 +13,26 @@
           var rowHeight = params.hasOwnProperty("rowHeight") ? params.rowHeight : undefined;
           var showToolbar = params.hasOwnProperty("showToolbar")? params.showToolbar: false;
           var dateFormat = params.hasOwnProperty("dateFormat")? params.dateFormat: "DD/MM/YYYY";
+          var imageColIndex = undefined
           var otherParams = {};
 
           Object.keys(params).forEach(function(ky) {
             if(ky !== "dateFormat" && ky !== "rowHeight" && ky !== "otherParams" ) {
               // Check if the key is columns and check if the type is calendar, if yes add the date format
-              if(ky === "columns" && dateFormat !== "DD/MM/YYYY"){
-                otherParams[ky] = params[ky].map(function(column){
-                  if(column.type === "calendar"){
+              if(ky === "columns"){
+                otherParams[ky] = params[ky].map(function(column, index){
+                  // If the date format is not default we'll need to pass it properly to jexcel table
+                  if(column.type === "calendar" && dateFormat !== "DD/MM/YYYY"){
                     column.options = {format: dateFormat}
                   }
-                  return column
-                })
+
+                  // If image url is specified, we'll need to pass it to jexcel table only
+                  // in updateTable function,so here we'll first find the column index. This 
+                  if(column.type === "image" && "data:image" != r.substr(0, 10)){
+                    imageColIndex = index;
+                  }
+                  return column;
+                });
               
                 return;
             }
@@ -35,11 +43,23 @@
           var rows = (function() {
             if (rowHeight) {
               const rows = {};
-              rowHeight.map(data => (rows[data[0]] = { height: `${data[1]}px` }));
+              rowHeight.map(function(data) {
+                return rows[data[0]] = { height: `${data[1]}px` 
+              }
+            });
               return rows;
             }
             return {};
           })();
+
+          //Lets add the image url in the update table function
+          if(imageColIndex){
+            otherParams.updateTable = function (instance, cell, col, row, val, id) {
+              if (col == imageColIndex) {
+                  cell.innerHTML = '<img src="' + val + '" style="width:100px;height:100px">';
+              }
+            }
+          }
 
           otherParams.rows = rows;
           otherParams.tableOverflow = true;
@@ -72,7 +92,7 @@
 
           // If new instance of the table   
           if(excel === null) {
-            excel =  jexcel(container, otherParams);
+            excel =  jexcel(container, otherParams,);
             container.excel = excel;
     
             return;

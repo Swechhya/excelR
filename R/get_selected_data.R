@@ -20,7 +20,7 @@
 #'}
 
 get_selected_data<- function(excelObj) {
-   if (!is.null(excelObj)) {
+   if (!is.null(excelObj) && excelObj$forSelectedVals) {
       data <- excelObj$data
       dataOutput <- do.call(rbind.data.frame, data)
       rownames(dataOutput) <- NULL

@@ -123,7 +123,8 @@
   <span class='kw'>selectionCopy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mergeCells</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>pagination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lazyLoading</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>loadingSpin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autoColTypes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dateFormat</span> <span class='kw'>=</span> <span class='st'>"DD/MM/YYYY"</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dateFormat</span> <span class='kw'>=</span> <span class='st'>"DD/MM/YYYY"</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+  <span class='kw'>autoWidth</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>autoFill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>getSelectedData</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -270,6 +271,21 @@ format is 'DD/MM/YYYY'.</p></td>
     <tr>
       <th>digits</th>
       <td><p>number of decimal digits passed to <code><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON</a></code>. By default it is set to 4, use <code>NA</code> for max precision.</p></td>
+    </tr>
+    <tr>
+      <th>autoWidth</th>
+      <td><p>a boolean value indicating should the width of the column be automatically adjusted. By default this value is set to TRUE.
+The width value specified in 'columns' param will have higher precedence.</p></td>
+    </tr>
+    <tr>
+      <th>autoFill</th>
+      <td><p>a boolen value indicating whether the excel table fill the container. By default this value is set to false.
+The width value specified in 'columns' param will have highest precendence followed by autoWidth.</p></td>
+    </tr>
+    <tr>
+      <th>getSelectedData</th>
+      <td><p>a boolean value indicating whether the there should be trigger for data selection or not.
+By default this is set to false.</p></td>
     </tr>
     <tr>
       <th>...</th>

@@ -11,7 +11,7 @@
 #'    ui = fluidPage(excelOutput("table")),
 #'    server = function(input, output, session) {
 #'      output$table <-
-#'        renderExcel(excelTable(data = head(iris)))
+#'        renderExcel(excelTable(data = head(iris), getSelectedData = TRUE))
 #'      observeEvent(input$table,{
 #'        print(get_selected_data(input$table))
 #'      })

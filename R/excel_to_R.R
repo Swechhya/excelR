@@ -29,7 +29,9 @@ excel_to_R <- function(excelObj) {
       # Change clandar variables to date
       if(any(colType == 'calendar')){
          dateVariables<- which(colType == 'calendar' )
-         dataOutput[dateVariables] <- lapply(dataOutput[dateVariables], as.Date)
+         dataOutput[dateVariables] <- lapply(dataOutput[dateVariables], function(x)
+          as.Date(gsub(pattern = "^$", replacement = NA, x = x))
+         )
       }
 
       #if any of the column is not dropdown but is factor convert it to character

@@ -11,3 +11,4 @@ inst/htmlwidgets/lib/jexcel/css/.DS_Store
 R/.DS_Store
 .DS_Store
 inst/.DS_Store
+.Rproj.user/*

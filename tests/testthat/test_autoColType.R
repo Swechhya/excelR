@@ -12,7 +12,7 @@ test_that("'autoColType' returns null when 'data' is not null and 'autoColType' 
 
 test_that("'autoColType' returns null when 'data' is not null and 'type' attribute in column is specified", {
   data <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
-                  Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ))
+                  Date=c('2006-01-01', '2005-01-01','2004-01-01', '2003-01-01' ), stringsAsFactors = FALSE)
 
 columns <-  data.frame(title=c('Model', 'Date' ),
                      width= c(300, 300),
@@ -34,8 +34,8 @@ test_that("'type' attribute of 'columns' should return supplied value when 'data
 
  columns <- data.frame(title=c('Model', 'Date', 'Availability'),
                       width= c(300, 300, 300),
-                      type=c('text', 'calendar', 'checkbox')) 
-   testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type, 
+                      type=c('text', 'calendar', 'checkbox'))
+   testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type,
    c("text", "calendar", "checkbox"))
 })
 
@@ -48,11 +48,11 @@ test_that("'autoColType' returns valid values when 'data' is not null and 'type'
 
 test_that("'autoColType' returns valid values when 'data' is not null and 'type' attribute in columns is not specified",{
  data = data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
-                   Availability = c(TRUE, FALSE, TRUE, TRUE))
+                   Availability = c(TRUE, FALSE, TRUE, TRUE), stringsAsFactors = TRUE)
 
  columns = data.frame(title=c('Model', 'Availability'),
                       width= c(300, 300))
  excelTable(data=data, columns = columns)
-   testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type, 
+   testthat::expect_equal(jsonlite::fromJSON(suppressWarnings(excelTable(data = data, columns=columns))$x$columns)$type,
    c("dropdown", "checkbox"))
 })

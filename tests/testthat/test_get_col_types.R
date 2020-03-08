@@ -18,7 +18,7 @@ test_that("'get_col_types' argument gives character if 'data' a dataframe or mat
 
 test_that("'get_col_types' argument gives character if 'data' a dataframe or matrix", {
   d <- data.frame(Model = c('Mazda', 'Pegeout', 'Honda Fit', 'Honda CRV'),
-                   Availability = c(TRUE, FALSE, TRUE, TRUE), , stringsAsFactors = TRUE)
+                   Availability = c(TRUE, FALSE, TRUE, TRUE), stringsAsFactors = TRUE)
   testthat::expect_equal(get_col_types(data=d), c("dropdown", "checkbox"))
 })
 

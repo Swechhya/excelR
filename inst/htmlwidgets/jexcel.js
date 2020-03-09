@@ -21,10 +21,10 @@
           
           Object.keys(params).forEach(function(ky) {
             if(ky !== "dateFormat" && 
-              ky !== "rowHeight" && 
-              ky !== "autoWidth" && 
-              ky !== "getSelectedData" && 
-              ky !== "otherParams" ) {
+            ky !== "rowHeight" && 
+            ky !== "autoWidth" && 
+            ky !== "getSelectedData" && 
+            ky !== "otherParams" ) {
               // Check if the key is columns and check if the type is calendar, if yes add the date format
               if(ky === "columns"){
                 otherParams[ky] = params[ky].map(function(column, index){
@@ -151,8 +151,8 @@
         
         if (HTMLWidgets.shinyMode) {
           
-          var changedData = getOnChangeData (this.data, this.columns, this.colHeaders)
-     
+          var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
+          
           Shiny.setInputValue(obj.id, 
             {
               data:changedData.data, 
@@ -167,7 +167,7 @@
           
           if (HTMLWidgets.shinyMode) {
             
-            var changedData = getOnChangeData (this.data, this.columns, this.colHeaders)
+            var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
             
             var newColHeader = changedData.colHeaders;
             newColHeader[parseInt(column)] = newValue;
@@ -204,11 +204,13 @@
                 return acc;
               },[])
               
+              var fullData =  getOnChangeData (this.data, this.columns, this.colHeaders);
+
               Shiny.setInputValue(obj.id, 
                 {
-                  data: data,
-                  forSelectedVals: true, 
-                  
+                  fullData: fullData,
+                  selectedData: data,
+                  forSelectedVals: true
                 })
                 
               }
@@ -243,17 +245,17 @@
             }
           });
         }
-
-
- function getOnChangeData (data, columns, colHeaders) {
-  var colType = columns.map(function(column){
-    return column.type;
-  })
-  
-  
-  if(colHeaders.every(function (val){return (val ==='')})){
-    var colHeaders = columns.map(function(column){ return column.title})
-  }
-  
-    return { data: data, colHeaders: colHeaders, colType: colType}
- }
+        
+        
+        function getOnChangeData (data, columns, colHeaders) {
+          var colType = columns.map(function(column){
+            return column.type;
+          })
+          
+          
+          if(colHeaders.every(function (val){return (val ==='')})){
+            var colHeaders = columns.map(function(column){ return column.title})
+          }
+          
+          return { data: data, colHeaders: colHeaders, colType: colType}
+        }

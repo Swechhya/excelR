@@ -151,21 +151,13 @@
         
         if (HTMLWidgets.shinyMode) {
           
-          var colType = this.columns.map(function(column){
-            return column.type;
-          })
-          
-          var colHeaders = this.colHeaders;
-          
-          if(this.colHeaders.every(function (val){return (val ==='')})){
-            var colHeaders = this.columns.map(function(column){ return column.title})
-          }
-          
+          var changedData = getOnChangeData (this.data, this.columns, this.colHeaders)
+     
           Shiny.setInputValue(obj.id, 
             {
-              data:this.data, 
-              colHeaders: colHeaders,
-              colType: colType,
+              data:changedData.data, 
+              colHeaders: changedData.colHeaders,
+              colType: changedData.colType,
               forSelectedVals: false, 
             })
           }
@@ -175,24 +167,16 @@
           
           if (HTMLWidgets.shinyMode) {
             
-            var colHeaders = this.colHeaders;
+            var changedData = getOnChangeData (this.data, this.columns, this.colHeaders)
             
-            if(this.colHeaders.every(function (val){return (val ==='')})){
-              var colHeaders = this.columns.map(function(column){ return column.title})
-            }
-            
-            var newColHeader = colHeaders;
+            var newColHeader = changedData.colHeaders;
             newColHeader[parseInt(column)] = newValue;
-            
-            var colType = this.columns.map(function(column){
-              return column.type;
-            })
             
             Shiny.setInputValue(obj.id, 
               {
-                data:this.data, 
+                data:changedData.data, 
                 colHeaders: newColHeader,
-                colType: colType,
+                colType: changedData.colType,
                 forSelectedVals: false, 
               })
             }
@@ -259,3 +243,17 @@
             }
           });
         }
+
+
+ function getOnChangeData (data, columns, colHeaders) {
+  var colType = columns.map(function(column){
+    return column.type;
+  })
+  
+  
+  if(colHeaders.every(function (val){return (val ==='')})){
+    var colHeaders = columns.map(function(column){ return column.title})
+  }
+  
+    return { data: data, colHeaders: colHeaders, colType: colType}
+ }

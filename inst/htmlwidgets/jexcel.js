@@ -210,6 +210,12 @@
                 {
                   fullData: fullData,
                   selectedData: data,
+                  selectedDataBoundary:{
+                    borderLeft, 
+                    borderTop, 
+                    borderRight, 
+                    borderBottom
+                  },
                   forSelectedVals: true
                 })
                 

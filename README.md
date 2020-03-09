@@ -4,6 +4,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/Swechhya/excelR.svg?branch=master)](https://travis-ci.org/Swechhya/excelR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Swechhya/excelR?branch=master&svg=true)](https://ci.appveyor.com/project/Swechhya/excelR)
 [![codecov](https://codecov.io/gh/Swechhya/excelR/branch/master/graph/badge.svg)](https://codecov.io/gh/Swechhya/excelR)
+![R Build and Checks](https://github.com/Swechhya/excelR/workflows/R%20Build%20and%20Checks/badge.svg?branch=master)
 
 An R interface to [jExcel](https://bossanova.uk/jexcel/v3/) library to create web-based interactive tables and spreadsheets compatible with 'Excel' or any other spreadsheet software.
 

@@ -24,3 +24,9 @@ test_that("'excel_to_R' returns date variable when the field is text", {
   excelObj <- list(data=apply(unname(data),1,as.list), colHeaders=as.list(c("Letters", "Date")), colType=as.list(c("text", "calendar")), forSelectedVals = FALSE)
   testthat::expect_equal(inherits(excel_to_R(excelObj)$Date[[1]], 'Date'), TRUE)
 })
+
+test_that ("'excel_to_R' return data frame when excelObj is not null and getSelectedData is true", {
+  dataVal <- matrix(1:50, ncol=5)
+  excelObj <- list(fullData=list(data=c(unname(as.data.frame(dataVal))), colHeaders=as.list(c(rep("",5)))), forSelectedVals = TRUE)
+  testthat::expect_s3_class(excel_to_R(excelObj), "data.frame")
+})

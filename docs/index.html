@@ -390,10 +390,14 @@
 <span id="cb23-7"><a href="#cb23-7"></a>       output<span class="op">$</span>table &lt;-</span>
 <span id="cb23-8"><a href="#cb23-8"></a><span class="st">      </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris)))</span>
 <span id="cb23-9"><a href="#cb23-9"></a>      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>
-<span id="cb23-10"><a href="#cb23-10"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="reference/excel_to_R.html">excel_to_R</a></span>(input<span class="op">$</span>table))</span>
-<span id="cb23-11"><a href="#cb23-11"></a>      })</span>
-<span id="cb23-12"><a href="#cb23-12"></a>      }</span>
-<span id="cb23-13"><a href="#cb23-13"></a>    )</span></code></pre></div>
+<span id="cb23-10"><a href="#cb23-10"></a>        table_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/excel_to_R.html">excel_to_R</a></span>(input<span class="op">$</span>table)</span>
+<span id="cb23-11"><a href="#cb23-11"></a>        <span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NULL">is.null</a></span>(table_data)){</span>
+<span id="cb23-12"><a href="#cb23-12"></a>        <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(table_data)</span>
+<span id="cb23-13"><a href="#cb23-13"></a>        }</span>
+<span id="cb23-14"><a href="#cb23-14"></a>        </span>
+<span id="cb23-15"><a href="#cb23-15"></a>      })</span>
+<span id="cb23-16"><a href="#cb23-16"></a>      }</span>
+<span id="cb23-17"><a href="#cb23-17"></a>    )</span></code></pre></div>
 </div>
 <div id="gettingsetting-comment-in-shiny-currently-only-available-in-development-version" class="section level4">
 <h4 class="hasAnchor">
@@ -445,7 +449,7 @@
 <span id="cb25-10"><a href="#cb25-10"></a>  </span>
 <span id="cb25-11"><a href="#cb25-11"></a>  <span class="dt">server =</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb25-12"><a href="#cb25-12"></a>    </span>
-<span id="cb25-13"><a href="#cb25-13"></a>    output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">allowComments =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb25-13"><a href="#cb25-13"></a>    output<span class="op">$</span>table &lt;-<span class="st"> </span><span class="kw"><a href="reference/renderExcel.html">renderExcel</a></span>(<span class="kw"><a href="reference/excelTable.html">excelTable</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(iris), <span class="dt">getSelectedData =</span> <span class="ot">TRUE</span>))</span>
 <span id="cb25-14"><a href="#cb25-14"></a>    </span>
 <span id="cb25-15"><a href="#cb25-15"></a>    <span class="co"># Print the selected data in table</span></span>
 <span id="cb25-16"><a href="#cb25-16"></a>    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>table,{</span>

@@ -345,7 +345,11 @@ library(excelR)
        output$table <-
       renderExcel(excelTable(data = head(iris)))
       observeEvent(input$table,{
-        print(excel_to_R(input$table))
+        table_data <- excel_to_R(input$table)
+        if(!is.null(table_data)){
+        print(table_data)
+        }
+        
       })
       }
     )
@@ -402,7 +406,7 @@ shinyApp(
   
   server = function(input, output, session) {
     
-    output$table <- renderExcel(excelTable(data = head(iris), allowComments = TRUE))
+    output$table <- renderExcel(excelTable(data = head(iris), getSelectedData = TRUE))
     
     # Print the selected data in table
     observeEvent(input$table,{

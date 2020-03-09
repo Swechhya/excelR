@@ -51,8 +51,10 @@
 #' @param digits number of decimal digits passed to \code{jsonlite::toJSON}. By default it is set to 4, use \code{NA} for max precision.
 #' @param autoWidth a boolean value indicating should the width of the column be automatically adjusted. By default this value is set to TRUE.
 #' The width value specified in 'columns' param will have higher precedence.
-#' @param autoFill a boolen value indicating wheather the excel table fill the container. By default this value is set to false.
+#' @param autoFill a boolen value indicating whether the excel table fill the container. By default this value is set to false.
 #' The width value specified in 'columns' param will have highest precendence followed by autoWidth.
+#' @param getSelectedData a boolean value indicating whether the there should be trigger for data selection or not.
+#' By default this is set to false.
 #' @param  ... other jexcel parameters, e.g., updateTable
 #' @import jsonlite
 #' @import htmlwidgets
@@ -92,6 +94,7 @@ excelTable <-
            digits = 4,
            autoWidth = TRUE,
            autoFill = FALSE,
+           getSelectedData = FALSE,
            ...
            ) {
     # List of parameters to send to js
@@ -338,7 +341,8 @@ excelTable <-
       "loadingSpin",
       "showToolbar",
       "autoWidth",
-      "autoFill"
+      "autoFill",
+      "getSelectedData"
     )) {
       argvalue <- get(arg)
       if(!is.null(argvalue)) {

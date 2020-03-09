@@ -1,7 +1,7 @@
 Package: excelR
 Type: Package
 Title: A Wrapper of the 'JavaScript' Library 'jExcel'
-Version: 0.3.1
+Version: 0.4.0
 Authors@R: c(person("Swechhya", "Bista", email = "swechhyabista@gmail.com",
                   role = c("aut", "cre")),
             person("Kent", "Russell", role = c("ctb")),

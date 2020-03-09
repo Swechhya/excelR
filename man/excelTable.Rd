@@ -140,9 +140,11 @@ data <- data.frame(Car = c("Jazz", "Civic"),
                    Color = c("#777700", "#007777"))
 
 columns <- data.frame(title = colnames(data),
-                      type = c("hidden", "dropdown", "image", "calendar", "checkbox", "numeric", "color"),
+                      type = c("hidden", "dropdown", "image", "calendar",
+                               "checkbox", "numeric", "color"),
                       width = c(120, 200, 200, 80, 100, 100, 100),
-                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"), NA, NA, NA, NA, NA)),
+                      source = I(list(NA, c("Honda", "Alfa Romeo", "Audi", "Bmw"),
+                                      NA, NA, NA, NA, NA)),
                       mask = c(NA, NA, NA, NA, NA, "$ #.##,00", NA),
                       decimal = c(NA, NA, NA, NA, NA, ",", NA),
                       render = c(NA, NA, NA, NA, NA, NA, "square"))

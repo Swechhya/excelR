@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper function for using jexcel table in Shiny — excelOutput • excelR</title>
+<title>Get selected cells boundary from excel table — get_selected_data_boundary • excelR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Helper function for using jexcel table in Shiny — excelOutput" />
+<meta property="og:title" content="Get selected cells boundary from excel table — get_selected_data_boundary" />
 
-<meta property="og:description" content="Shiny bindings for excel table" />
+<meta property="og:description" content="This function is used to the boundary points of data selected in excel table" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,57 +102,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper function for using jexcel table in Shiny</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Swechhya/excelR/blob/master/R/shiny.R'><code>R/shiny.R</code></a></small>
-    <div class="hidden name"><code>excelOutput.Rd</code></div>
+    <h1>Get selected cells boundary from excel table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Swechhya/excelR/blob/master/R/get_selected_data.R'><code>R/get_selected_data.R</code></a></small>
+    <div class="hidden name"><code>get_selected_data_boundary.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Shiny bindings for excel table</p>
+    <p>This function is used to the boundary points of data selected in excel table</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>excelOutput</span>(<span class='no'>outputId</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='st'>"100%"</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='st'>"400px"</span>)</pre>
+    <pre class="usage"><span class='fu'>get_selected_data_boundary</span>(<span class='no'>excelObj</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>outputId</th>
-      <td><p>output variable to read from.</p></td>
-    </tr>
-    <tr>
-      <th>width, height</th>
-      <td><p>must be a valid CSS unit in pixel or a number, which will be coerced to a string and "px" appended.</p></td>
+      <th>excelObj</th>
+      <td><p>the json data retuned from excel table</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='renderExcel.html'>renderExcel</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()) {
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>shiny</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(
-    <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(<span class='fu'>excelOutput</span>(<span class='st'>"table"</span>)),
-    <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-      <span class='no'>output</span>$<span class='no'>table</span> <span class='kw'>&lt;-</span>
-     <span class='fu'><a href='renderExcel.html'>renderExcel</a></span>(<span class='fu'><a href='excelTable.html'>excelTable</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>iris</span>)))
-     }
-   )
+    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interactive'>interactive</a></span>()){
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>shiny</span>)
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+ <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(
+   <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(<span class='fu'><a href='excelOutput.html'>excelOutput</a></span>(<span class='st'>"table"</span>)),
+   <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+     <span class='no'>output</span>$<span class='no'>table</span> <span class='kw'>&lt;-</span>
+       <span class='fu'><a href='renderExcel.html'>renderExcel</a></span>(<span class='fu'><a href='excelTable.html'>excelTable</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>iris</span>), <span class='kw'>getSelectedData</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+     <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>table</span>,{
+       <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='fu'>get_selected_data_boundary</span>(<span class='no'>input</span>$<span class='no'>table</span>))
+     })
+   }
+ )
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

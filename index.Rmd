@@ -147,7 +147,7 @@ library(excelR)
 ```
 ![](inst/images/color_type.gif)
 
-- Image (Currently only available in development version)
+- Image
 ```r
 library(excelR)
 
@@ -355,7 +355,7 @@ library(excelR)
     )
 
 ```
-#### Getting/Setting comment in Shiny (Currently only available in development version)
+#### Getting/Setting comment in Shiny
 ```r
 library(excelR)
 library(shiny)
@@ -391,7 +391,7 @@ shinyApp(
 ```
 ![](inst/images/getSetComment.gif)
 
-#### Getting selected data in Shiny  (Currently only available in development version)
+#### Getting selected data in Shiny
 
 ```r
 library(excelR)

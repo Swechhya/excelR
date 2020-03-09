@@ -6,11 +6,15 @@
 
 * remove parameter restriction for columns attribute
 
-* add feature to get selected data
+* add feature to get selected data and selected data boundary
 
 * handle image url 
 
 * fix bug of numeric converting to factor after edit
+
+* update jexcel and jsuites version
+
+* fix test for latest R version breaking changes
 
 # excelR 0.3.1
 

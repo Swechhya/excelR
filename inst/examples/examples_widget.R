@@ -16,8 +16,10 @@ excelTable(data=data, columns = columns)
 # https://bossanova.uk/jexcel/v3/examples/column-types
 data <- data.frame(Car = c("Jazz", "Civic"),
                    Make = c("Honda", "Honda" ),
-                   Photo = c("https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-                             "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"),
+                   Photo = c("https://images.unsplash.com/photo-1535498730771-e735b998cd64?
+                             ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+                             "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?
+                             ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"),
                    Available = as.Date(c("2019-02-12", "2018-07-11")),
                    Stock = c(TRUE, TRUE),
                    Price = c(2000, 4000.01),

@@ -10,7 +10,8 @@
 #'  library(shiny)
 #'  library(excelR)
 #'  shinyApp(
-#'   ui = fluidPage(excelOutput("table", height = 175), actionButton('comment', 'Set Comments to cell A1')),
+#'   ui = fluidPage(excelOutput("table", height = 175),
+#'        actionButton('comment', 'Set Comments to cell A1')),
 #'      server = function(input, output, session) {
 #'          output$table <- renderExcel(excelTable(data = head(iris)))
 #'          observeEvent(input$comment,{
@@ -34,7 +35,8 @@ setComments <- function(tableId, cellId, comment) {
 #'  library(shiny)
 #'  library(excelR)
 #'  shinyApp(
-#'      ui = fluidPage(excelOutput("table", height = 175), actionButton('comment', 'Get Comments from cell A1')),
+#'      ui = fluidPage(excelOutput("table", height = 175),
+#'           actionButton('comment', 'Get Comments from cell A1')),
 #'      server = function(input, output, session) {
 #'          output$table <- renderExcel(excelTable(data = head(iris)))
 #'          observeEvent(input$comment, {

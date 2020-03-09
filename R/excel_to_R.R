@@ -23,7 +23,7 @@ excel_to_R <- function(excelObj) {
    if (!is.null(excelObj)) {
       if( excelObj$forSelectedVals )
       {
-         excelObj =excelObj$fullData
+         excelObj = excelObj$fullData
       }
 
       data <- excelObj$data

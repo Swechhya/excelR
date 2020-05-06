@@ -49,9 +49,9 @@
           
           var rows = (function() {
             if (rowHeight) {
-              const rows = {};
+              var rows = {};
               rowHeight.map(function(data) {
-                return rows[data[0]] = { height: `${data[1]}px` 
+                return rows[data[0]] = { height: data[1] + 'px' 
               }
             });
             return rows;

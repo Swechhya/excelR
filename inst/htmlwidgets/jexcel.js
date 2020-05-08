@@ -25,9 +25,20 @@
             ky !== "autoWidth" && 
             ky !== "getSelectedData" && 
             ky !== "otherParams" ) {
+              
               // Check if the key is columns and check if the type is calendar, if yes add the date format
               if(ky === "columns"){
                 otherParams[ky] = params[ky].map(function(column, index){
+                  if(column.type === "calendar" && column.options !== null){
+                    Object.keys(column.options).forEach(function(optionKey) {
+                      // This is how it is passed from R(array of string of length 1), 
+                      // we need to parse it as per jexcel format (just a string)
+                      if(column.options[optionKey].length === 1){
+                      column.options[optionKey] = column.options[optionKey][0]
+                    }
+                  });
+                  }
+                  
                   // If the date format is not default we'll need to pass it properly to jexcel table
                   if(column.type === "calendar" && dateFormat !== "DD/MM/YYYY"){
                     column.options = {format: dateFormat}

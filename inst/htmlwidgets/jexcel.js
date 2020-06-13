@@ -85,7 +85,7 @@
         otherParams.oninsertrow = this.onChange;
         otherParams.ondeleterow = this.onChange;
         otherParams.oninsertcolumn = this.onChange;
-        otherParams.ondeletecolumn = this.onChange;
+        otherParams.ondeletecolumn = this.onDeleteColumn;
         otherParams.onsort = this.onChange;
         otherParams.onmoverow = this.onChange;
         otherParams.onchangeheader = this.onChangeHeader;
@@ -192,6 +192,28 @@
               })
             }
           },
+          onDeleteColumn: function(obj, deletedColumn){
+        
+            if (HTMLWidgets.shinyMode) {
+              debugger;
+              var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
+              
+              var newColHeader =  changedData.colHeaders;
+              newColHeader.splice(deletedColumn, 1);
+
+              Shiny.setInputValue(obj.id, 
+                {
+                  data:changedData.data, 
+                data:changedData.data, 
+                  data:changedData.data, 
+                  colHeaders: newColHeader,
+                  colType: changedData.colType,
+                  forSelectedVals: false, 
+                forSelectedVals: false, 
+                  forSelectedVals: false, 
+                })
+              }
+            },
           onSelection: function(obj, borderLeft, borderTop, borderRight, borderBottom, origin){
             if (HTMLWidgets.shinyMode) {
               // Get arrays between top to bottom, this will return the array of array for selected data

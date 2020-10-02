@@ -18,7 +18,7 @@
           var getSelectedData = params.hasOwnProperty("getSelectedData")? params.getSelectedData: false
           var imageColIndex = undefined;
           var otherParams = {};
-          
+
           Object.keys(params).forEach(function(ky) {
             if(ky !== "dateFormat" && 
             ky !== "rowHeight" && 
@@ -54,10 +54,17 @@
                 
                 return;
               }
+
+               // A vector containg single string is converted to string by jsonlite need to convert 
+               // it back to array of string for jexcel support
+              if(ky === "colHeaders" && typeof(params[ky]) === "string"){
+                otherParams[ky] = [params[ky]];
+                return;
+              }
             }
             otherParams[ky] = params[ky];
           });
-          
+
           var rows = (function() {
             if (rowHeight) {
               var rows = {};

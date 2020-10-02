@@ -18,6 +18,7 @@
           var getSelectedData = params.hasOwnProperty("getSelectedData")? params.getSelectedData: false
           var imageColIndex = undefined;
           var otherParams = {};
+
           Object.keys(params).forEach(function(ky) {
             if(ky !== "dateFormat" && 
             ky !== "rowHeight" && 
@@ -63,8 +64,6 @@
             }
             otherParams[ky] = params[ky];
           });
-
-         
 
           var rows = (function() {
             if (rowHeight) {

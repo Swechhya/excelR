@@ -169,8 +169,8 @@
         
         if (HTMLWidgets.shinyMode) {
           
-          var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
-          
+          var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
+
           Shiny.setInputValue(obj.id, 
             {
               data:changedData.data, 
@@ -185,7 +185,7 @@
           
           if (HTMLWidgets.shinyMode) {
             
-            var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
+            var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
             
             var newColHeader = changedData.colHeaders;
             newColHeader[parseInt(column)] = newValue;
@@ -202,11 +202,9 @@
           onDeleteColumn: function(obj, deletedColumn){
         
             if (HTMLWidgets.shinyMode) {
-              debugger;
-              var changedData = getOnChangeData (this.data, this.columns, this.colHeaders);
+              var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
               
               var newColHeader =  changedData.colHeaders;
-              newColHeader.splice(deletedColumn, 1);
 
               Shiny.setInputValue(obj.id, 
                 {
@@ -244,7 +242,7 @@
                 return acc;
               },[])
               
-              var fullData =  getOnChangeData (this.data, this.columns, this.colHeaders);
+              var fullData =  getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
 
               Shiny.setInputValue(obj.id, 
                 {
@@ -298,10 +296,10 @@
             return column.type;
           })
           
-          
-          if(colHeaders.every(function (val){return (val ==='')})){
+          var colHeadersArray  = colHeaders.split(",")
+          if(colHeadersArray.every(function (val){return (val ==='')})){
             var colHeaders = columns.map(function(column){ return column.title})
           }
           
-          return { data: data, colHeaders: colHeaders, colType: colType}
+          return { data: data, colHeaders: colHeadersArray, colType: colType}
         }

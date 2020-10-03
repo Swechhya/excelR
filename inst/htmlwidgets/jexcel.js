@@ -170,7 +170,7 @@
         if (HTMLWidgets.shinyMode) {
           
           var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
-          
+
           Shiny.setInputValue(obj.id, 
             {
               data:changedData.data, 
@@ -184,7 +184,7 @@
         onChangeHeader: function(obj, column, oldValue, newValue){
           
           if (HTMLWidgets.shinyMode) {
-
+            
             var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
             
             var newColHeader = changedData.colHeaders;

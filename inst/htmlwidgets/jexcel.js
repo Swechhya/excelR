@@ -167,7 +167,7 @@
       
       onChange: function(obj){
         
-        if (HTMLWidgets.shinyMode) {
+        if (HTMLWidgets.shinyMode && excel) {
           
           var changedData = getOnChangeData (excel.getData(), this.columns, excel.getHeaders());
 

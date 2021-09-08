@@ -288,6 +288,25 @@
               });
             }
           });
+
+          Shiny.addCustomMessageHandler("excelR:getTableData", function(message){
+            var el = document.getElementById(message[0]);
+            if (el) {
+
+              var excel = el.excel
+
+              var data = getOnChangeData(excel.getData(), excel.getConfig().columns, excel.getHeaders()) 
+              
+              Shiny.setInputValue(message[0], 
+                {
+                  data:data.data, 
+                  colHeaders: data.colHeaders,
+                  colType: data.colType,
+                  forSelectedVals: false, 
+                })
+              }
+            });
+
         }
         
         

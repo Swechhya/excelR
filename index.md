@@ -1,18 +1,11 @@
----
-title: "excelR"
-output: github_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# excelR
 [![version](http://www.r-pkg.org/badges/version/excelR)](https://CRAN.R-project.org/package=excelR)
 [![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/grand-total/excelR)](http://cran.r-project.org/package=excelR)
 [![Travis-CI Build Status](https://travis-ci.org/Swechhya/excelR.svg?branch=master)](https://travis-ci.org/Swechhya/excelR)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Swechhya/excelR?branch=master&svg=true)](https://ci.appveyor.com/project/Swechhya/excelR)
 [![codecov](https://codecov.io/gh/Swechhya/excelR/branch/master/graph/badge.svg)](https://codecov.io/gh/Swechhya/excelR)
 
-# excelR
 An R interface to [jExcel](https://bossanova.uk/jexcel/v3/) library to create web-based interactive tables and spreadsheets compatible with Excel or any other spreadsheet software.
 
 
@@ -390,6 +383,37 @@ shinyApp(
 
 ```
 ![](inst/images/getSetComment.gif)
+
+#### Getting table data in Shiny
+
+```r
+library(excelR)
+library(shiny)
+
+shinyApp(
+  
+  ui = fluidPage(actionButton('get', 'Get table data'),
+                 tableOutput("fetchedData"),
+                 excelOutput("table", height = 175)),
+  
+  server = function(input, output, session) {
+    
+    output$table <- renderExcel(excelTable(data = head(iris)))
+    
+    # Get the table data
+    observeEvent(input$get,{
+      getTableData("table")
+    })
+    
+    # Print the table
+    observeEvent(input$table,{
+      output$fetchedData <- renderTable(excel_to_R(input$table))
+    })
+  }
+)
+
+```
+![](inst/images/get_data.gif)
 
 #### Getting selected data in Shiny
 

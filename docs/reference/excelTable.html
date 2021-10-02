@@ -8,21 +8,29 @@
 
 <title>Create excel table using jexcel library — excelTable • excelR</title>
 
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +38,10 @@
 
 
 
-<meta property="og:title" content="Create excel table using jexcel library — excelTable" />
 
+<meta property="og:title" content="Create excel table using jexcel library — excelTable" />
 <meta property="og:description" content="This function is used to create excel like table" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -47,9 +55,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -71,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -82,11 +91,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Swechhya/excelR">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/Swechhya/excelR/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -97,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -108,24 +117,22 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function is used to create excel like table</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>colHeaders</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rowHeight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nestedHeaders</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>defaultColWidth</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minDimensions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columnSorting</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>columnDrag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>columnResize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>rowResize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rowDrag</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>editable</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allowInsertRow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allowInsertColumn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>allowDeleteRow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allowDeleteColumn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>allowRenameColumn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allowComments</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>wordWrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>selectionCopy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mergeCells</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>search</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pagination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lazyLoading</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>loadingSpin</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>autoColTypes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>showToolbar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dateFormat</span> <span class='kw'>=</span> <span class='st'>"DD/MM/YYYY"</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>,
-  <span class='kw'>autoWidth</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>autoFill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>getSelectedData</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>excelTable</span><span class='op'>(</span>data <span class='op'>=</span> <span class='cn'>NULL</span>, columns <span class='op'>=</span> <span class='cn'>NULL</span>, colHeaders <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rowHeight <span class='op'>=</span> <span class='cn'>NULL</span>, nestedHeaders <span class='op'>=</span> <span class='cn'>NULL</span>, defaultColWidth <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minDimensions <span class='op'>=</span> <span class='cn'>NULL</span>, columnSorting <span class='op'>=</span> <span class='cn'>TRUE</span>, columnDrag <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  columnResize <span class='op'>=</span> <span class='cn'>TRUE</span>, rowResize <span class='op'>=</span> <span class='cn'>FALSE</span>, rowDrag <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  editable <span class='op'>=</span> <span class='cn'>TRUE</span>, allowInsertRow <span class='op'>=</span> <span class='cn'>TRUE</span>, allowInsertColumn <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  allowDeleteRow <span class='op'>=</span> <span class='cn'>TRUE</span>, allowDeleteColumn <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  allowRenameColumn <span class='op'>=</span> <span class='cn'>TRUE</span>, allowComments <span class='op'>=</span> <span class='cn'>FALSE</span>, wordWrap <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  selectionCopy <span class='op'>=</span> <span class='cn'>TRUE</span>, mergeCells <span class='op'>=</span> <span class='cn'>NULL</span>, search <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  pagination <span class='op'>=</span> <span class='cn'>NULL</span>, fullscreen <span class='op'>=</span> <span class='cn'>FALSE</span>, lazyLoading <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  loadingSpin <span class='op'>=</span> <span class='cn'>FALSE</span>, style <span class='op'>=</span> <span class='cn'>NULL</span>, autoColTypes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  showToolbar <span class='op'>=</span> <span class='cn'>FALSE</span>, dateFormat <span class='op'>=</span> <span class='st'>"DD/MM/YYYY"</span>, digits <span class='op'>=</span> <span class='fl'>4</span>,
+  autoWidth <span class='op'>=</span> <span class='cn'>TRUE</span>, autoFill <span class='op'>=</span> <span class='cn'>FALSE</span>, getSelectedData <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -270,7 +277,7 @@ format is 'DD/MM/YYYY'.</p></td>
     </tr>
     <tr>
       <th>digits</th>
-      <td><p>number of decimal digits passed to <code><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON</a></code>. By default it is set to 4, use <code>NA</code> for max precision.</p></td>
+      <td><p>number of decimal digits passed to <code><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>jsonlite::toJSON</a></code>. By default it is set to 4, use <code>NA</code> for max precision.</p></td>
     </tr>
     <tr>
       <th>autoWidth</th>
@@ -292,94 +299,97 @@ By default this is set to false.</p></td>
       <td><p>other jexcel parameters, e.g., updateTable</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>### table example ---</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Swechhya/excelR'>excelR</a></span><span class='op'>)</span>
 
-<span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>Model</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'Mazda'</span>, <span class='st'>'Pegeout'</span>, <span class='st'>'Honda Fit'</span>, <span class='st'>'Honda CRV'</span>),
-                  <span class='kw'>Date</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'2006-01-01'</span>, <span class='st'>'2005-01-01'</span>,<span class='st'>'2004-01-01'</span>, <span class='st'>'2003-01-01'</span> ),
-                  <span class='kw'>Availability</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>))
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Mazda'</span>, <span class='st'>'Pegeout'</span>, <span class='st'>'Honda Fit'</span>, <span class='st'>'Honda CRV'</span><span class='op'>)</span>,
+                  Date<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'2006-01-01'</span>, <span class='st'>'2005-01-01'</span>,<span class='st'>'2004-01-01'</span>, <span class='st'>'2003-01-01'</span> <span class='op'>)</span>,
+                  Availability <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span>, <span class='cn'>TRUE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
 
 
-<span class='no'>columns</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>title</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'Model'</span>, <span class='st'>'Date'</span>, <span class='st'>'Availability'</span>),
-                     <span class='kw'>width</span><span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>300</span>, <span class='fl'>300</span>, <span class='fl'>300</span>),
-                     <span class='kw'>type</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'text'</span>, <span class='st'>'calendar'</span>, <span class='st'>'checkbox'</span>))
+<span class='va'>columns</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>title<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Model'</span>, <span class='st'>'Date'</span>, <span class='st'>'Availability'</span><span class='op'>)</span>,
+                     width<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>300</span>, <span class='fl'>300</span>, <span class='fl'>300</span><span class='op'>)</span>,
+                     type<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'text'</span>, <span class='st'>'calendar'</span>, <span class='st'>'checkbox'</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>excelTable</span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>)
+<span class='fu'>excelTable</span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>data</span>, columns <span class='op'>=</span> <span class='va'>columns</span><span class='op'>)</span>
 
 <span class='co'>### columns parameter ----</span>
 <span class='co'># https://bossanova.uk/jexcel/v3/examples/column-types</span>
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>Car</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Jazz"</span>, <span class='st'>"Civic"</span>),
-                   <span class='kw'>Make</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Honda"</span>, <span class='st'>"Honda"</span> ),
-                   <span class='kw'>Photo</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Car <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jazz"</span>, <span class='st'>"Civic"</span><span class='op'>)</span>,
+                   Make <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Honda"</span>, <span class='st'>"Honda"</span> <span class='op'>)</span>,
+                   Photo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb
                              -1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span>,
                              <span class='st'>"https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?ixlib=rb
-                             -1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"</span>),
-                   <span class='kw'>Available</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"2019-02-12"</span>, <span class='st'>"2018-07-11"</span>)),
-                   <span class='kw'>Stock</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>),
-                   <span class='kw'>Price</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>4000.01</span>),
-                   <span class='kw'>Color</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"#777700"</span>, <span class='st'>"#007777"</span>))
+                             -1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"</span><span class='op'>)</span>,
+                   Available <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2019-02-12"</span>, <span class='st'>"2018-07-11"</span><span class='op'>)</span><span class='op'>)</span>,
+                   Stock <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span><span class='op'>)</span>,
+                   Price <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>4000.01</span><span class='op'>)</span>,
+                   Color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#777700"</span>, <span class='st'>"#007777"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>columns</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>data</span>),
-                      <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hidden"</span>, <span class='st'>"dropdown"</span>, <span class='st'>"image"</span>, <span class='st'>"calendar"</span>,
-                               <span class='st'>"checkbox"</span>, <span class='st'>"numeric"</span>, <span class='st'>"color"</span>),
-                      <span class='kw'>width</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>120</span>, <span class='fl'>200</span>, <span class='fl'>200</span>, <span class='fl'>80</span>, <span class='fl'>100</span>, <span class='fl'>100</span>, <span class='fl'>100</span>),
-                      <span class='kw'>source</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/AsIs'>I</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fl'>NA</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Honda"</span>, <span class='st'>"Alfa Romeo"</span>, <span class='st'>"Audi"</span>, <span class='st'>"Bmw"</span>),
-                                      <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>)),
-                      <span class='kw'>mask</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"$ #.##,00"</span>, <span class='fl'>NA</span>),
-                      <span class='kw'>decimal</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>","</span>, <span class='fl'>NA</span>),
-                      <span class='kw'>render</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"square"</span>))
+<span class='va'>columns</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
+                      type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hidden"</span>, <span class='st'>"dropdown"</span>, <span class='st'>"image"</span>, <span class='st'>"calendar"</span>,
+                               <span class='st'>"checkbox"</span>, <span class='st'>"numeric"</span>, <span class='st'>"color"</span><span class='op'>)</span>,
+                      width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>120</span>, <span class='fl'>200</span>, <span class='fl'>200</span>, <span class='fl'>80</span>, <span class='fl'>100</span>, <span class='fl'>100</span>, <span class='fl'>100</span><span class='op'>)</span>,
+                      source <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Honda"</span>, <span class='st'>"Alfa Romeo"</span>, <span class='st'>"Audi"</span>, <span class='st'>"Bmw"</span><span class='op'>)</span>,
+                                      <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>,
+                      mask <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='st'>"$ #.##,00"</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+                      decimal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='st'>","</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+                      render <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='st'>"square"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>)
+<span class='fu'>excelTable</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>data</span>, columns <span class='op'>=</span> <span class='va'>columns</span><span class='op'>)</span>
 
 <span class='co'>### no arguments with matrix ----</span>
-<span class='fu'>excelTable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>20</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>4</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
+<span class='fu'>excelTable</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>, ncol<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'>### some additional arguments with mtcars ----</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Swechhya/excelR'>excelR</a></span><span class='op'>)</span>
 
 <span class='co'># for now we need to manipulate a data.frame with rownames</span>
-<span class='no'>mtcars2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>mtcars</span>), <span class='no'>mtcars</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>mtcars2</span>$<span class='no'>name</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>mtcars</span>)
+<span class='va'>mtcars2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>, <span class='va'>mtcars</span>, stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>mtcars2</span><span class='op'>$</span><span class='va'>name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 <span class='co'># change rownames so jsonlite will not convert to a column</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>mtcars2</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='no'>mtcars2</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>mtcars2</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>mtcars2</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>excelTable</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars2</span>,
-  <span class='kw'>colHeaders</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/chartr'>toupper</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>mtcars2</span>)), <span class='co'># upper case the column names</span>
-  <span class='kw'>fullscreen</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,  <span class='co'># fill screen with table</span>
-  <span class='kw'>columnDrag</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,  <span class='co'># allow dragging (reordering) of columns</span>
-  <span class='kw'>rowDrag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='co'># disallow dragging (reordering) of rows</span>
-  <span class='kw'>wordWrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='co'># wrap text in a cell if is longer than cell width</span>
-)</div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
+<span class='fu'>excelTable</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>mtcars2</span>,
+  colHeaders <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>mtcars2</span><span class='op'>)</span><span class='op'>)</span>, <span class='co'># upper case the column names</span>
+  fullscreen <span class='op'>=</span> <span class='cn'>TRUE</span>,  <span class='co'># fill screen with table</span>
+  columnDrag <span class='op'>=</span> <span class='cn'>TRUE</span>,  <span class='co'># allow dragging (reordering) of columns</span>
+  rowDrag <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='co'># disallow dragging (reordering) of rows</span>
+  wordWrap <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='co'># wrap text in a cell if is longer than cell width</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'># an empty table</span>
-<span class='fu'>excelTable</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>minDimensions</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>20</span>) <span class='co'># columns, rows</span>
-)
+<span class='fu'>excelTable</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  minDimensions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>20</span><span class='op'>)</span> <span class='co'># columns, rows</span>
+<span class='op'>)</span>
 
 
 <span class='co'>### styling cells ----</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Swechhya/excelR'>excelR</a></span><span class='op'>)</span>
 
-<span class='fu'>excelTable</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>10</span>),
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-    <span class='st'>"A1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange; fontWeight: bold; color: white;'</span>,
-    <span class='st'>"B1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange;'</span>,
-    <span class='st'>"C1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange;'</span>,
-    <span class='st'>"D1"</span> <span class='kw'>=</span> <span class='st'>'background-color: orange;'</span>
-  )
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
+<span class='fu'>excelTable</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+  style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    <span class='st'>"A1"</span> <span class='op'>=</span> <span class='st'>'background-color: orange; fontWeight: bold; color: white;'</span>,
+    <span class='st'>"B1"</span> <span class='op'>=</span> <span class='st'>'background-color: orange;'</span>,
+    <span class='st'>"C1"</span> <span class='op'>=</span> <span class='st'>'background-color: orange;'</span>,
+    <span class='st'>"D1"</span> <span class='op'>=</span> <span class='st'>'background-color: orange;'</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'>### custom formating ----</span>
 <span class='co'># conditional formats</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Swechhya/excelR'>excelR</a></span><span class='op'>)</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1</span>)
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>1</span>:<span class='fl'>1</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>25</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 
-<span class='no'>updateTable</span> <span class='kw'>&lt;-</span> <span class='st'>"function(instance, cell, col, row, val, label, cellName) {
+<span class='va'>updateTable</span> <span class='op'>&lt;-</span> <span class='st'>"function(instance, cell, col, row, val, label, cellName) {
             val = cell.innerText;
             if (val &lt; 0) {
                 cell.style.color = 'red';
@@ -390,11 +400,12 @@ By default this is set to false.</p></td>
             }
 }"</span>
 
-<span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>updateTable</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='no'>updateTable</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
+<span class='fu'>excelTable</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>data</span>, updateTable <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='va'>updateTable</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Since both column title and colHeaders are not specified 'data' column name will be used as column headers</span></div><div class='output co'>#&gt; <span class='message'>Since 'type' attribute is not specified and autoColTypes is true, detecting type from 'data'</span></div><div class='input'>
 <span class='co'># example from  https://bossanova.uk/jexcel/v3/examples/table-scripting</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>excelR</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Swechhya/excelR'>excelR</a></span><span class='op'>)</span>
 
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>fromJSON</a></span>(<span class='st'>'[
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='st'>'[
     ["BR", "Cheese", 1, 3.99],
     ["CA", "Apples", 0, 1.00],
     ["US", "Carrots", 1, 0.90],
@@ -405,21 +416,21 @@ By default this is set to false.</p></td>
     ["BR", "Oranges", 1, 0.95],
     ["BR", "Pears", 1, 0.90],
     ["", "", "", "=ROUND(SUM(D1:D8), 2)"]
-]'</span>)
+]'</span><span class='op'>)</span>
 
-<span class='no'>columns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>fromJSON</a></span>(<span class='st'>'[
+<span class='va'>columns</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='st'>'[
   { "type": "autocomplete", "title":"Country", "width":"250", "url":"/jexcel/countries" },
   { "type": "autocomplete", "title":"Food", "width":"150",
       "source":["Apples","Bananas","Carrots","Oranges","Cheese","Kiwi","Chocolats","Pears"] },
   { "type": "checkbox", "title":"Stock", "width":"100" },
   { "type": "number", "title":"Price", "width":"100" }
-  ]'</span>)
+  ]'</span><span class='op'>)</span>
 
 <span class='co'># url option to source in excelTable param columns</span>
-<span class='no'>columns</span>$<span class='no'>source</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw pkg'>jsonlite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>fromJSON</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>'https://bossanova.uk'</span>, <span class='no'>columns</span>$<span class='no'>url</span>[<span class='fl'>1</span>])))
-<span class='no'>columns</span>$<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
+<span class='va'>columns</span><span class='op'>$</span><span class='va'>source</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>'https://bossanova.uk'</span>, <span class='va'>columns</span><span class='op'>$</span><span class='va'>url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>columns</span><span class='op'>$</span><span class='va'>url</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
 
-<span class='no'>updateTable</span> <span class='kw'>&lt;-</span> <span class='st'>"function(instance, cell, col, row, val, label, cellName) {
+<span class='va'>updateTable</span> <span class='op'>&lt;-</span> <span class='st'>"function(instance, cell, col, row, val, label, cellName) {
         // Number formating
         if (col == 3) {
             // Get text
@@ -454,18 +465,16 @@ By default this is set to false.</p></td>
         }
     }"</span>
 
-<span class='fu'>excelTable</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>columns</span>, <span class='kw'>updateTable</span> <span class='kw'>=</span> <span class='kw pkg'>htmlwidgets</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/htmlwidgets/topics/JS'>JS</a></span>(<span class='no'>updateTable</span>))</div></pre>
+<span class='fu'>excelTable</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>data</span>, columns <span class='op'>=</span> <span class='va'>columns</span>, updateTable <span class='op'>=</span> <span class='fu'>htmlwidgets</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmlwidgets/man/JS.html'>JS</a></span><span class='op'>(</span><span class='va'>updateTable</span><span class='op'>)</span><span class='op'>)</span>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -473,13 +482,16 @@ By default this is set to false.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

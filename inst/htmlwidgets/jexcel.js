@@ -158,6 +158,17 @@
         }
         
         container.excel = excel;
+
+        if (HTMLWidgets.shinyMode && excel) {
+          Shiny.setInputValue(container.id, {
+            data: params.data,
+            colHeaders: params.colHeaders,
+            colType: params.columns.map(function (column) {
+              return column.type;
+            }),
+            forSelectedVals: false,
+          });
+        }
         
       },
       

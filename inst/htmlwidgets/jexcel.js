@@ -89,6 +89,8 @@
         otherParams.rows = rows;
         otherParams.tableOverflow = true;
         otherParams.onchange = this.onChange;
+        otherParams.onundo = this.onChange;
+        otherParams.onredo = this.onChange;
         otherParams.oninsertrow = this.onChange;
         otherParams.ondeleterow = this.onChange;
         otherParams.oninsertcolumn = this.onChange;
